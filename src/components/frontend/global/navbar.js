@@ -8,68 +8,93 @@ class Navbar extends Component {
     return (
       <div>
         <header className="ltn__header-area ltn__header-5 ltn__header-transparent--- gradient-color-4---">
-          <div className="ltn__header-top-area section-bg-6 top-area-color-white---">
+          <div className="ltn__header-top-area section-bg-6 pt-3 pb-3 top-area-color-white---">
             <div className="container">
-              <div className="row">
-                <div className="col-md-3">
+              <div className="row ">
+                <div className="col-md-2 p-2">
                   <div className="ltn__top-bar-menu">
-                    <ul>
-                      <li>
-                        <a href="mailto:info@webmail.com?Subject=Flower%20greetings%20to%20you">
-                          <i className="icon-mail" /> info@webmail.com
-                        </a>
-                      </li>
-                      <li>
-                        <a href="locations.html">
-                          <i className="icon-placeholder" /> 15/A, Nest Tower,
-                          NYC
-                        </a>
-                      </li>
-                    </ul>
+                    <Link to="/">
+                      <img
+                        src={publicUrl + "assets/img/medmart.png"}
+                        alt="Medmart"
+                      />
+                    </Link>
                   </div>
                 </div>
-                <div className="col-md-9">
+                <div className="col-md-10 p-2">
                   <div className="top-bar-right text-end">
                     <div className="ltn__top-bar-menu">
-                      <ul>
-                        <li className="d-none">
-                          {/* ltn__language-menu */}
-                          <div className="ltn__drop-menu ltn__currency-menu ltn__language-menu">
+                      <div className="row">
+                        <div className="col-md-3 d-none d-xl-block">
+                          <div class="header-contact-info text-end">
                             <ul>
                               <li>
-                                <a href="#" className="dropdown-toggle">
-                                  <span className="active-currency">
-                                    English
-                                  </span>
-                                </a>
-                                <ul>
-                                  <li>
-                                    <Link to="#">Arabic</Link>
-                                  </li>
-                                  <li>
-                                    <Link to="#">Bengali</Link>
-                                  </li>
-                                  <li>
-                                    <Link to="#">Chinese</Link>
-                                  </li>
-                                  <li>
-                                    <Link to="#">English</Link>
-                                  </li>
-                                  <li>
-                                    <Link to="#">French</Link>
-                                  </li>
-                                  <li>
-                                    <Link to="#">Hindi</Link>
-                                  </li>
-                                </ul>
+                                <div class="mini-cart-icon mini-cart-icon-2">
+                                  <a
+                                    href="#ltn__utilize-cart-menu"
+                                    class="ltn__utilize-toggle"
+                                  >
+                                    <span class="mini-cart-icon font-24">
+                                      <i class="fa fa-volume-control-phone"></i>
+                                    </span>
+                                    <h6 className="font-13 ">
+                                      <span className="font-13 gray-light font-weight-400">
+                                        Call us free:
+                                      </span>
+                                      <span class="ltn__secondary-color">
+                                        920000958
+                                      </span>
+                                    </h6>
+                                  </a>
+                                </div>
                               </li>
                             </ul>
                           </div>
-                        </li>
-                        <li>
-                          <Social />
-                        </li>
-                      </ul>
+                        </div>
+                        <div className="col-md-6">
+                          <div className="ltn__search-widget mb-0 border-radius-30">
+                            <form action="#">
+                              <input
+                                type="text"
+                                name="search"
+                                placeholder="Search your keyword..."
+                              />
+                              <button type="submit">
+                                <i className="fas fa-search" />
+                              </button>
+                            </form>
+                          </div>
+                        </div>
+                        <div className="col-md-3 d-none d-xl-block">
+                          <div class="ltn__header-options">
+                            <ul>
+                              <li>
+                                <div class="mini-cart-icon mini-cart-icon-2">
+                                  <a class="ltn__utilize-toggle">
+                                    <span class="mini-cart-icon">
+                                      <i class="icon-shopping-cart"></i>
+                                      <sup>2</sup>
+                                    </span>
+
+                                    <span class="mini-cart-icon font-24">
+                                      <i class="icon-user"></i>
+                                    </span>
+                                    <h6 className="font-13 text-left ">
+                                      <span className="font-13 gray-light  font-weight-400">
+                                        My Account
+                                      </span>
+                                      <span class=" text-black font-12 font-weight-300 ">
+                                        <a href="/test">Login</a> /
+                                        <a href="/test">Register</a>
+                                      </span>
+                                    </h6>
+                                  </a>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -79,25 +104,28 @@ class Navbar extends Component {
           <div className="ltn__header-middle-area ltn__header-sticky ltn__sticky-bg-white">
             <div className="container">
               <div className="row">
-                <div className="col">
-                  <div className="site-logo-wrap">
-                    <div className="site-logo go-top">
-                      <Link to="/">
-                        <img
-                          src={publicUrl + "assets/img/logo.png"}
-                          alt="Logo"
-                        />
-                      </Link>
-                    </div>
-                    <div className="get-support clearfix d-none">
-                      <div className="get-support-icon">
-                        <i className="icon-call" />
-                      </div>
-                      <div className="get-support-info">
-                        <h6>Get Support</h6>
-                        <h4>
-                          <a href="tel:+123456789">123-456-789-10</a>
-                        </h4>
+                <div className="col d-none d-xl-block">
+                  <div className="block width-95">
+                    <div className="site-logo block go-top ">
+                      <div className="ltn__search-widget mb-0  border-radius-30">
+                        <form class="d-flex category-bck p-1 border-radius-30">
+                          <div class="input-group">
+                            <span class="input-group-text-category border-radius-30-left  bg-white">
+                              <i class="fa fa-bars text-black font-14"></i>
+                            </span>
+                            <input
+                              className="form-control text-white category-bck"
+                              type="search"
+                              value="All Categories"
+                              readOnly
+                              disabled
+                              aria-label="Search"
+                            />
+                            <span class="input-group-text-category border-radius-30-right category-bck">
+                              <i class="fa fa-chevron-down text-black font-14"></i>
+                            </span>
+                          </div>
+                        </form>
                       </div>
                     </div>
                   </div>
@@ -107,312 +135,20 @@ class Navbar extends Component {
                     <nav>
                       <div className="ltn__main-menu go-top">
                         <ul>
-                          <li className="menu-icon">
+                          <li>
                             <Link to="/">Home</Link>
-                            <ul className="sub-menu menu-pages-img-show">
-                              <li>
-                                <Link to="/">Home Style 01</Link>
-                                <img
-                                  src={
-                                    publicUrl +
-                                    "assets/img/home-demos/home-1.jpg"
-                                  }
-                                  alt="#"
-                                />
-                              </li>
-                              <li>
-                                <Link to="/home-v2">Home Style 02</Link>
-                                <img
-                                  src={
-                                    publicUrl +
-                                    "assets/img/home-demos/home-2.jpg"
-                                  }
-                                  alt="#"
-                                />
-                              </li>
-                              <li>
-                                <Link to="/home-v3">Home Style 03</Link>
-                                <img
-                                  src={
-                                    publicUrl +
-                                    "assets/img/home-demos/home-3.jpg"
-                                  }
-                                  alt="#"
-                                />
-                              </li>
-                              <li>
-                                <Link to="/home-v4">Home Style 04</Link>
-                                <img
-                                  src={
-                                    publicUrl +
-                                    "assets/img/home-demos/home-4.jpg"
-                                  }
-                                  alt="#"
-                                />
-                              </li>
-                              <li>
-                                <Link to="/home-v5">
-                                  Home Style 05{" "}
-                                  <span className="menu-item-badge">video</span>
-                                </Link>
-                                <img
-                                  src={
-                                    publicUrl +
-                                    "assets/img/home-demos/home-5.jpg"
-                                  }
-                                  alt="#"
-                                />
-                              </li>
-                              <li>
-                                <Link to="/home-v6">Home Style 06</Link>
-                                <img
-                                  src={
-                                    publicUrl +
-                                    "assets/img/home-demos/home-6.jpg"
-                                  }
-                                  alt="#"
-                                />
-                              </li>
-                              <li>
-                                <Link to="/home-v7">Home Style 07</Link>
-                                <img
-                                  src={
-                                    publicUrl +
-                                    "assets/img/home-demos/home-7.jpg"
-                                  }
-                                  alt="#"
-                                />
-                              </li>
-                              <li>
-                                <Link to="/home-v8">Home Style 08</Link>
-                                <img
-                                  src={
-                                    publicUrl +
-                                    "assets/img/home-demos/home-8.jpg"
-                                  }
-                                  alt="#"
-                                />
-                              </li>
-                              <li>
-                                <Link to="/home-v9">Home Style 09</Link>
-                                <img
-                                  src={
-                                    publicUrl +
-                                    "assets/img/home-demos/home-9.jpg"
-                                  }
-                                  alt="#"
-                                />
-                              </li>
-                              <li>
-                                <Link to="/home-v10">Home Style 10</Link>
-                                <img
-                                  src={
-                                    publicUrl +
-                                    "assets/img/home-demos/home-11.jpg"
-                                  }
-                                  alt="#"
-                                />
-                              </li>
-                            </ul>
                           </li>
-                          <li className="menu-icon">
+                          <li>
                             <Link to="/about">About</Link>
-                            <ul>
-                              <li>
-                                <Link to="/about">About</Link>
-                              </li>
-                              <li>
-                                <Link to="/service">Services</Link>
-                              </li>
-                              <li>
-                                <Link to="/service-details">
-                                  Service Details
-                                </Link>
-                              </li>
-                              <li>
-                                <Link to="/portfolio">Portfolio</Link>
-                              </li>
-                              <li>
-                                <Link to="/portfolio-v2">Portfolio - 02</Link>
-                              </li>
-                              <li>
-                                <Link to="/portfolio-details">
-                                  Portfolio Details
-                                </Link>
-                              </li>
-                              <li>
-                                <Link to="/team">Team</Link>
-                              </li>
-                              <li>
-                                <Link to="/team-details">Team Details</Link>
-                              </li>
-                              <li>
-                                <Link to="/faq">FAQ</Link>
-                              </li>
-                              <li>
-                                <Link to="/location">Google Map Locations</Link>
-                              </li>
-                            </ul>
                           </li>
-                          <li className="menu-icon">
+                          <li>
                             <Link to="/shop">Shop</Link>
-                            <ul>
-                              <li>
-                                <Link to="/shop">Shop</Link>
-                              </li>
-                              <li>
-                                <Link to="/shop-grid">Shop Grid</Link>
-                              </li>
-                              <li>
-                                <Link to="/shop-left-sidebar">
-                                  Shop Left sidebar
-                                </Link>
-                              </li>
-                              <li>
-                                <Link to="/shop-right-sidebar">
-                                  Shop Right sidebar
-                                </Link>
-                              </li>
-                              <li>
-                                <Link to="/product-details">Shop Details</Link>
-                              </li>
-                              <li>
-                                <Link to="/cart">Cart</Link>
-                              </li>
-                              <li>
-                                <Link to="/checkout">Checkout</Link>
-                              </li>
-                              <li>
-                                <Link to="/my-account">My Account</Link>
-                              </li>
-                              <li>
-                                <Link to="/login">Sign in</Link>
-                              </li>
-                              <li>
-                                <Link to="/register">Register</Link>
-                              </li>
-                            </ul>
                           </li>
-                          <li className="menu-icon">
+                          <li>
                             <Link to="/blog-grid">News</Link>
-                            <ul>
-                              <li>
-                                <Link to="/blog">News</Link>
-                              </li>
-                              <li>
-                                <Link to="/blog-grid">News Grid</Link>
-                              </li>
-                              <li>
-                                <Link to="/blog-left-sidebar">
-                                  News Left sidebar
-                                </Link>
-                              </li>
-                              <li>
-                                <Link to="/blog-right-sidebar">
-                                  News Right sidebar
-                                </Link>
-                              </li>
-                              <li>
-                                <Link to="/blog-details">News details</Link>
-                              </li>
-                            </ul>
                           </li>
-                          <li className="menu-icon">
+                          <li>
                             <Link to="#">Pages</Link>
-                            <ul className="mega-menu">
-                              <li>
-                                <a href="#">Inner Pages</a>
-                                <ul>
-                                  <li>
-                                    <Link to="/portfolio">Portfolio</Link>
-                                  </li>
-                                  <li>
-                                    <Link to="/portfolio-v2">
-                                      Portfolio - 02
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link to="/portfolio-details">
-                                      Portfolio Details
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link to="/team">Team</Link>
-                                  </li>
-                                  <li>
-                                    <Link to="/team-details">Team Details</Link>
-                                  </li>
-                                  <li>
-                                    <Link to="/faq">FAQ</Link>
-                                  </li>
-                                </ul>
-                              </li>
-                              <li>
-                                <Link to="#">Inner Pages</Link>
-                                <ul>
-                                  <li>
-                                    <Link to="/history">History</Link>
-                                  </li>
-                                  <li>
-                                    <Link to="/add-listing">Add Listing</Link>
-                                  </li>
-                                  <li>
-                                    <Link to="/location">
-                                      Google Map Locations
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link to="/404">404</Link>
-                                  </li>
-                                  <li>
-                                    <Link to="/contact">Contact</Link>
-                                  </li>
-                                  <li>
-                                    <Link to="/coming-soon">Coming Soon</Link>
-                                  </li>
-                                </ul>
-                              </li>
-                              <li>
-                                <Link to="#">Shop Pages</Link>
-                                <ul>
-                                  <li>
-                                    <Link to="/shop">Shop</Link>
-                                  </li>
-                                  <li>
-                                    <Link to="/shop-left-sidebar">
-                                      Shop Left sidebar
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link to="/shop-right-sidebar">
-                                      Shop right sidebar
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link to="/shop-grid">Shop Grid</Link>
-                                  </li>
-                                  <li>
-                                    <Link to="/product-details">
-                                      Shop details{" "}
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link to="/cart">Cart</Link>
-                                  </li>
-                                </ul>
-                              </li>
-                              <li>
-                                <Link to="/shop">
-                                  <img
-                                    src={
-                                      publicUrl +
-                                      "assets/img/banner/menu-banner-1.jpg"
-                                    }
-                                    alt="#"
-                                  />
-                                </Link>
-                              </li>
-                            </ul>
                           </li>
                           <li>
                             <Link to="/contact">Contact</Link>
@@ -422,32 +158,7 @@ class Navbar extends Component {
                     </nav>
                   </div>
                 </div>
-                <div className="col ltn__header-options ltn__header-options-2 mb-sm-20">
-                  {/* header-search-1 */}
-                  <div className="header-search-wrap">
-                    <div className="header-search-1">
-                      <div className="search-icon">
-                        <i className="icon-search for-search-show" />
-                        <i className="icon-cancel  for-search-close" />
-                      </div>
-                    </div>
-                    <div className="header-search-1-form">
-                      <form id="#" method="get" action="#">
-                        <input
-                          type="text"
-                          name="search"
-                          defaultValue
-                          placeholder="Search here..."
-                        />
-                        <button type="submit">
-                          <span>
-                            <i className="icon-search" />
-                          </span>
-                        </button>
-                      </form>
-                    </div>
-                  </div>
-                  {/* user-menu */}
+                <div className="col d-xl-none ltn__header-options ltn__header-options-2 mb-sm-20">
                   <div className="ltn__drop-menu user-menu">
                     <ul>
                       <li>
@@ -529,181 +240,18 @@ class Navbar extends Component {
               <ul>
                 <li>
                   <a href="#">Home</a>
-                  <ul className="sub-menu">
-                    <li>
-                      <Link to="/">Home Style 01</Link>
-                    </li>
-                    <li>
-                      <Link to="/home-v2">Home Style 02</Link>
-                    </li>
-                    <li>
-                      <Link to="/home-v3">Home Style 03</Link>
-                    </li>
-                    <li>
-                      <Link to="/home-v4">Home Style 04</Link>
-                    </li>
-                    <li>
-                      <Link to="/home-v5">
-                        Home Style 05{" "}
-                        <span className="menu-item-badge">video</span>
-                      </Link>
-                    </li>
-                    <li>
-                      <Link to="/home-v6">Home Style 06</Link>
-                    </li>
-                    <li>
-                      <Link to="/home-v7">Home Style 07</Link>
-                    </li>
-                    <li>
-                      <Link to="/home-v8">Home Style 08</Link>
-                    </li>
-                    <li>
-                      <Link to="/home-v9">Home Style 09</Link>
-                    </li>
-                    <li>
-                      <Link to="/home-v10">Home Style 10</Link>
-                    </li>
-                  </ul>
                 </li>
                 <li>
                   <Link to="/about">About</Link>
-                  <ul className="sub-menu">
-                    <li>
-                      <Link to="/about">About</Link>
-                    </li>
-                    <li>
-                      <Link to="/service">Services</Link>
-                    </li>
-                    <li>
-                      <Link to="/service-details">Service Details</Link>
-                    </li>
-                    <li>
-                      <Link to="/portfolio">Portfolio</Link>
-                    </li>
-                    <li>
-                      <Link to="/portfolio-v2">Portfolio - 02</Link>
-                    </li>
-                    <li>
-                      <Link to="/portfolio-details">Portfolio Details</Link>
-                    </li>
-                    <li>
-                      <Link to="/team">Team</Link>
-                    </li>
-                    <li>
-                      <Link to="/team-details">Team Details</Link>
-                    </li>
-                    <li>
-                      <Link to="/faq">FAQ</Link>
-                    </li>
-                    <li>
-                      <Link to="/location">Google Map Locations</Link>
-                    </li>
-                  </ul>
                 </li>
                 <li>
                   <Link to="/shop">Shop</Link>
-                  <ul className="sub-menu">
-                    <li>
-                      <Link to="/shop">Shop</Link>
-                    </li>
-                    <li>
-                      <Link to="/shop-grid">Shop Grid</Link>
-                    </li>
-                    <li>
-                      <Link to="/shop-left-sidebar">Shop Left sidebar</Link>
-                    </li>
-                    <li>
-                      <Link to="/shop-right-sidebar">Shop Right sidebar</Link>
-                    </li>
-                    <li>
-                      <Link to="/product-details">Shop Details</Link>
-                    </li>
-                    <li>
-                      <Link to="/cart">Cart</Link>
-                    </li>
-                    <li>
-                      <Link to="/checkout">Checkout</Link>
-                    </li>
-                    <li>
-                      <Link to="/my-account">My Account</Link>
-                    </li>
-                    <li>
-                      <Link to="/login">Sign in</Link>
-                    </li>
-                    <li>
-                      <Link to="/register">Register</Link>
-                    </li>
-                  </ul>
                 </li>
                 <li>
                   <Link to="/blog-grid">News</Link>
-                  <ul className="sub-menu">
-                    <li>
-                      <Link to="/blog">News</Link>
-                    </li>
-                    <li>
-                      <Link to="/blog-grid">News Grid</Link>
-                    </li>
-                    <li>
-                      <Link to="/blog-left-sidebar">News Left sidebar</Link>
-                    </li>
-                    <li>
-                      <Link to="/blog-right-sidebar">News Right sidebar</Link>
-                    </li>
-                    <li>
-                      <Link to="/blog-details">News details</Link>
-                    </li>
-                  </ul>
                 </li>
                 <li>
                   <Link to="#">Pages</Link>
-                  <ul className="sub-menu">
-                    <li>
-                      <Link to="/about">About</Link>
-                    </li>
-                    <li>
-                      <Link to="/service">Services</Link>
-                    </li>
-                    <li>
-                      <Link to="/service-details">Service Details</Link>
-                    </li>
-                    <li>
-                      <Link to="/portfolio">Portfolio</Link>
-                    </li>
-                    <li>
-                      <Link to="/portfolio-2">Portfolio - 02</Link>
-                    </li>
-                    <li>
-                      <Link to="/portfolio-details">Portfolio Details</Link>
-                    </li>
-                    <li>
-                      <Link to="/team">Team</Link>
-                    </li>
-                    <li>
-                      <Link to="/team-details">Team Details</Link>
-                    </li>
-                    <li>
-                      <Link to="/faq">FAQ</Link>
-                    </li>
-                    <li>
-                      <Link to="/history">History</Link>
-                    </li>
-                    <li>
-                      <Link to="/add-listing">Add Listing</Link>
-                    </li>
-                    <li>
-                      <Link to="/locations">Google Map Locations</Link>
-                    </li>
-                    <li>
-                      <Link to="/404">404</Link>
-                    </li>
-                    <li>
-                      <Link to="/contact">Contact</Link>
-                    </li>
-                    <li>
-                      <Link to="/coming-soon">Coming Soon</Link>
-                    </li>
-                  </ul>
                 </li>
                 <li>
                   <Link to="/contact">Contact</Link>
