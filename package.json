@@ -15,6 +15,7 @@
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.1.4",
     "react-scripts": "^5.0.1",
+    "react-simply-carousel": "^9.1.8",
     "web-vitals": "^2.1.4",
     "wowjs": "^1.1.3"
   },

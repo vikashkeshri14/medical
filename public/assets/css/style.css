@@ -236,8 +236,8 @@ font-family: 'Poppins', sans-serif;
   /* Lighten */
   --ltn__heading-color: #222222;
   --ltn__paragraph-color: #5c727d;
-  --ltn__heading-font: "Poppins", sans-serif;
-  --ltn__body-font: "Nunito Sans", sans-serif;
+  --ltn__heading-font: "Roboto", Sans-serif;
+  --ltn__body-font: "Roboto", Sans-serif;
   /* Footer ACD2D8 8CB2B2  */
   --ltn__color-1: #8cb2b2;
   --ltn__color-2: #acd2d8;
@@ -272,7 +272,7 @@ font-family: 'Poppins', sans-serif;
     rgba(0, 0, 0, 0.8) 70%
   );
   /* Background Colors ( 1, 2, 3, 4, 5 )  */
-  --section-bg-1: #f2f6f7;
+  --section-bg-1: #ffffff;
   /* White */
   --section-bg-2: #171b2a;
   /* Black */
