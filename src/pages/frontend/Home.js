@@ -6,6 +6,9 @@ import HomeMarquee from "../../components/frontend/section/homeMarquee";
 import ServiceHome from "../../components/frontend/section/serviceHome";
 import CategoriesSlider from "../../components/frontend/section/categoriesSlider";
 import ProductSlider from "../../components/frontend/section/product-slider";
+import BestSelling from "../../components/frontend/section/bestSelling";
+import ShopByBrand from "../../components/frontend/section/shopByBrand";
+import ListOrder from "../../components/frontend/section/listOrder";
 
 export default function Home() {
   return (
@@ -14,6 +17,9 @@ export default function Home() {
       <HomeMarquee />
       <ServiceHome />
       <CategoriesSlider />
+      <BestSelling />
+      <ShopByBrand />
+      <ListOrder />
       <CounterV1 />
       <Footer_v1 />
     </div>

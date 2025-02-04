@@ -1,12 +1,11 @@
-import { useState } from "react";
+import React from "react";
 
-function CategoriesSlider() {
+export default function ShopByBrand() {
   let publicUrl = process.env.PUBLIC_URL + "/";
-
   return (
     <div class="ltn__category-area home-section-bg pt-50 pb-90">
       <div class="container">
-        <h3 className="text-center">Shop By Categories</h3>
+        <h3 className="text-center">Shop By Brand</h3>
         <div class="row ltn__category-slider-active-six slick-arrow-1 ">
           <div class="col-12  ">
             <div class="ltn__category-item border-0 border-radius-10 ltn__category-item-6 text-center">
@@ -139,5 +138,3 @@ function CategoriesSlider() {
     </div>
   );
 }
-
-export default CategoriesSlider;
