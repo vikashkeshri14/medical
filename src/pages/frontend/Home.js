@@ -9,6 +9,8 @@ import ProductSlider from "../../components/frontend/section/product-slider";
 import BestSelling from "../../components/frontend/section/bestSelling";
 import ShopByBrand from "../../components/frontend/section/shopByBrand";
 import ListOrder from "../../components/frontend/section/listOrder";
+import CounterSlider from "../../components/frontend/section/counterSlider";
+import WhyChooseUs from "../../components/frontend/section/whyChooseUs";
 
 export default function Home() {
   return (
@@ -20,6 +22,8 @@ export default function Home() {
       <BestSelling />
       <ShopByBrand />
       <ListOrder />
+      <CounterSlider />
+      <WhyChooseUs />
       <CounterV1 />
       <Footer_v1 />
     </div>
