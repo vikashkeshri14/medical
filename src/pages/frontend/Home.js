@@ -11,6 +11,8 @@ import ShopByBrand from "../../components/frontend/section/shopByBrand";
 import ListOrder from "../../components/frontend/section/listOrder";
 import CounterSlider from "../../components/frontend/section/counterSlider";
 import WhyChooseUs from "../../components/frontend/section/whyChooseUs";
+import PlatformMedicine from "../../components/frontend/section/platformMedicine";
+import NewsLetter from "../../components/frontend/section/newsLetter";
 
 export default function Home() {
   return (
@@ -24,7 +26,8 @@ export default function Home() {
       <ListOrder />
       <CounterSlider />
       <WhyChooseUs />
-      <CounterV1 />
+      <PlatformMedicine />
+      <NewsLetter />
       <Footer_v1 />
     </div>
   );

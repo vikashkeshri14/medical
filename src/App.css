@@ -4,13 +4,40 @@ body {
 .App {
   text-align: center;
 }
-
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"],
+textarea {
+  background-color: var(--white);
+  border: 2px solid;
+  border-color: var(--border-color-9);
+  height: 50px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  padding-left: 20px;
+  font-size: 16px;
+  color: var(--ltn__paragraph-color);
+  width: 100%;
+  margin-bottom: 30px;
+  border-radius: 0;
+  padding-right: 40px;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+.footer-text {
+  color: #888888 !important;
+}
+.border-top-1 {
+  border-top: 1px solid #e6e1e1;
+}
 .home-section-bg {
   background: #f4f7fc;
+}
+.section-bg-primary {
+  background: #01cca4;
 }
 .border-radius-5 {
   border-radius: 5px;
@@ -193,6 +220,18 @@ body {
   white-space: nowrap;
   background-color: #e9ecef;
   border: 1px solid #ced4da;
+}
+.choose {
+  padding: 10px 10px 10px 10px;
+  border-radius: 50px 50px 50px 50px;
+  margin: 30px 0px 40px 0px;
+}
+.choose:hover {
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+.cursor-pointer {
+  cursor: pointer;
 }
 .gray-light {
   color: #888888 !important;

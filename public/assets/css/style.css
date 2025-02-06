@@ -542,7 +542,7 @@ ol li {
 .section-bg-2,
 .section-bg-6,
 .section-bg-7 {
-  background-color: var(--section-bg-2);
+  background-color: #fff;
 }
 .section-bg-2 h1,
 .section-bg-2 h2,
@@ -682,7 +682,7 @@ ol li {
 }
 
 .section-bg-7 {
-  background-color: var(--section-bg-7);
+  background-color: #fff;
 }
 
 .text-color-white {
