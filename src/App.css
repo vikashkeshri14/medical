@@ -30,8 +30,16 @@ textarea {
 .footer-text {
   color: #888888 !important;
 }
+.footer-text i {
+  color: #888888 !important;
+}
 .border-top-1 {
   border-top: 1px solid #e6e1e1;
+}
+.section-deal-bg {
+  background: #ffffff;
+  border: 1px solid #ff2c55;
+  border-radius: 4px;
 }
 .home-section-bg {
   background: #f4f7fc;

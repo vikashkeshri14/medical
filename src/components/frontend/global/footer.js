@@ -53,7 +53,7 @@ class Footer_v1 extends Component {
                       />
                     </div>
                   </div>
-                  <p className="footer-text">
+                  <p className="footer-text font-14">
                     Medmart is a digital marketplace that connects pharmacies
                     and medical centers to medical suppliers to easily,
                     conveniently and quickly access and receive medicine,
@@ -63,80 +63,71 @@ class Footer_v1 extends Component {
               </div>
               <div className="col-xl-4 col-md-6 col-sm-6 col-12">
                 <div className="footer-widget footer-menu-widget clearfix">
-                  <h4 className="footer-title text-black">Company</h4>
+                  <h4 className="footer-title text-black">Contact Info</h4>
                   <div className="footer-menu go-top">
-                    <ul>
-                      <li>
-                        <Link to="/about">About</Link>
-                      </li>
-                      <li>
-                        <Link to="/blog-grid">Blog</Link>
-                      </li>
-                      <li>
-                        <Link to="/shop">All Products</Link>
-                      </li>
-                      <li>
-                        <Link to="/contact">Contact</Link>
-                      </li>
-                      <li>
-                        <Link to="/faq">FAQ</Link>
-                      </li>
-                      <li>
-                        <Link to="/contact">Contact us</Link>
-                      </li>
-                    </ul>
+                    <span className="footer-text font-12">Call us free:</span>
+                    <h6 className="ltn__secondary-color">920000958</h6>
+                    <p className="font-14 footer-text">
+                      Prince Muqrin Ibn Abdulaziz St, An Nuzhah,
+                      <br /> Riyadh 12474 Help@medmart.health <br />
+                      Hours: 9:00 AM – 5:00PM Sat- Thu
+                    </p>
+                    <div class="ltn__social-media footer-text mt-20">
+                      <ul>
+                        <li>
+                          <a href="#" title="Twitter">
+                            <i class="fab fa-x"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Youtube">
+                            <i class="fab fa-instagram"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Linkedin">
+                            <i class="fab fa-snapchat"></i>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" title="Linkedin">
+                            <i class="fab fa-linkedin"></i>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div className="col-xl-2 col-md-6 col-sm-6 col-12">
+              <div className="col-xl-4 col-md-6 col-sm-6 col-12">
                 <div className="footer-widget footer-menu-widget clearfix">
-                  <h4 className="footer-title text-black">Services</h4>
+                  <h4 className="footer-title text-black">information</h4>
                   <div className="footer-menu go-top">
                     <ul>
                       <li>
-                        <Link to="/cart">Cart</Link>
+                        <Link className="footer-text" to="/cart">
+                          About Us
+                        </Link>
                       </li>
                       <li>
-                        <Link to="/wishlist">Wish List</Link>
+                        <Link className="footer-text" to="/wishlist">
+                          Contact Us
+                        </Link>
                       </li>
                       <li>
-                        <Link to="/login">Login</Link>
+                        <Link className="footer-text" to="/login">
+                          Term & Conditions
+                        </Link>
                       </li>
                       <li>
-                        <Link to="/checkout">Checkout</Link>
-                      </li>
-                      <li>
-                        <Link to="/about">Terms &amp; Conditions</Link>
-                      </li>
-                      <li>
-                        <Link to="/shop">Promotional Offers</Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div className="col-xl-2 col-md-6 col-sm-6 col-12">
-                <div className="footer-widget footer-menu-widget clearfix">
-                  <h4 className="footer-title text-black">Customer Care</h4>
-                  <div className="footer-menu go-top">
-                    <ul>
-                      <li>
-                        <Link to="/login">Login</Link>
-                      </li>
-                      <li>
-                        <Link to="/my-account">My account</Link>
-                      </li>
-                      <li>
-                        <Link to="/wishlist">Wish List</Link>
-                      </li>
-                      <li>
-                        <Link to="/add-listing">Add listing</Link>
-                      </li>
-                      <li>
-                        <Link to="/faq">FAQ</Link>
-                      </li>
-                      <li>
-                        <Link to="/contact">Contact us</Link>
+                        <Link className="footer-text" to="/checkout">
+                          Term & Conditions
+                        </Link>
                       </li>
                     </ul>
                   </div>

@@ -9,27 +9,12 @@ class CopyRight extends Component {
       <div className="ltn__copyright-area ltn__copyright-2 border-top-1 section-bg-7  plr--5">
         <div className="container-fluid ltn__border-top-2">
           <div className="row">
-            <div className="col-md-6 col-12">
-              <div className="ltn__copyright-design clearfix">
-                <p>
-                  All Rights Reserved @ Company{" "}
+            <div className="col-md-12 col-12">
+              <div className="ltn__copyright-design text-center footer-text clearfix">
+                <p className="footer-text font-12">
+                  ©2024 Medmart. All Rights Reserved. Designed by mvrservices.in
                   <span className="current-year" />
                 </p>
-              </div>
-            </div>
-            <div className="col-md-6 col-12 align-self-center">
-              <div className="ltn__copyright-menu text-end">
-                <ul className="go-top">
-                  <li>
-                    <Link to="/about">Terms &amp; Conditions</Link>
-                  </li>
-                  <li>
-                    <Link to="/about">Claim</Link>
-                  </li>
-                  <li>
-                    <Link to="/about">Privacy &amp; Policy</Link>
-                  </li>
-                </ul>
               </div>
             </div>
           </div>

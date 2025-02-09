@@ -101,7 +101,7 @@ class Navbar extends Component {
               </div>
             </div>
           </div>
-          <div className="ltn__header-middle-area ltn__header-sticky ltn__sticky-bg-white">
+          <div className="ltn__header-middle-area  ltn__sticky-bg-white">
             <div className="container">
               <div className="row">
                 <div className="col d-none d-xl-block">
@@ -111,7 +111,7 @@ class Navbar extends Component {
                         <form class="d-flex category-bck p-1 border-radius-30">
                           <div class="input-group">
                             <span class="input-group-text-category border-radius-30-left  bg-white">
-                              <i class="fa fa-bars text-black font-14"></i>
+                              <i class="fa fa-bars text-black top-0 font-14"></i>
                             </span>
                             <input
                               className="form-control text-white category-bck"
@@ -139,19 +139,17 @@ class Navbar extends Component {
                             <Link to="/">Home</Link>
                           </li>
                           <li>
-                            <Link to="/about">About</Link>
+                            <Link to="/about-us">About</Link>
                           </li>
                           <li>
-                            <Link to="/shop">Shop</Link>
+                            <Link to="/drugs">Drugs</Link>
                           </li>
                           <li>
-                            <Link to="/blog-grid">News</Link>
+                            <Link to="/blog">Blog</Link>
                           </li>
+
                           <li>
-                            <Link to="#">Pages</Link>
-                          </li>
-                          <li>
-                            <Link to="/contact">Contact</Link>
+                            <Link to="/contact-us">Contact</Link>
                           </li>
                         </ul>
                       </div>
@@ -223,71 +221,36 @@ class Navbar extends Component {
             <div className="ltn__utilize-menu-head">
               <div className="site-logo">
                 <Link to="/">
-                  <img src={publicUrl + "assets/img/logo.png"} alt="Logo" />
+                  <img
+                    src={publicUrl + "assets/img/medmart.png"}
+                    alt="Medmart"
+                  />
                 </Link>
               </div>
               <button className="ltn__utilize-close">×</button>
             </div>
-            <div className="ltn__utilize-menu-search-form">
-              <form action={"#"}>
-                <input type="text" placeholder="Search..." />
-                <button>
-                  <i className="fas fa-search" />
-                </button>
-              </form>
-            </div>
+
             <div className="ltn__utilize-menu">
               <ul>
                 <li>
                   <a href="#">Home</a>
                 </li>
                 <li>
-                  <Link to="/about">About</Link>
+                  <Link to="/about-us">About</Link>
                 </li>
                 <li>
-                  <Link to="/shop">Shop</Link>
+                  <Link to="/drugs">Drugs</Link>
                 </li>
                 <li>
-                  <Link to="/blog-grid">News</Link>
+                  <Link to="/blog">Blog</Link>
                 </li>
+
                 <li>
-                  <Link to="#">Pages</Link>
-                </li>
-                <li>
-                  <Link to="/contact">Contact</Link>
+                  <Link to="/contact-us">Contact</Link>
                 </li>
               </ul>
             </div>
-            <div className="ltn__utilize-buttons ltn__utilize-buttons-2">
-              <ul>
-                <li>
-                  <Link to="/my-account" title="My Account">
-                    <span className="utilize-btn-icon">
-                      <i className="far fa-user" />
-                    </span>
-                    My Account
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/wishlist" title="Wishlist">
-                    <span className="utilize-btn-icon">
-                      <i className="far fa-heart" />
-                      <sup>3</sup>
-                    </span>
-                    Wishlist
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/cart" title="Shoping Cart">
-                    <span className="utilize-btn-icon">
-                      <i className="fas fa-shopping-cart" />
-                      <sup>5</sup>
-                    </span>
-                    Shoping Cart
-                  </Link>
-                </li>
-              </ul>
-            </div>
+
             <div className="ltn__social-media-2">
               <ul>
                 <li>
