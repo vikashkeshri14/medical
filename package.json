@@ -16,6 +16,7 @@
     "react-router-dom": "^7.1.4",
     "react-scripts": "^5.0.1",
     "react-simply-carousel": "^9.1.8",
+    "react-slick": "^0.30.3",
     "web-vitals": "^2.1.4",
     "wowjs": "^1.1.3"
   },
