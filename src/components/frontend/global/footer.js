@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Social from "../section/social";
 import Copyright from "./copyright";
 
-class Footer_v1 extends Component {
+class Footer extends Component {
   componentDidMount() {
     const $ = window.$;
 
@@ -142,4 +142,4 @@ class Footer_v1 extends Component {
   }
 }
 
-export default Footer_v1;
+export default Footer;

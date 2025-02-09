@@ -1,6 +1,5 @@
 import React from "react";
 import Navbar from "../../components/frontend/global/navbar";
-import Footer_v1 from "../../components/frontend/global/footer";
 import CounterV1 from "../../components/frontend/section/counter-v1";
 import HomeMarquee from "../../components/frontend/section/homeMarquee";
 import ServiceHome from "../../components/frontend/section/serviceHome";
@@ -14,6 +13,7 @@ import WhyChooseUs from "../../components/frontend/section/whyChooseUs";
 import PlatformMedicine from "../../components/frontend/section/platformMedicine";
 import NewsLetter from "../../components/frontend/section/newsLetter";
 import HotDeals from "../../components/frontend/section/hotDeals";
+import Footer from "../../components/frontend/global/footer";
 
 export default function Home() {
   return (
@@ -30,7 +30,7 @@ export default function Home() {
       <WhyChooseUs />
       <PlatformMedicine />
       <NewsLetter />
-      <Footer_v1 />
+      <Footer />
     </div>
   );
 }
