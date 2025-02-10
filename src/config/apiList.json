@@ -1,0 +1,11 @@
+{
+  "login": "/admin/login",
+  "addProject": "/project/addProject",
+  "updateProject": "/project/updateProject",
+  "getProjects": "/project/getProjects",
+  "getProjectsByPagination": "/project/getProjectsByPagination",
+  "getProjectByCode": "/project/getProjectByCode",
+  "getProjectById": "/project/getProjectById",
+  "projectDelete": "/project/projectDelete",
+  "getProjectImagesByCode": "/project/getProjectImagesByCode"
+}
