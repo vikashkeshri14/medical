@@ -1,6 +1,6 @@
 {
-  "apiRoot": "http://192.168.21.53:3010",
-  "imgUri": "http://192.168.21.53:3010",
-  "apiUrl": "http://192.168.21.53:3010",
+  "apiRoot": "http://localhost:3020",
+  "imgUri": "http://localhost:3020",
+  "apiUrl": "http://localhost:3020",
   "domainUrl": "http://localhost:3000"
 }

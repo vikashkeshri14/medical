@@ -6,13 +6,13 @@ const AppFooter = () => {
     <CFooter className="px-4">
       <div>
         <a
-          href="https://artar.com.sa"
+          href="https://mvrservices.in"
           target="_blank"
           rel="noopener noreferrer"
         >
           Copyright
         </a>
-        <span className="ms-1">&copy; 2025 Artar</span>
+        <span className="ms-1">&copy; 2025 mvrservices</span>
       </div>
     </CFooter>
   );

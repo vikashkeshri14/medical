@@ -9,46 +9,22 @@ import Contact from "./pages/frontend/Contact";
 import Login from "./pages/backend/Login";
 import "./App.css";
 import Index from "./pages/backend";
+import Brand from "./pages/backend/Brand";
+import AddBrand from "./pages/backend/AddBrand";
 function App() {
   return (
     <Router basename="/">
       <div>
         <Routes>
-          <Route
-            exact
-            path="/"
-            element={<Home />}
-          />
-          <Route
-            exact
-            path="/about-us"
-            element={<About />}
-          />
-          <Route
-            exact
-            path="/drugs"
-            element={<Drugs />}
-          />
-          <Route
-            exact
-            path="/blog"
-            element={<Blog />}
-          />
-          <Route
-            exact
-            path="/contact-us"
-            element={<Contact />}
-          />
-          <Route
-            exact
-            path="/admin/login"
-            element={<Login />}
-          />
-          <Route
-            exact
-            path="/admin"
-            element={<Index />}
-          />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/about-us" element={<About />} />
+          <Route exact path="/drugs" element={<Drugs />} />
+          <Route exact path="/blog" element={<Blog />} />
+          <Route exact path="/contact-us" element={<Contact />} />
+          <Route exact path="/admin/login" element={<Login />} />
+          <Route exact path="/admin" element={<Index />} />
+          <Route exact path="/admin/brand" element={<Brand />} />
+          <Route exact path="/admin/add-brand" element={<AddBrand />} />
         </Routes>
       </div>
     </Router>

@@ -3,8 +3,8 @@
   "addProject": "/project/addProject",
   "updateProject": "/project/updateProject",
   "getProjects": "/project/getProjects",
-  "getProjectsByPagination": "/project/getProjectsByPagination",
-  "getProjectByCode": "/project/getProjectByCode",
+  "getBrandByPagination": "/brand/getBrandByPagination",
+  "addBrand": "/brand/addBrand",
   "getProjectById": "/project/getProjectById",
   "projectDelete": "/project/projectDelete",
   "getProjectImagesByCode": "/project/getProjectImagesByCode"

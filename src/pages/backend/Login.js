@@ -48,7 +48,7 @@ const Login = () => {
     let response = await ApiService.postData(params);
     console.log(response);
     if (response.status) {
-      //console.log(response.results);
+      console.log(response.results);
       //return;
       localStorage.setItem("userinfor", JSON.stringify(response.results));
       return navigate("/admin");
