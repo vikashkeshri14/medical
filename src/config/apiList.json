@@ -15,5 +15,6 @@
 
   "getProjectById": "/project/getProjectById",
   "projectDelete": "/project/projectDelete",
-  "getProjectImagesByCode": "/project/getProjectImagesByCode"
+  "getProjectImagesByCode": "/project/getProjectImagesByCode",
+  "importDrugs": "/drugs/importDrugs"
 }
