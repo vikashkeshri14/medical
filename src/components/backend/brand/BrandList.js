@@ -16,6 +16,7 @@ import {
 import ReactPaginate from "react-paginate";
 import * as ApiService from "../../../config/config";
 import apiList from "../../../config/apiList.json";
+import config from "../../../config/config.json";
 import { Link } from "react-router-dom";
 
 export default function BrandList() {
@@ -62,7 +63,10 @@ export default function BrandList() {
             <strong>Brand List</strong>
           </CCardHeader>
           <CCardBody>
-            <CForm id="create-project-form" style={{ minHeight: "650px" }}>
+            <CForm
+              id="create-project-form"
+              style={{ minHeight: "650px" }}
+            >
               <CContainer>
                 <CRow className="align-items-start">
                   <div className="container">
@@ -86,7 +90,12 @@ export default function BrandList() {
                                   <th scope="row">{item.id}</th>
                                   <td>{item.name}</td>
                                   <td>{item.name_ar}</td>
-                                  <td>{item.image}</td>
+                                  <td>
+                                    <img
+                                      style={{ height: "50px" }}
+                                      src={config.apiUrl + "/" + item.images}
+                                    />
+                                  </td>
                                   <td>
                                     <Link
                                       className="text-primary"

@@ -14,16 +14,36 @@ import {
 } from "@coreui/react";
 import * as ApiService from "../../../config/config";
 import apiList from "../../../config/apiList.json";
-export default function Add() {
+import config from "../../../config/config.json";
+import { useParams } from "react-router-dom";
+export default function Update() {
+  const slug = useParams();
   const [name, setName] = useState("");
   const [nameAr, setNameAr] = useState("");
   const [nameError, setnameError] = useState(false);
   const [nameArError, setnameArError] = useState(false);
   const [imagesError, setImagesError] = useState(false);
-  const [images, setImages] = useState("");
+  const [images, setImages] = useState([]);
+  const [image, setImage] = useState("");
   const [alertSuccess, setAlertSuccess] = useState(false);
   const [alertError, setAlertError] = useState(false);
   const [submitTrue, setSubmitTrue] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const obj = {
+        id: slug.id,
+      };
+      let params = { url: apiList.getBrandById, body: obj }; //console.log(params);
+      let response = await ApiService.postData(params);
+      if (response) {
+        setName(response.results[0].name);
+        setNameAr(response.results[0].name_ar);
+        setImage(response.results[0].images);
+      }
+    };
+    fetchData();
+  }, []);
   const getBase64 = (file) => {
     return new Promise((resolve) => {
       let fileInfo;
@@ -57,7 +77,7 @@ export default function Add() {
     }
   };
 
-  const insertProject = async () => {
+  const updateBrand = async () => {
     setSubmitTrue(true);
 
     if (!name) {
@@ -72,28 +92,22 @@ export default function Add() {
       return;
     }
     setnameArError(false);
-    if (!images) {
-      setImagesError(true);
-      setSubmitTrue(false);
-      return;
-    }
-    setImagesError(false);
     const obj = {
       name: name,
       images: images,
       name_ar: nameAr,
+      id: slug.id,
     };
     //console.log(obj);
     //return;
-    let params = { url: apiList.addBrand, body: obj }; //console.log(params);
+    let params = { url: apiList.updateBrand, body: obj }; //console.log(params);
     let response = await ApiService.postData(params); //console.log(response);
     if (response.status) {
       setAlertSuccess((alertSuccess) => true);
       setTimeout(() => {
         setAlertSuccess((alertSuccess) => false);
       }, 3000); //document.getElementById("create-course-form").reset();
-      setName("");
-      setNameAr("");
+
       setSubmitTrue((submitTrue) => false);
     } else {
       setAlertError((alertError) => true);
@@ -121,12 +135,12 @@ export default function Add() {
               className="alert position-absolute w-100 alert-success"
               role="alert"
             >
-              Brand added successfully
+              Brand updated successfully
             </div>
           )}
 
           <CCardHeader>
-            <strong>Add Brand</strong>
+            <strong>Update Brand</strong>
           </CCardHeader>
 
           <CCardBody>
@@ -168,15 +182,21 @@ export default function Add() {
                         onChange={(e) => getFileData(e, "img")}
                       />
                     </div>
+                    {image && (
+                      <img
+                        style={{ height: "50px" }}
+                        src={config.apiUrl + "/" + image}
+                      />
+                    )}
                   </CCol>
                 </CRow>
 
                 <CButton
-                  onClick={() => insertProject()}
+                  onClick={() => updateBrand()}
                   color="primary"
                   disabled={submitTrue}
                 >
-                  Submit
+                  Update
                 </CButton>
               </CContainer>
             </CForm>

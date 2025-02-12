@@ -5,6 +5,14 @@
   "getProjects": "/project/getProjects",
   "getBrandByPagination": "/brand/getBrandByPagination",
   "addBrand": "/brand/addBrand",
+  "updateBrand": "/brand/updateBrand",
+  "getBrandById": "/brand/getBrandById",
+
+  "getCategoryByPagination": "/categories/getCategoryByPagination",
+  "addCategory": "/categories/addCategory",
+  "updateCategory": "/categories/updateCategory",
+  "getCategoryById": "/categories/getCategoryById",
+
   "getProjectById": "/project/getProjectById",
   "projectDelete": "/project/projectDelete",
   "getProjectImagesByCode": "/project/getProjectImagesByCode"
