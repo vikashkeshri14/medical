@@ -12,9 +12,18 @@
   "addCategory": "/categories/addCategory",
   "updateCategory": "/categories/updateCategory",
   "getCategoryById": "/categories/getCategoryById",
-
+  "getCategory": "/categories/getCategory",
   "getProjectById": "/project/getProjectById",
   "projectDelete": "/project/projectDelete",
   "getProjectImagesByCode": "/project/getProjectImagesByCode",
-  "importDrugs": "/drugs/importDrugs"
+  "importDrugs": "/drugs/importDrugs",
+  "getDrugByPagination": "/drugs/getDrugByPagination",
+  "addDrug": "/drugs/addDrug",
+  "updateDrug": "/drugs/updateDrug",
+  "getDrugById": "/drugs/getDrugById",
+  "getDrugByKey": "/drugs/getDrugByKey",
+  "addHotdeal": "/drugs/addHotdeal",
+  "removeHotdeal": "/drugs/removeHotdeal",
+  "addBestselling": "/drugs/addBestselling",
+  "removeBestselling": "/drugs/removeBestselling"
 }

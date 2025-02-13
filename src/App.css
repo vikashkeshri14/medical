@@ -218,6 +218,13 @@ textarea {
 .block {
   display: block !important;
 }
+.broder-radius-0 {
+  border-radius: 0px;
+}
+.list-type:hover {
+  background-color: #ced4da;
+  cursor: pointer;
+}
 .input-group-text-category {
   display: block;
   align-items: center;
