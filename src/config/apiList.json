@@ -4,6 +4,8 @@
   "updateProject": "/project/updateProject",
   "getProjects": "/project/getProjects",
   "getBrandByPagination": "/brand/getBrandByPagination",
+  "getBrand": "/brand/getBrand",
+
   "addBrand": "/brand/addBrand",
   "updateBrand": "/brand/updateBrand",
   "getBrandById": "/brand/getBrandById",
