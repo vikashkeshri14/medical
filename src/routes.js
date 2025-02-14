@@ -1,5 +1,7 @@
 const routes = [
   { path: "/admin", exact: true, name: "Dashboard" },
+  { path: "/admin/drugs", exact: true, name: "Drugs" },
+  { path: "/admin/add-drug", exact: true, name: "Add Drug" },
   { path: "/project", exact: true, name: "Project" },
   { path: "/project/add-project", name: "Add Project" },
   { path: "/project/Update", name: "Update Project" },

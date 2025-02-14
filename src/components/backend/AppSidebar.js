@@ -15,7 +15,7 @@ import { AppSidebarNav } from "./AppSidebarNav";
 
 import { logo } from "../../../src/assets/brand/logo";
 import { sygnet } from "../../../src/assets/brand/sygnet";
-
+import config from "../../config/config.json";
 // sidebar nav config
 import navigation from "../../_nav";
 
@@ -27,7 +27,7 @@ const AppSidebar = () => {
   return (
     <CSidebar
       className="border-end"
-      colorScheme="dark"
+      colorScheme="light"
       position="fixed"
       unfoldable={unfoldable}
       visible={sidebarShow}
@@ -37,10 +37,9 @@ const AppSidebar = () => {
     >
       <CSidebarHeader className="border-bottom">
         <CSidebarBrand to="/">
-          <CIcon
-            customClassName="sidebar-brand-full"
-            icon={logo}
-            height={32}
+          <img
+            src={config.domainUrl + "/assets/img/medmart.png"}
+            style={{ height: "60" }}
           />
           <CIcon
             customClassName="sidebar-brand-narrow"
