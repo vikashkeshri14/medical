@@ -2,17 +2,17 @@ import React from "react";
 import config from "../../../config/config.json";
 export default function ServiceHome() {
   return (
-    <div class="ltn__feature-area section-bg-1 mt-10 pt-30 pb-30 mt--65---">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <h1 class="section-title text-center font-32 line-height-normal">
+    <div className="ltn__feature-area section-bg-1 mt-10 pt-30 pb-30 mt--65---">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-12">
+            <h1 className="section-title text-center font-32 line-height-normal">
               <span className="secondary ">One-stop</span> digital marketplace{" "}
               <br />
               for all pharmacy and medical center needs.
             </h1>
-            <div class="row section-bg-1">
-              <div class="ltn__feature-item col-md-4 pl-5 pr-5 ltn__feature-item-8">
+            <div className="row section-bg-1">
+              <div className="ltn__feature-item col-md-4 pl-5 pr-5 ltn__feature-item-8">
                 <img
                   src={
                     config.domainUrl +
@@ -20,7 +20,7 @@ export default function ServiceHome() {
                   }
                   alt="#"
                 />
-                <div class="ltn__feature-info pl-5">
+                <div className="ltn__feature-info pl-5">
                   <h4 className="font-17 font-weight-600">
                     Never Let Shortages Control Your Day
                   </h4>
@@ -31,7 +31,7 @@ export default function ServiceHome() {
                   </p>
                 </div>
               </div>
-              <div class="ltn__feature-item  pl-5 pr-5 col-md-4 ltn__feature-item-8">
+              <div className="ltn__feature-item  pl-5 pr-5 col-md-4 ltn__feature-item-8">
                 <img
                   src={
                     config.domainUrl +
@@ -40,7 +40,7 @@ export default function ServiceHome() {
                   alt="#"
                 />
 
-                <div class="ltn__feature-info pl-5">
+                <div className="ltn__feature-info pl-5">
                   <h4 className="font-17 font-weight-600">
                     Exclusive Unmatched Offers
                   </h4>
@@ -49,7 +49,7 @@ export default function ServiceHome() {
                   </p>
                 </div>
               </div>
-              <div class="ltn__feature-item pl-5 pr-5 col-md-4 ltn__feature-item-8">
+              <div className="ltn__feature-item pl-5 pr-5 col-md-4 ltn__feature-item-8">
                 <img
                   src={
                     config.domainUrl +
@@ -58,7 +58,7 @@ export default function ServiceHome() {
                   alt="#"
                 />
 
-                <div class="ltn__feature-info pl-5">
+                <div className="ltn__feature-info pl-5">
                   <h4 className="font-17 font-weight-600">
                     Plan now, Order later
                   </h4>

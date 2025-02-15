@@ -6,6 +6,8 @@ import { Link, useLocation, useSearchParams } from "react-router-dom";
 import Sidebar from "./shop-sidebar";
 import ReactPaginate from "react-paginate";
 import { FilterContext } from "../../../context/FilterProvider";
+import { addToCart } from "../../../features/cart/cart";
+import { useDispatch } from "react-redux";
 export default function DrugList() {
   const { search } = useLocation();
   // console.log();
@@ -26,10 +28,7 @@ export default function DrugList() {
     if (search) {
       let keysearch = search.split("=");
       args = decodeURIComponent((keysearch[1] + "").replace(/\+/g, "%20"));
-
-      //console.log();
     }
-    //setLoading(true);
     try {
       // Fetch posts for the current page from the API using _page and _limit
       const obj = {
@@ -57,8 +56,20 @@ export default function DrugList() {
   const handlePageClick = (data) => {
     setCurrentPage(data.selected); // React-paginate passes selected page (0-indexed)
   };
-
-  //console.log(filterCategories);
+  const dispatch = useDispatch();
+  const handelCart = (items) => {
+    const { id, name, name_ar, price, image_url } = items;
+    dispatch(
+      addToCart({
+        drugId: id,
+        name: name,
+        name_ar: name_ar,
+        img: image_url,
+        price: price,
+        quantity: 1,
+      })
+    );
+  };
   return (
     <div className="pt-50">
       <div className="ltn__product-area ltn__product-gutter">
@@ -264,10 +275,10 @@ export default function DrugList() {
                                       </li>
                                       <li className="go-top">
                                         <Link
-                                          to="/product-details"
-                                          title="Product Details"
+                                          onClick={() => handelCart(items)}
+                                          title="Add To Cart"
                                         >
-                                          <i className="flaticon-add" />
+                                          <i className="fas fa-shopping-cart"></i>
                                         </Link>
                                       </li>
                                     </ul>

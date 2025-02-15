@@ -58,17 +58,17 @@ export default function ShopByBrand() {
     fetchItems();
   }, []);
   return (
-    <div class="ltn__category-area home-section-bg pt-50 pb-90">
-      <div class="container">
+    <div className="ltn__category-area home-section-bg pt-50 pb-90">
+      <div className="container">
         <h3 className="text-center">Shop By Brand</h3>
-        <div class="row slider-container slick-arrow-1 pt-30 ">
+        <div className="row slider-container slick-arrow-1 pt-30 ">
           <Slider {...settings}>
             {datas.length &&
               datas.map((items, i) => {
                 return (
-                  <div class="col-12">
-                    <div class="ltn__category-item  border-0 border-radius-10 ltn__category-item-6 text-center">
-                      <div class="ltn__category-item-img text-center">
+                  <div className="col-12">
+                    <div className="ltn__category-item  border-0 border-radius-10 ltn__category-item-6 text-center">
+                      <div className="ltn__category-item-img text-center">
                         <img
                           style={{ height: "170px", margin: auto }}
                           src={config.imgUri + "/" + items.images}

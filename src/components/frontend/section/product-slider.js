@@ -759,7 +759,7 @@ class ProductSlider extends Component {
                     aria-label="Close"
                   >
                     <span aria-hidden="true">×</span>
-                    {/* <i class="fas fa-times"></i> */}
+                    {/* <i className="fas fa-times"></i> */}
                   </button>
                 </div>
                 <div className="modal-body">

@@ -38,13 +38,14 @@ export default function HotDeals() {
   //console.log(cart);
   const dispatch = useDispatch();
   const handelCart = (items) => {
-    const { id, name, name_ar, image_url } = items;
+    const { id, name, name_ar, price, image_url } = items;
     dispatch(
       addToCart({
         drugId: id,
         name: name,
         name_ar: name_ar,
         img: image_url,
+        price: price,
         quantity: 1,
       })
     );

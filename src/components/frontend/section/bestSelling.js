@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import * as ApiService from "../../../config/config";
 import apiList from "../../../config/apiList.json";
 import config from "../../../config/config.json";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../features/cart/cart";
+import { Link } from "react-router-dom";
 
 export default function BestSelling() {
   const [drugs, setDrugs] = useState([]); // State to hold posts
@@ -32,6 +35,20 @@ export default function BestSelling() {
       console.error("Error fetching posts:", error); //setLoading(false);
     }
   };
+  const dispatch = useDispatch();
+  const handelCart = (items) => {
+    const { id, name, name_ar, image_url, price } = items;
+    dispatch(
+      addToCart({
+        drugId: id,
+        name: name,
+        name_ar: name_ar,
+        img: image_url,
+        price: price,
+        quantity: 1,
+      })
+    );
+  };
   return (
     <div className="ltn__product-area ltn__product-gutter pt-50 pb-70">
       <div className="container">
@@ -59,11 +76,7 @@ export default function BestSelling() {
                           alt="#"
                         />
                       </a>
-                      <div className="product-badge">
-                        <ul>
-                          <li className="sale-badge">New</li>
-                        </ul>
-                      </div>
+
                       <div className="product-hover-action">
                         <ul>
                           <li>
@@ -77,14 +90,12 @@ export default function BestSelling() {
                             </a>
                           </li>
                           <li>
-                            <a
-                              href="#"
+                            <Link
+                              onClick={() => handelCart(items)}
                               title="Add to Cart"
-                              data-bs-toggle="modal"
-                              data-bs-target="#add_to_cart_modal"
                             >
                               <i className="fas fa-shopping-cart"></i>
-                            </a>
+                            </Link>
                           </li>
                           <li>
                             <a
@@ -100,6 +111,7 @@ export default function BestSelling() {
                       </div>
                     </div>
                     <div className="product-info text-left">
+                      <h6 className="text-gray font-12">{items.category}</h6>
                       <h2 className="product-title">
                         <a href="product-details.html">{items.name}</a>
                       </h2>

@@ -1,4 +1,5 @@
 import React from "react";
+import config from "../../../config/config.json";
 
 export default function ListOrder() {
   return (
@@ -14,7 +15,9 @@ export default function ListOrder() {
               </div>
               <ul className="ltn__list-item-1 ltn__list-item-1-before--- clearfix">
                 <li className="d-flex flex-row self-align-center">
-                  <img src="assets/img/others/prepare.svg" />
+                  <img
+                    src={config.domainUrl + "/assets/img/others/prepare.svg"}
+                  />
                   <div className="pl-10">
                     <h6 className="font-weight-600 font-15">
                       Prepare Your Medications List
@@ -27,7 +30,7 @@ export default function ListOrder() {
                   </div>
                 </li>
                 <li className="d-flex flex-row self-align-center">
-                  <img src="assets/img/others/find.svg" />
+                  <img src={config.domainUrl + "/assets/img/others/find.svg"} />
                   <div className="pl-10">
                     <h6 className="font-weight-600 font-15">
                       Find and Compare Different Offers
@@ -39,7 +42,9 @@ export default function ListOrder() {
                   </div>
                 </li>
                 <li className="d-flex flex-row self-align-center">
-                  <img src="assets/img/others/get-order.svg" />
+                  <img
+                    src={config.domainUrl + "/assets/img/others/get-order.svg"}
+                  />
                   <div className="pl-10">
                     <h6 className="font-weight-600 font-15">
                       Get Your Order Delivered Within 24 hours
@@ -56,7 +61,10 @@ export default function ListOrder() {
           </div>
           <div className="col-lg-6 align-self-center">
             <div className="about-us-img-wrap about-img-left">
-              <img src="assets/img/others/home1.png" alt="About Us Image" />
+              <img
+                src={config.domainUrl + "/assets/img/others/home1.png"}
+                alt="About Us Image"
+              />
             </div>
           </div>
         </div>
