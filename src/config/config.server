@@ -1,0 +1,6 @@
+{
+  "apiRoot": "http://161.97.94.202:3020",
+  "imgUri": "http://161.97.94.202:3020",
+  "apiUrl": "http://161.97.94.202:3020",
+  "domainUrl": "http://localhost:3000/medmart"
+}

@@ -23,6 +23,8 @@
   "addDrug": "/drugs/addDrug",
   "updateDrug": "/drugs/updateDrug",
   "getDrugById": "/drugs/getDrugById",
+  "getHotdeal": "/drugs/getHotdeal",
+  "getBestselling": "/drugs/getBestselling",
   "getDrugByKey": "/drugs/getDrugByKey",
   "addHotdeal": "/drugs/addHotdeal",
   "removeHotdeal": "/drugs/removeHotdeal",

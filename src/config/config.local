@@ -1,6 +1,0 @@
-{
-  "apiRoot": "http://localhost:3020",
-  "imgUri": "http://localhost:3020",
-  "apiUrl": "http://localhost:3020",
-  "domainUrl": "http://localhost:3000/medmart"
-}
