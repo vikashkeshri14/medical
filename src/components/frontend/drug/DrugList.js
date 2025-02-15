@@ -2,11 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import * as ApiService from "../../../config/config";
 import apiList from "../../../config/apiList.json";
 import config from "../../../config/config.json";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useSearchParams } from "react-router-dom";
 import Sidebar from "./shop-sidebar";
 import ReactPaginate from "react-paginate";
 import { FilterContext } from "../../../context/FilterProvider";
 export default function DrugList() {
+  const { search } = useLocation();
+  // console.log();
   const [drugs, setDrugs] = useState([]); // State to hold posts
   const [loading, setLoading] = useState(false); // Loading state
   const [pageCount, setPageCount] = useState(0); // Total number of pages
@@ -21,6 +23,12 @@ export default function DrugList() {
   }, [currentPage, filterCategories]); // Re-fetch posts when the currentPage changes
 
   const fetchPosts = async (args = "", srt = "") => {
+    if (search) {
+      let keysearch = search.split("=");
+      args = decodeURIComponent((keysearch[1] + "").replace(/\+/g, "%20"));
+
+      //console.log();
+    }
     //setLoading(true);
     try {
       // Fetch posts for the current page from the API using _page and _limit

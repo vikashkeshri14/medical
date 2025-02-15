@@ -40,43 +40,12 @@ const WidgetsDropdown = (props) => {
   }, [widgetChartRef1, widgetChartRef2]);
 
   return (
-    <CRow
-      className={props.className}
-      xs={{ gutter: 4 }}
-    >
-      <CCol
-        sm={6}
-        xl={4}
-        xxl={3}
-      >
+    <CRow className={props.className} xs={{ gutter: 4 }}>
+      <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsA
           color="primary"
-          value={
-            <>
-              26K{" "}
-              <span className="fs-6 fw-normal">
-                (-12.4% <CIcon icon={cilArrowBottom} />)
-              </span>
-            </>
-          }
-          title="Users"
-          action={
-            <CDropdown alignment="end">
-              <CDropdownToggle
-                color="transparent"
-                caret={false}
-                className="text-white p-0"
-              >
-                <CIcon icon={cilOptions} />
-              </CDropdownToggle>
-              <CDropdownMenu>
-                <CDropdownItem>Action</CDropdownItem>
-                <CDropdownItem>Another action</CDropdownItem>
-                <CDropdownItem>Something else here...</CDropdownItem>
-                <CDropdownItem disabled>Disabled action</CDropdownItem>
-              </CDropdownMenu>
-            </CDropdown>
-          }
+          value={<>27K</>}
+          title="Drugs"
           chart={
             <CChartLine
               ref={widgetChartRef1}
@@ -150,11 +119,7 @@ const WidgetsDropdown = (props) => {
           }
         />
       </CCol>
-      <CCol
-        sm={6}
-        xl={4}
-        xxl={3}
-      >
+      <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsA
           color="info"
           value={
@@ -166,23 +131,6 @@ const WidgetsDropdown = (props) => {
             </>
           }
           title="Income"
-          action={
-            <CDropdown alignment="end">
-              <CDropdownToggle
-                color="transparent"
-                caret={false}
-                className="text-white p-0"
-              >
-                <CIcon icon={cilOptions} />
-              </CDropdownToggle>
-              <CDropdownMenu>
-                <CDropdownItem>Action</CDropdownItem>
-                <CDropdownItem>Another action</CDropdownItem>
-                <CDropdownItem>Something else here...</CDropdownItem>
-                <CDropdownItem disabled>Disabled action</CDropdownItem>
-              </CDropdownMenu>
-            </CDropdown>
-          }
           chart={
             <CChartLine
               ref={widgetChartRef2}
@@ -255,11 +203,7 @@ const WidgetsDropdown = (props) => {
           }
         />
       </CCol>
-      <CCol
-        sm={6}
-        xl={4}
-        xxl={3}
-      >
+      <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsA
           color="warning"
           value={
@@ -271,23 +215,6 @@ const WidgetsDropdown = (props) => {
             </>
           }
           title="Conversion Rate"
-          action={
-            <CDropdown alignment="end">
-              <CDropdownToggle
-                color="transparent"
-                caret={false}
-                className="text-white p-0"
-              >
-                <CIcon icon={cilOptions} />
-              </CDropdownToggle>
-              <CDropdownMenu>
-                <CDropdownItem>Action</CDropdownItem>
-                <CDropdownItem>Another action</CDropdownItem>
-                <CDropdownItem>Something else here...</CDropdownItem>
-                <CDropdownItem disabled>Disabled action</CDropdownItem>
-              </CDropdownMenu>
-            </CDropdown>
-          }
           chart={
             <CChartLine
               className="mt-3"
@@ -343,11 +270,7 @@ const WidgetsDropdown = (props) => {
           }
         />
       </CCol>
-      <CCol
-        sm={6}
-        xl={4}
-        xxl={3}
-      >
+      <CCol sm={6} xl={4} xxl={3}>
         <CWidgetStatsA
           color="danger"
           value={
@@ -359,23 +282,6 @@ const WidgetsDropdown = (props) => {
             </>
           }
           title="Sessions"
-          action={
-            <CDropdown alignment="end">
-              <CDropdownToggle
-                color="transparent"
-                caret={false}
-                className="text-white p-0"
-              >
-                <CIcon icon={cilOptions} />
-              </CDropdownToggle>
-              <CDropdownMenu>
-                <CDropdownItem>Action</CDropdownItem>
-                <CDropdownItem>Another action</CDropdownItem>
-                <CDropdownItem>Something else here...</CDropdownItem>
-                <CDropdownItem disabled>Disabled action</CDropdownItem>
-              </CDropdownMenu>
-            </CDropdown>
-          }
           chart={
             <CChartBar
               className="mt-3 mx-3"
