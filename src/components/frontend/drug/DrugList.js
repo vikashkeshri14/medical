@@ -52,7 +52,7 @@ export default function DrugList() {
         <div className="container">
           <div className="row">
             <div className="col-lg-9 order-lg-2 mb-100">
-              <div className="ltn__shop-options">
+              <div className="ltn__shop-options mb-10">
                 <ul className="justify-content-start">
                   <li>
                     <div className="ltn__grid-list-tab-menu ">

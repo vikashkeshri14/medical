@@ -15,6 +15,7 @@
   "updateCategory": "/categories/updateCategory",
   "getCategoryById": "/categories/getCategoryById",
   "getCategory": "/categories/getCategory",
+  "getCategoryWithDrugCount": "/categories/getCategoryWithDrugCount",
   "getProjectById": "/project/getProjectById",
   "projectDelete": "/project/projectDelete",
   "getProjectImagesByCode": "/project/getProjectImagesByCode",

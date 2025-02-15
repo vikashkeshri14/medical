@@ -98,7 +98,11 @@ textarea {
 .pr-10 {
   padding-right: 10px;
 }
-
+.widget {
+  margin-bottom: 40px;
+  padding: 10px 30px 40px 10px;
+  border: 2px solid var(--border-color-11);
+}
 .text-black {
   color: #222222 !important;
 }
