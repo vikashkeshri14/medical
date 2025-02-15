@@ -46,7 +46,7 @@ export default function BestSelling() {
           {drugs.length &&
             drugs.map((items, i) => {
               return (
-                <div className="col-lg-3 col-md-4 col-sm-6  col-6">
+                <div key={i} className="col-lg-3 col-md-4 col-sm-6  col-6">
                   <div className="ltn__product-item min-height-450 ltn__product-item-3 text-center">
                     <div className="product-img p-2 border-b-1">
                       <a href="product-details.html">

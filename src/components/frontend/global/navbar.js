@@ -4,6 +4,7 @@ import Social from "../section/social";
 import * as ApiService from "../../../config/config";
 import apiList from "../../../config/apiList.json";
 import config from "../../../config/config.json";
+import { useSelector } from "react-redux";
 export default function Navbar() {
   let publicUrl = process.env.PUBLIC_URL + "/";
   const { pathname } = useLocation();
@@ -31,6 +32,9 @@ export default function Navbar() {
     //fetchPosts(args);
     //console.log(args);
   };
+
+  const cart = useSelector((state) => state.cart.items);
+  console.log(cart);
   return (
     <div>
       <header className="ltn__header-area ltn__header-5 ltn__header-transparent--- gradient-color-4---">
@@ -161,7 +165,7 @@ export default function Navbar() {
                                 <a class="ltn__utilize-toggle">
                                   <span class="mini-cart-icon">
                                     <i class="icon-shopping-cart"></i>
-                                    <sup>2</sup>
+                                    <sup></sup>
                                   </span>
 
                                   <span class="mini-cart-icon font-24">

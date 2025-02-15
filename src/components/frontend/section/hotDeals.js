@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import * as ApiService from "../../../config/config";
 import apiList from "../../../config/apiList.json";
 import config from "../../../config/config.json";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { addToCart } from "../../../features/cart/cart";
 export default function HotDeals() {
   const [drugs, setDrugs] = useState([]); // State to hold posts
   const [pageCount, setPageCount] = useState(0); // Total number of pages
@@ -31,6 +34,22 @@ export default function HotDeals() {
       console.error("Error fetching posts:", error); //setLoading(false);
     }
   };
+  const cart = useSelector((state) => state.cart.items);
+  //console.log(cart);
+  const dispatch = useDispatch();
+  const handelCart = (items) => {
+    const { id, name, name_ar, image_url } = items;
+    dispatch(
+      addToCart({
+        drugId: id,
+        name: name,
+        name_ar: name_ar,
+        img: image_url,
+        quantity: 1,
+      })
+    );
+  };
+
   return (
     <div className="section-deal">
       <div className="container mt-2 mb-2 section-deal-bg">
@@ -59,7 +78,10 @@ export default function HotDeals() {
               {drugs.length &&
                 drugs.map((items, i) => {
                   return (
-                    <div className="col-lg-3--- col-md-3 col-sm-6 col-6">
+                    <div
+                      key={i}
+                      className="col-lg-3--- col-md-3 col-sm-6 col-6"
+                    >
                       <div className="ltn__product-item ltn__product-item-2 text-left">
                         <div className="product-img">
                           <a href="product-details.html">
@@ -91,14 +113,12 @@ export default function HotDeals() {
                                 </a>
                               </li>
                               <li>
-                                <a
-                                  href="#"
+                                <Link
+                                  onClick={() => handelCart(items)}
                                   title="Add to Cart"
-                                  data-bs-toggle="modal"
-                                  data-bs-target="#add_to_cart_modal"
                                 >
                                   <i className="fas fa-shopping-cart"></i>
-                                </a>
+                                </Link>
                               </li>
                               <li>
                                 <a
