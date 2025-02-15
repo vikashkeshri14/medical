@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import * as ApiService from "../../../config/config";
 import apiList from "../../../config/apiList.json";
 import config from "../../../config/config.json";
 import { Link } from "react-router-dom";
 import Sidebar from "./shop-sidebar";
 import ReactPaginate from "react-paginate";
+import { FilterContext } from "../../../context/FilterProvider";
 export default function DrugList() {
   const [drugs, setDrugs] = useState([]); // State to hold posts
   const [loading, setLoading] = useState(false); // Loading state
@@ -13,29 +14,32 @@ export default function DrugList() {
   const postsPerPage = 15; // Number of posts per page
   const [keyVal, setkeyVal] = useState("");
   const [sortBy, setSortBy] = useState("");
+  const { priceFilter, filterCategories, setTotalDrugs } =
+    useContext(FilterContext);
   useEffect(() => {
     fetchPosts();
-  }, [currentPage]); // Re-fetch posts when the currentPage changes
+  }, [currentPage, filterCategories]); // Re-fetch posts when the currentPage changes
 
   const fetchPosts = async (args = "", srt = "") => {
     //setLoading(true);
     try {
       // Fetch posts for the current page from the API using _page and _limit
-
       const obj = {
         currentPage: currentPage + 1,
         postsPerPage: postsPerPage,
         key: args ? args : keyVal,
         sortBy: srt ? srt : sortBy,
+        categories: filterCategories,
       };
-      console.log(obj);
+      //console.log(obj);
       let params = { url: apiList.getDrugByPagination, body: obj }; //console.log(params);
       let response = await ApiService.postData(params); //console.log(response);
       const data = await response.results.data;
       if (data.length) {
         setDrugs(data); // Set the current page
         const totalPosts = await response.results.totalPage;
-
+        console.log(totalPosts);
+        setTotalDrugs(totalPosts);
         setPageCount(Math.ceil(totalPosts / postsPerPage)); // Set total number of pages
       }
     } catch (error) {
@@ -46,6 +50,7 @@ export default function DrugList() {
     setCurrentPage(data.selected); // React-paginate passes selected page (0-indexed)
   };
 
+  //console.log(filterCategories);
   return (
     <div className="pt-50">
       <div className="ltn__product-area ltn__product-gutter">
