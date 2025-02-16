@@ -18,7 +18,7 @@ const cartSlice = createSlice({
       if (productIndex >= 0) {
         state.items[productIndex].quantity += quantity;
       } else {
-        state.items.push({ drugId, name, name_ar, img, quantity });
+        state.items.push({ drugId, name, name_ar, img, price, quantity });
       }
     },
   },

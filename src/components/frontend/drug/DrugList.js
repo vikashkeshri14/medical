@@ -69,6 +69,7 @@ export default function DrugList() {
         quantity: 1,
       })
     );
+    window.scrollTo(0, 0);
   };
   return (
     <div className="pt-50">
@@ -88,7 +89,10 @@ export default function DrugList() {
                         >
                           <i className="fas fa-th-large" />
                         </a>
-                        <a data-bs-toggle="tab" href="#liton_product_list">
+                        <a
+                          data-bs-toggle="tab"
+                          href="#liton_product_list"
+                        >
                           <i className="fas fa-list" />
                         </a>
                       </div>
@@ -138,10 +142,13 @@ export default function DrugList() {
                       {drugs.length &&
                         drugs.map((items, i) => {
                           return (
-                            <div key={i} className="col-xl-4 col-sm-4 col-12">
+                            <div
+                              key={i}
+                              className="col-xl-4 col-sm-4 col-12"
+                            >
                               <div className="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                                 <div className="product-img p-2 text-center  go-top">
-                                  <Link to="/product-details">
+                                  <Link to="#">
                                     <img
                                       style={{
                                         margin: "auto",
@@ -195,10 +202,10 @@ export default function DrugList() {
                                       </li>
                                       <li className="go-top">
                                         <Link
-                                          to="/product-details"
-                                          title="Product Details"
+                                          onClick={() => handelCart(items)}
+                                          title="Add To Cart"
                                         >
-                                          <i className="flaticon-add" />
+                                          <i className="fas fa-shopping-cart" />
                                         </Link>
                                       </li>
                                     </ul>
@@ -216,16 +223,22 @@ export default function DrugList() {
                     </div>
                   </div>
                 </div>
-                <div className="tab-pane fade" id="liton_product_list">
+                <div
+                  className="tab-pane fade"
+                  id="liton_product_list"
+                >
                   <div className="ltn__product-tab-content-inner ltn__product-list-view">
                     <div className="row">
                       {drugs.length &&
                         drugs.map((items, i) => {
                           return (
-                            <div key={i} className="col-lg-12">
+                            <div
+                              key={i}
+                              className="col-lg-12"
+                            >
                               <div className="ltn__product-item ltn__product-item-4 ltn__product-item-5">
                                 <div className="product-img go-top">
-                                  <Link to="/product-details">
+                                  <Link to="#">
                                     <img
                                       style={{ height: "150px" }}
                                       src={items.image_url}
@@ -245,9 +258,7 @@ export default function DrugList() {
                                     </div>
                                   </div>
                                   <h2 className="product-title go-top">
-                                    <Link to="/product-details">
-                                      {items.name}
-                                    </Link>
+                                    <Link to="#">{items.name}</Link>
                                   </h2>
                                 </div>
                                 <div className="product-info-bottom">
@@ -323,8 +334,15 @@ export default function DrugList() {
       </div>
 
       <div className="ltn__modal-area ltn__add-to-cart-modal-area">
-        <div className="modal fade" id="liton_wishlist_modal" tabIndex={-1}>
-          <div className="modal-dialog modal-md" role="document">
+        <div
+          className="modal fade"
+          id="liton_wishlist_modal"
+          tabIndex={-1}
+        >
+          <div
+            className="modal-dialog modal-md"
+            role="document"
+          >
             <div className="modal-content">
               <div className="modal-header">
                 <button
@@ -342,13 +360,14 @@ export default function DrugList() {
                     <div className="row">
                       <div className="col-12">
                         <div className="modal-product-img">
-                          <img src={"/assets/img/product/7.png"} alt="#" />
+                          <img
+                            src={"/assets/img/product/7.png"}
+                            alt="#"
+                          />
                         </div>
                         <div className="modal-product-info go-top">
                           <h5>
-                            <Link to="/product-details">
-                              Brake Conversion Kit
-                            </Link>
+                            <Link to="#">Brake Conversion Kit</Link>
                           </h5>
                           <p className="added-cart">
                             <i className="fa fa-check-circle" /> Successfully
@@ -387,8 +406,15 @@ export default function DrugList() {
       </div>
 
       <div className="ltn__modal-area ltn__quick-view-modal-area">
-        <div className="modal fade" id="quick_view_modal" tabIndex={-1}>
-          <div className="modal-dialog modal-lg" role="document">
+        <div
+          className="modal fade"
+          id="quick_view_modal"
+          tabIndex={-1}
+        >
+          <div
+            className="modal-dialog modal-lg"
+            role="document"
+          >
             <div className="modal-content">
               <div className="modal-header">
                 <button
@@ -407,7 +433,10 @@ export default function DrugList() {
                     <div className="row">
                       <div className="col-lg-6 col-12">
                         <div className="modal-product-img">
-                          <img src={"/assets/img/product/4.png"} alt="#" />
+                          <img
+                            src={"/assets/img/product/4.png"}
+                            alt="#"
+                          />
                         </div>
                       </div>
                       <div className="col-lg-6 col-12">
@@ -494,22 +523,34 @@ export default function DrugList() {
                             <ul>
                               <li>Share:</li>
                               <li>
-                                <a href="#" title="Facebook">
+                                <a
+                                  href="#"
+                                  title="Facebook"
+                                >
                                   <i className="fab fa-facebook-f" />
                                 </a>
                               </li>
                               <li>
-                                <a href="#" title="Twitter">
+                                <a
+                                  href="#"
+                                  title="Twitter"
+                                >
                                   <i className="fab fa-twitter" />
                                 </a>
                               </li>
                               <li>
-                                <a href="#" title="Linkedin">
+                                <a
+                                  href="#"
+                                  title="Linkedin"
+                                >
                                   <i className="fab fa-linkedin" />
                                 </a>
                               </li>
                               <li>
-                                <a href="#" title="Instagram">
+                                <a
+                                  href="#"
+                                  title="Instagram"
+                                >
                                   <i className="fab fa-instagram" />
                                 </a>
                               </li>
@@ -527,8 +568,15 @@ export default function DrugList() {
       </div>
 
       <div className="ltn__modal-area ltn__add-to-cart-modal-area">
-        <div className="modal fade" id="add_to_cart_modal" tabIndex={-1}>
-          <div className="modal-dialog modal-md" role="document">
+        <div
+          className="modal fade"
+          id="add_to_cart_modal"
+          tabIndex={-1}
+        >
+          <div
+            className="modal-dialog modal-md"
+            role="document"
+          >
             <div className="modal-content">
               <div className="modal-header">
                 <button
@@ -546,13 +594,14 @@ export default function DrugList() {
                     <div className="row">
                       <div className="col-12">
                         <div className="modal-product-img">
-                          <img src={"/assets/img/product/1.png"} alt="#" />
+                          <img
+                            src={"/assets/img/product/1.png"}
+                            alt="#"
+                          />
                         </div>
                         <div className="modal-product-info go-top">
                           <h5 className="go-top">
-                            <Link to="/product-details">
-                              Brake Conversion Kit
-                            </Link>
+                            <Link to="#">Brake Conversion Kit</Link>
                           </h5>
                           <p className="added-cart">
                             <i className="fa fa-check-circle" />

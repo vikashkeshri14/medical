@@ -1,7 +1,42 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import * as ApiService from "../../../config/config";
+import config from "../../../config/config.json";
+import apiList from "../../../config/apiList.json";
 export default function NewsLetter() {
-  let publicUrl = process.env.PUBLIC_URL + "/";
+  const [email, setEmail] = useState();
+  const [emailError, setEmailError] = useState(false);
+  const [messageError, setMessageError] = useState("");
+  const [messageSuccess, setMessageSuccess] = useState("");
+  const [button, setButton] = useState(false);
+  const subscribe = async () => {
+    setButton(true);
+    if (!email) {
+      setEmailError(true);
+      setMessageError("Please enter valid email!");
+      setButton(false);
+      return;
+    }
+    setMessageError("");
+    setEmailError(false);
+
+    const obj = {
+      email: email,
+    };
+
+    let params = { url: apiList.subscribe, body: obj };
+    let response = await ApiService.postData(params);
+    if (response.status) {
+      setEmail("");
+      setMessageSuccess("Successfully subscribe!");
+      setMessageError("");
+      setButton(false);
+    } else {
+      setEmail("");
+      setMessageSuccess("");
+      setMessageError("Email already exist!");
+      setButton(false);
+    }
+  };
   return (
     <div className=" section-bg-primary">
       <div className="container">
@@ -11,7 +46,9 @@ export default function NewsLetter() {
               <div className="pr-10">
                 <img
                   style={{ width: "95%" }}
-                  src={publicUrl + "assets/img/others/icon-envelope-2.png"}
+                  src={
+                    config.domainUrl + "/assets/img/others/icon-envelope-2.png"
+                  }
                   alt="newslertter"
                 />
               </div>
@@ -28,13 +65,28 @@ export default function NewsLetter() {
           <div className="col-md-6">
             <div className="footer-newsletter">
               <form action="#">
-                <input type="email" name="email" placeholder="Email*" />
+                <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="email"
+                  name="email"
+                  placeholder="Email*"
+                />
                 <div className="btn-wrapper">
-                  <button className="theme-btn-1 bg-black btn" type="submit">
+                  <button
+                    disabled={button}
+                    onClick={() => {
+                      subscribe();
+                    }}
+                    className="theme-btn-1 bg-black btn"
+                    type="button"
+                  >
                     Subscribe
                   </button>
                 </div>
               </form>
+              <span className="text-danger">{messageError}</span>
+              <span className="text-success">{messageSuccess}</span>
             </div>
           </div>
         </div>

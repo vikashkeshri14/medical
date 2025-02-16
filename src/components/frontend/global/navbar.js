@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Social from "../section/social";
 import * as ApiService from "../../../config/config";
@@ -11,6 +11,23 @@ export default function Navbar() {
   const [error, setError] = useState(false);
   const [keyVal, setkeyVal] = useState("");
   const [suggesation, setSuggesation] = useState([]);
+  const [successAdded, setSuccessAdded] = useState(true);
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [cartOpen, setcartOpen] = useState(false);
+  const carts = useSelector((state) => state.cart.items);
+  useEffect(() => {
+    setSuccessAdded((successAdded) => true);
+    setTimeout(() => {
+      setSuccessAdded((successAdded) => false);
+    }, 1000);
+
+    let val = carts.reduce((acc, data) => {
+      acc += data.price * data.quantity;
+      return acc;
+    }, 0);
+    // console.log(val);
+    setTotalAmount(val.toFixed(2));
+  }, [carts]);
   const suggesationDrug = async (val) => {
     if (val.length > 2) {
       const obj = {
@@ -27,13 +44,9 @@ export default function Navbar() {
   };
   const searchData = async (args) => {
     setkeyVal(args);
-    //console.log()
     setSuggesation((suggesation) => []);
-    //fetchPosts(args);
-    //console.log(args);
   };
 
-  const carts = useSelector((state) => state.cart.items);
   //console.log(cart);
   return (
     <div>
@@ -160,7 +173,9 @@ export default function Navbar() {
                             <li>
                               <div class="mini-cart-icon mini-cart-icon-2">
                                 <a
-                                  href="#ltn__utilize-cart-menu"
+                                  onClick={() =>
+                                    setcartOpen((cartOpen) => !cartOpen)
+                                  }
                                   class="ltn__utilize-toggle"
                                 >
                                   <span class="mini-cart-icon">
@@ -177,12 +192,28 @@ export default function Navbar() {
                                       My Account
                                     </span>
                                     <span class=" text-black font-12 font-weight-300 ">
-                                      <a href="/test">Login</a> /
-                                      <a href="/test">Register</a>
+                                      <Link to="/login">Login</Link> /
+                                      <Link to="/register">Register</Link>
                                     </span>
                                   </h6>
                                 </a>
                               </div>
+                              {successAdded && (
+                                <div
+                                  style={{
+                                    position: "absolute",
+                                    color: "#01cca4",
+                                    padding: "5px 10px",
+                                    fontSize: "14px",
+                                    fontWeight: "bold",
+                                    borderRadius: "10px",
+                                    left: "0px",
+                                    top: "-30px",
+                                  }}
+                                >
+                                  Successfully Added
+                                </div>
+                              )}
                             </li>
                           </ul>
                         </div>
@@ -321,7 +352,10 @@ export default function Navbar() {
                         d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200"
                         id="top"
                       />
-                      <path d="M300,320 L540,320" id="middle" />
+                      <path
+                        d="M300,320 L540,320"
+                        id="middle"
+                      />
                       <path
                         d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190"
                         id="bottom"
@@ -343,7 +377,10 @@ export default function Navbar() {
           <div className="ltn__utilize-menu-head">
             <div className="site-logo">
               <Link to="/">
-                <img src={publicUrl + "assets/img/medmart.png"} alt="Medmart" />
+                <img
+                  src={publicUrl + "assets/img/medmart.png"}
+                  alt="Medmart"
+                />
               </Link>
             </div>
             <button className="ltn__utilize-close">×</button>
@@ -352,7 +389,10 @@ export default function Navbar() {
           <div className="ltn__utilize-menu">
             <ul>
               <li>
-                <Link className={pathname == "/" ? "active-nav" : ""} to="/">
+                <Link
+                  className={pathname == "/" ? "active-nav" : ""}
+                  to="/"
+                >
                   Home
                 </Link>
               </li>
@@ -395,22 +435,34 @@ export default function Navbar() {
           <div className="ltn__social-media-2">
             <ul>
               <li>
-                <a href="#" title="Facebook">
+                <a
+                  href="#"
+                  title="Facebook"
+                >
                   <i className="fab fa-facebook-f" />
                 </a>
               </li>
               <li>
-                <a href="#" title="Twitter">
+                <a
+                  href="#"
+                  title="Twitter"
+                >
                   <i className="fab fa-twitter" />
                 </a>
               </li>
               <li>
-                <a href="#" title="Linkedin">
+                <a
+                  href="#"
+                  title="Linkedin"
+                >
                   <i className="fab fa-linkedin" />
                 </a>
               </li>
               <li>
-                <a href="#" title="Instagram">
+                <a
+                  href="#"
+                  title="Instagram"
+                >
                   <i className="fab fa-instagram" />
                 </a>
               </li>
@@ -424,12 +476,21 @@ export default function Navbar() {
       {carts.length && (
         <div
           id="ltn__utilize-cart-menu"
-          className="ltn__utilize ltn__utilize-cart-menu"
+          className={
+            cartOpen
+              ? "ltn__utilize-open ltn__utilize ltn__utilize-cart-menu"
+              : "ltn__utilize ltn__utilize-cart-menu"
+          }
         >
           <div className="ltn__utilize-menu-inner ltn__scrollbar">
             <div className="ltn__utilize-menu-head">
               <span className="ltn__utilize-menu-title">Cart</span>
-              <button className="ltn__utilize-close">×</button>
+              <button
+                onClick={() => setcartOpen((cartOpen) => !cartOpen)}
+                className="ltn__utilize-close"
+              >
+                ×
+              </button>
             </div>
             <div className="mini-cart-product-area ltn__scrollbar">
               {carts.map((item, i) => {
@@ -437,7 +498,10 @@ export default function Navbar() {
                   <div className="mini-cart-item clearfix">
                     <div className="mini-cart-img go-top">
                       <Link to="/product-details">
-                        <img src={item.image_url} alt="Image" />
+                        <img
+                          src={item.img}
+                          alt="Image"
+                        />
                       </Link>
                       <span className="mini-cart-item-delete">
                         <i className="icon-cancel" />
@@ -445,7 +509,7 @@ export default function Navbar() {
                     </div>
                     <div className="mini-cart-info go-top">
                       <h6>
-                        <Link to="/product-details">{item.name}</Link>
+                        <Link to="#">{item.name}</Link>
                       </h6>
                       <span className="mini-cart-quantity">
                         {item.quantity} x SAR {item.price}
@@ -458,18 +522,23 @@ export default function Navbar() {
             <div className="mini-cart-footer">
               <div className="mini-cart-sub-total">
                 <h5>
-                  Subtotal: <span>$310.00</span>
+                  Subtotal: <span>SAR {totalAmount}</span>
                 </h5>
               </div>
               <div className="btn-wrapper go-top">
-                <Link to="/cart" className="theme-btn-1 btn btn-effect-1">
+                <Link
+                  to="/carts"
+                  className="theme-btn-1 btn-secondary btn "
+                >
                   View Cart
                 </Link>
-                <Link to="/cart" className="theme-btn-2 btn btn-effect-2">
+                <Link
+                  to="/carts"
+                  className="theme-btn-2 btn-primary btn "
+                >
                   Checkout
                 </Link>
               </div>
-              <p>Free Shipping on All Orders Over $100!</p>
             </div>
           </div>
         </div>

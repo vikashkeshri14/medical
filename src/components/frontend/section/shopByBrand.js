@@ -13,9 +13,9 @@ export default function ShopByBrand() {
     dots: false,
 
     slidesToShow: 5,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     autoplay: true,
-    speed: 2000,
+    speed: 1000,
     autoplaySpeed: 2000,
     nextArrow: <SlickNextArrow />,
     prevArrow: <SlickPrevArrow />,
@@ -24,7 +24,7 @@ export default function ShopByBrand() {
         breakpoint: 1200,
         settings: {
           slidesToShow: 6,
-          slidesToScroll: 1,
+          slidesToScroll: 3,
           dots: false,
         },
       },
@@ -32,7 +32,7 @@ export default function ShopByBrand() {
         breakpoint: 600,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
 
           dots: true,
         },

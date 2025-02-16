@@ -63,15 +63,12 @@ export default function CategoryList() {
             <strong>Category List</strong>
           </CCardHeader>
           <CCardBody>
-            <CForm
-              id="create-project-form"
-              style={{ minHeight: "650px" }}
-            >
+            <CForm id="create-project-form" style={{ minHeight: "650px" }}>
               <CContainer>
                 <CRow className="align-items-start">
                   <div className="container">
                     <div className="row align-items-start">
-                      <table className="table">
+                      <table className="table table-light">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -136,11 +133,12 @@ export default function CategoryList() {
                       nextLabel={"Next"}
                       breakLabel={"..."}
                       breakClassName={"break-me"}
+                      pageLinkClassName={"text-dark"}
                       pageCount={pageCount} // Total number of pages
                       marginPagesDisplayed={2} // How many pages to show at the beginning and end
                       pageRangeDisplayed={3} // How many pages to show around the current page
                       onPageChange={handlePageClick} // What happens when a page is clicked
-                      containerClassName={"pagination"} // CSS class for the pagination container
+                      containerClassName={"pagination "} // CSS class for the pagination container
                       activeClassName={"active"} // CSS class for the active page
                     />
                   </div>

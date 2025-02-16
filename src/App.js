@@ -7,6 +7,7 @@ import Drugs from "./pages/frontend/Drugs";
 import Blog from "./pages/frontend/Blog";
 import Contact from "./pages/frontend/Contact";
 import Login from "./pages/backend/Login";
+
 import "./App.css";
 import Index from "./pages/backend";
 import Brand from "./pages/backend/Brand";
@@ -19,6 +20,11 @@ import ImportDrug from "./pages/backend/ImportDrug";
 import DrugList from "./pages/backend/DrugList";
 import AddDrug from "./pages/backend/AddDrug";
 import UpdateDrug from "./pages/backend/UpdateDrug";
+import Register from "./pages/frontend/Register";
+import Signin from "./pages/frontend/Signin";
+import Carts from "./pages/frontend/Carts";
+import Logout from "./pages/backend/Logout";
+import DrugDetails from "./pages/frontend/DrugDetails";
 function App() {
   return (
     <Router basename={"medmart"}>
@@ -29,6 +35,10 @@ function App() {
           <Route exact path="/drugs" element={<Drugs />} />
           <Route exact path="/blog" element={<Blog />} />
           <Route exact path="/contact-us" element={<Contact />} />
+          <Route exact path="/register" element={<Register />} />
+          <Route exact path="/login" element={<Signin />} />
+          <Route exact path="/carts" element={<Carts />} />
+          <Route exact path="/drug-detail/:id" element={<DrugDetails />} />
           <Route exact path="/admin/login" element={<Login />} />
           <Route exact path="/admin" element={<Index />} />
           <Route exact path="/admin/brand" element={<Brand />} />
@@ -49,6 +59,7 @@ function App() {
           <Route exact path="/admin/add-drug" element={<AddDrug />} />
           <Route exact path="/admin/update-drug/:id" element={<UpdateDrug />} />
           <Route exact path="/admin/import-drugs" element={<ImportDrug />} />
+          <Route exact path="/admin/logout" element={<Logout />} />
         </Routes>
       </div>
     </Router>

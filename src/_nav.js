@@ -109,7 +109,6 @@ const _nav = [
       },
     ],
   },
-
   {
     component: CNavGroup,
     name: "Blog",
@@ -145,6 +144,12 @@ const _nav = [
         to: "/user",
       },
     ],
+  },
+  {
+    component: CNavItem,
+    name: "Logout",
+    to: "/admin/logout",
+    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
   },
 ];
 

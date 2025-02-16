@@ -30,5 +30,7 @@
   "addHotdeal": "/drugs/addHotdeal",
   "removeHotdeal": "/drugs/removeHotdeal",
   "addBestselling": "/drugs/addBestselling",
-  "removeBestselling": "/drugs/removeBestselling"
+  "removeBestselling": "/drugs/removeBestselling",
+  "addcontact": "/user/addcontact",
+  "subscribe": "/user/subscribe"
 }

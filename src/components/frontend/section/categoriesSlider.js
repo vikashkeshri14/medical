@@ -12,9 +12,9 @@ function CategoriesSlider() {
     dots: false,
 
     slidesToShow: 6,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     autoplay: true,
-    speed: 2000,
+    speed: 1000,
     autoplaySpeed: 2000,
     nextArrow: <SlickNextArrow />,
     prevArrow: <SlickPrevArrow />,
@@ -23,7 +23,7 @@ function CategoriesSlider() {
         breakpoint: 1200,
         settings: {
           slidesToShow: 8,
-          slidesToScroll: 1,
+          slidesToScroll: 3,
           dots: false,
         },
       },
@@ -31,7 +31,7 @@ function CategoriesSlider() {
         breakpoint: 600,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
 
           dots: true,
         },

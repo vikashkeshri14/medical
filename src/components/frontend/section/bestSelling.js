@@ -48,6 +48,7 @@ export default function BestSelling() {
         quantity: 1,
       })
     );
+    window.scrollTo(0, 0);
   };
   return (
     <div className="ltn__product-area ltn__product-gutter pt-50 pb-70">
@@ -66,7 +67,7 @@ export default function BestSelling() {
                 <div key={i} className="col-lg-3 col-md-4 col-sm-6  col-6">
                   <div className="ltn__product-item min-height-450 ltn__product-item-3 text-center">
                     <div className="product-img p-2 border-b-1">
-                      <a href="product-details.html">
+                      <Link to={"/drug-detail/" + items.id}>
                         <img
                           style={{
                             margin: "auto",
@@ -75,7 +76,7 @@ export default function BestSelling() {
                           src={items.image_url}
                           alt="#"
                         />
-                      </a>
+                      </Link>
 
                       <div className="product-hover-action">
                         <ul>

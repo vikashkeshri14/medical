@@ -10,50 +10,49 @@ export default function CounterSlider() {
             <div className="col-md-3 col-sm-6 slider-counter  align-self-center">
               <div className="ltn__counterup-item text-color-white---">
                 <div className="counter-icon">
-                  <i className="flaticon-select" />
+                  <img src="/medmart/assets/img/icon-counter1-2.png" />
                 </div>
                 <h1>
-                  <span className="counter">560</span>
+                  <span className="counter">7500</span>
                   <span className="counterUp-icon">+</span>{" "}
                 </h1>
-                <h6>Total Area Sq</h6>
+                <h6>Type of Medicine</h6>
               </div>
             </div>
             <div className="col-md-3 col-sm-6 slider-counter  align-self-center">
               <div className="ltn__counterup-item text-color-white---">
                 <div className="counter-icon">
-                  <i className="flaticon-office" />
+                  <img src="/medmart/assets/img/icon-counter2-2.png" />
                 </div>
                 <h1>
-                  <span className="counter">197</span>
-                  <span className="counterUp-letter">K</span>
+                  <span className="counter">25</span>
                   <span className="counterUp-icon">+</span>
                 </h1>
-                <h6>Apartments Sold</h6>
+                <h6>Distributor</h6>
               </div>
             </div>
             <div className="col-md-3 col-sm-6 slider-counter  align-self-center">
               <div className="ltn__counterup-item text-color-white---">
                 <div className="counter-icon">
-                  <i className="flaticon-excavator" />
+                  <img src="/medmart/assets/img/icon-counter3-2.png" />
                 </div>
                 <h1>
-                  <span className="counter">268</span>
+                  <span className="counter">1,758</span>
                   <span className="counterUp-icon">+</span>{" "}
                 </h1>
-                <h6>Total Constructions</h6>
+                <h6>Trust Customers</h6>
               </div>
             </div>
             <div className="col-md-3 col-sm-6 slider-counter align-self-center">
               <div className="ltn__counterup-item text-color-white---">
                 <div className="counter-icon">
-                  <i className="flaticon-armchair" />
+                  <img src="/medmart/assets/img/icon-counter4-2.png" />
                 </div>
                 <h1>
-                  <span className="counter">340</span>
+                  <span className="counter">200</span>
                   <span className="counterUp-icon">+</span>{" "}
                 </h1>
-                <h6>Apartio Rooms</h6>
+                <h6>Pharmacy Stores</h6>
               </div>
             </div>
           </div>

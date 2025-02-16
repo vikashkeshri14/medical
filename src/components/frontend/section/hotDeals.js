@@ -49,6 +49,7 @@ export default function HotDeals() {
         quantity: 1,
       })
     );
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -85,7 +86,7 @@ export default function HotDeals() {
                     >
                       <div className="ltn__product-item ltn__product-item-2 text-left">
                         <div className="product-img">
-                          <a href="product-details.html">
+                          <Link to={"/drug-detail/" + items.id}>
                             <img
                               style={{
                                 margin: "auto",
@@ -95,7 +96,7 @@ export default function HotDeals() {
                               src={items.image_url}
                               alt="#"
                             />
-                          </a>
+                          </Link>
                           <div className="product-badge">
                             <ul>
                               <li className="sale-badge btn-danger">Sale</li>
