@@ -40,9 +40,12 @@ const AppHeader = () => {
 
   useEffect(() => {
     const user = localStorage.getItem("userinfor");
-    if (!user) {
+
+    if (!user || user == "undefined") {
+      localStorage.clear();
       return navigate("/admin/login");
     } else {
+      //console.log("userss", typeof user);
       setUser(JSON.parse(user));
     }
     document.addEventListener("scroll", () => {

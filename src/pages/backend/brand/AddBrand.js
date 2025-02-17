@@ -4,9 +4,9 @@ import {
   AppSidebar,
   AppFooter,
   AppHeader,
-} from "../../components/backend/index";
+} from "../../../components/backend/index";
 import { CContainer } from "@coreui/react";
-import Add from "../../components/backend/brand/Add";
+import Add from "../../../components/backend/brand/Add";
 
 export default function AddBrand() {
   return (

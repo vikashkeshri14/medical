@@ -4,9 +4,9 @@ import {
   AppSidebar,
   AppFooter,
   AppHeader,
-} from "../../components/backend/index";
+} from "../../../components/backend/index";
 import { CContainer } from "@coreui/react";
-import ImportData from "../../components/backend/drug/ImportData";
+import ImportData from "../../../components/backend/drug/ImportData";
 
 export default function ImportDrug() {
   return (

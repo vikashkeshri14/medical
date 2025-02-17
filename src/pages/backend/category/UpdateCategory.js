@@ -4,11 +4,11 @@ import {
   AppSidebar,
   AppFooter,
   AppHeader,
-} from "../../components/backend/index";
+} from "../../../components/backend/index";
 import { CContainer } from "@coreui/react";
-import Add from "../../components/backend/drug/Add";
+import Update from "../../../components/backend/category/Update";
 
-export default function AddDrug() {
+export default function UpdateCategory() {
   return (
     <div>
       <AppSidebar />
@@ -16,7 +16,7 @@ export default function AddDrug() {
         <AppHeader />
         <CContainer className="px-4">
           <div className="body flex-grow-1">
-            <Add />
+            <Update />
           </div>
         </CContainer>
         <AppFooter />

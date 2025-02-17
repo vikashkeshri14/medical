@@ -491,3 +491,7 @@ input.cart-plus-minus-box {
   width: 40%;
   font-weight: 700;
 }
+.ltn__checkout-single-content h5 {
+  background-color: #f2f6f7;
+  padding: 20px 30px;
+}

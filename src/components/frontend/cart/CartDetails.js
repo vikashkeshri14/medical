@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeCart, updateCart } from "../../../features/cart/cart";
 export default function CartDetails() {
   const [totalAmount, setTotalAmount] = useState(0);
+  //const [qty,setQty]=useState()
   const carts = useSelector((state) => state.cart.items);
   useEffect(() => {
     let val = carts.reduce((acc, data) => {
@@ -12,6 +14,22 @@ export default function CartDetails() {
     // console.log(val);
     setTotalAmount(val.toFixed(2));
   }, [carts]);
+
+  //add to cart
+  const dispatch = useDispatch();
+  const handelCart = (items, quantity) => {
+    const { drugId, name, name_ar, img, price } = items;
+
+    dispatch(
+      updateCart({
+        drugId: drugId,
+        quantity: quantity,
+      })
+    );
+
+    //setQty((qty) => 1);
+    // window.scrollTo(0, 0);
+  };
   return (
     <div className="liton__shoping-cart-area mt-40 mb-120">
       <div className="container">
@@ -26,31 +44,54 @@ export default function CartDetails() {
                         let total = data.quantity * data.price;
                         return (
                           <tr key={i}>
-                            <td className="cart-product-image">
+                            <td
+                              width="20%"
+                              className="cart-product-image"
+                            >
                               <Link to="#">
-                                <img src={data.img} alt="#" />
+                                <img
+                                  src={data.img}
+                                  alt="#"
+                                />
                               </Link>
                             </td>
-                            <td className="cart-product-info">
-                              <h4>
-                                <Link to="#">{data.name}</Link>
+                            <td
+                              width="30%"
+                              className="cart-product-info"
+                            >
+                              <h4 className="font-14 font-weight-600">
+                                <Link to={"/drug-detail/" + data.drugId}>
+                                  {data.name}
+                                </Link>
                               </h4>
                             </td>
-                            <td className="cart-product-price">{data.price}</td>
-                            <td className="cart-product-quantity">
-                              <div class="cart-plus-minus">
-                                <div class="dec qtybutton">-</div>
-                                <input
-                                  type="text"
-                                  value={data.quantity}
-                                  name="qtybutton"
-                                  class="cart-plus-minus-box"
-                                />
-                                <div class="inc qtybutton">+</div>
-                              </div>
+                            <td
+                              width="15%"
+                              className="cart-product-price"
+                            >
+                              SAR {data.price}
                             </td>
-                            <td className="cart-product-subtotal">
-                              SAR {total}
+                            <td
+                              width="10%"
+                              className="cart-product-quantity"
+                            >
+                              <input
+                                onChange={(e) =>
+                                  handelCart(data, e.target.value)
+                                }
+                                type="number"
+                                min={1}
+                                defaultValue={data.quantity}
+                                name="qtybutton"
+                                style={{ width: "60px" }}
+                                className="form-control"
+                              />
+                            </td>
+                            <td
+                              width="20%"
+                              className="cart-product-subtotal"
+                            >
+                              SAR {total.toFixed(2)}
                             </td>
                           </tr>
                         );
@@ -72,14 +113,6 @@ export default function CartDetails() {
                             Apply Coupon
                           </button>
                         </div>
-                      </td>
-                      <td>
-                        <button
-                          type="submit"
-                          className="btn theme-btn-2 btn-secondary disabled"
-                        >
-                          Update Cart
-                        </button>
                       </td>
                     </tr>
                   </tbody>
@@ -111,10 +144,10 @@ export default function CartDetails() {
                     </tr>
                   </tbody>
                 </table>
-                <div className="btn-wrapper text-right go-top">
+                <div className="btn-wrapper mt-10 text-right go-top">
                   <Link
                     to="/checkout"
-                    className="theme-btn-1 btn-primary btn btn-effect-1"
+                    className="theme-btn-1 btn-primary btn btn-effect"
                   >
                     Proceed to checkout
                   </Link>

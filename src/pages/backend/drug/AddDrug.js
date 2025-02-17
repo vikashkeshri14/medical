@@ -4,11 +4,11 @@ import {
   AppSidebar,
   AppFooter,
   AppHeader,
-} from "../../components/backend/index";
+} from "../../../components/backend/index";
 import { CContainer } from "@coreui/react";
-import Add from "../../components/backend/category/Add";
+import Add from "../../../components/backend/drug/Add";
 
-export default function AddCategory() {
+export default function AddDrug() {
   return (
     <div>
       <AppSidebar />

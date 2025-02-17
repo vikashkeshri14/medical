@@ -4,20 +4,19 @@ import {
   AppSidebar,
   AppFooter,
   AppHeader,
-} from "../../components/backend/index";
+} from "../../../components/backend/index";
 import { CContainer } from "@coreui/react";
-import BrandList from "../../components/backend/brand/BrandList";
-import Drugs from "../../components/backend/drug/Drugs";
+import Update from "../../../components/backend/brand/Update";
 
-export default function DrugList() {
+export default function UpdateBrand() {
   return (
     <div>
       <AppSidebar />
       <div className="wrapper d-flex flex-column min-vh-100">
         <AppHeader />
-        <CContainer className="px-0">
+        <CContainer className="px-4">
           <div className="body flex-grow-1">
-            <Drugs />
+            <Update />
           </div>
         </CContainer>
         <AppFooter />

@@ -4,23 +4,20 @@ import Social from "../section/social";
 import * as ApiService from "../../../config/config";
 import apiList from "../../../config/apiList.json";
 import config from "../../../config/config.json";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { removeCart, removeCartById } from "../../../features/cart/cart";
 export default function Navbar() {
   let publicUrl = process.env.PUBLIC_URL + "/";
   const { pathname } = useLocation();
   const [error, setError] = useState(false);
   const [keyVal, setkeyVal] = useState("");
   const [suggesation, setSuggesation] = useState([]);
-  const [successAdded, setSuccessAdded] = useState(true);
+  //const [successAdded, setSuccessAdded] = useState(true);
   const [totalAmount, setTotalAmount] = useState(0);
   const [cartOpen, setcartOpen] = useState(false);
   const carts = useSelector((state) => state.cart.items);
-  useEffect(() => {
-    setSuccessAdded((successAdded) => true);
-    setTimeout(() => {
-      setSuccessAdded((successAdded) => false);
-    }, 1000);
 
+  useEffect(() => {
     let val = carts.reduce((acc, data) => {
       acc += data.price * data.quantity;
       return acc;
@@ -47,6 +44,11 @@ export default function Navbar() {
     setSuggesation((suggesation) => []);
   };
 
+  const dispatch = useDispatch();
+
+  const removeFromCart = (id) => {
+    dispatch(removeCartById(id));
+  };
   //console.log(cart);
   return (
     <div>
@@ -198,22 +200,6 @@ export default function Navbar() {
                                   </h6>
                                 </a>
                               </div>
-                              {successAdded && (
-                                <div
-                                  style={{
-                                    position: "absolute",
-                                    color: "#01cca4",
-                                    padding: "5px 10px",
-                                    fontSize: "14px",
-                                    fontWeight: "bold",
-                                    borderRadius: "10px",
-                                    left: "0px",
-                                    top: "-30px",
-                                  }}
-                                >
-                                  Successfully Added
-                                </div>
-                              )}
                             </li>
                           </ul>
                         </div>
@@ -503,7 +489,10 @@ export default function Navbar() {
                           alt="Image"
                         />
                       </Link>
-                      <span className="mini-cart-item-delete">
+                      <span
+                        onClick={() => removeFromCart(item.drugId)}
+                        className="mini-cart-item-delete"
+                      >
                         <i className="icon-cancel" />
                       </span>
                     </div>

@@ -10,21 +10,25 @@ import Login from "./pages/backend/Login";
 
 import "./App.css";
 import Index from "./pages/backend";
-import Brand from "./pages/backend/Brand";
-import AddBrand from "./pages/backend/AddBrand";
-import UpdateBrand from "./pages/backend/UpdateBrand";
-import Category from "./pages/backend/Category";
-import AddCategory from "./pages/backend/AddCategory";
-import UpdateCategory from "./pages/backend/UpdateCategory";
-import ImportDrug from "./pages/backend/ImportDrug";
-import DrugList from "./pages/backend/DrugList";
-import AddDrug from "./pages/backend/AddDrug";
-import UpdateDrug from "./pages/backend/UpdateDrug";
+import Brand from "./pages/backend/brand/Brand";
+import AddBrand from "./pages/backend/brand/AddBrand";
+import UpdateBrand from "./pages/backend/brand/UpdateBrand";
+import Category from "./pages/backend/category/Category";
+import AddCategory from "./pages/backend/category/AddCategory";
+import UpdateCategory from "./pages/backend/category/UpdateCategory";
+import ImportDrug from "./pages/backend/drug/ImportDrug";
+import DrugList from "./pages/backend/drug/DrugList";
+import AddDrug from "./pages/backend/drug/AddDrug";
+import UpdateDrug from "./pages/backend/drug/UpdateDrug";
 import Register from "./pages/frontend/Register";
 import Signin from "./pages/frontend/Signin";
 import Carts from "./pages/frontend/Carts";
 import Logout from "./pages/backend/Logout";
 import DrugDetails from "./pages/frontend/DrugDetails";
+import Checkout from "./pages/frontend/Checkout";
+import AdminList from "./pages/backend/admin/AdminList";
+import UpdateAdmin from "./pages/backend/admin/UpdateAdmin";
+import AddAdmin from "./pages/backend/admin/AddAdmin";
 function App() {
   return (
     <Router basename={"medmart"}>
@@ -38,9 +42,13 @@ function App() {
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/login" element={<Signin />} />
           <Route exact path="/carts" element={<Carts />} />
+          <Route exact path="/checkout" element={<Checkout />} />
           <Route exact path="/drug-detail/:id" element={<DrugDetails />} />
           <Route exact path="/admin/login" element={<Login />} />
           <Route exact path="/admin" element={<Index />} />
+          <Route exact path="/admin/admin-list" element={<AdminList />} />
+          <Route exact path="/admin/add-admin" element={<AddAdmin />} />
+          <Route exact path="/admin/update-admin" element={<UpdateAdmin />} />
           <Route exact path="/admin/brand" element={<Brand />} />
           <Route exact path="/admin/add-brand" element={<AddBrand />} />
           <Route

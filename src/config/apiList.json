@@ -1,5 +1,6 @@
 {
   "login": "/admin/login",
+  "getAdminListPagination": "/admin/getAdminListPagination",
   "addProject": "/project/addProject",
   "updateProject": "/project/updateProject",
   "getProjects": "/project/getProjects",
@@ -31,6 +32,7 @@
   "removeHotdeal": "/drugs/removeHotdeal",
   "addBestselling": "/drugs/addBestselling",
   "removeBestselling": "/drugs/removeBestselling",
+  "getrandomDrugByCat": "/drugs/getrandomDrugByCat",
   "addcontact": "/user/addcontact",
   "subscribe": "/user/subscribe"
 }

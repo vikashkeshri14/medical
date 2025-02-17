@@ -4,11 +4,11 @@ import {
   AppSidebar,
   AppFooter,
   AppHeader,
-} from "../../components/backend/index";
+} from "../../../components/backend/index";
 import { CContainer } from "@coreui/react";
-import BrandList from "../../components/backend/brand/BrandList";
+import Add from "../../../components/backend/admin/Add";
 
-export default function Brand() {
+export default function AddAdmin() {
   return (
     <div>
       <AppSidebar />
@@ -16,7 +16,7 @@ export default function Brand() {
         <AppHeader />
         <CContainer className="px-4">
           <div className="body flex-grow-1">
-            <BrandList />
+            <Add />
           </div>
         </CContainer>
         <AppFooter />

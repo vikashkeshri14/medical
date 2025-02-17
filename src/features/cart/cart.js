@@ -1,7 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  items: [],
+  items: localStorage.getItem("cart")
+    ? JSON.parse(localStorage.getItem("cart"))
+    : [],
 };
 
 const cartSlice = createSlice({
@@ -9,6 +11,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addToCart: (state, action) => {
+      // console.log(localStorage.getItem("cart"));
       const { drugId, name, name_ar, img, price, quantity } = action.payload;
 
       const productIndex = state.items.findIndex(
@@ -20,10 +23,29 @@ const cartSlice = createSlice({
       } else {
         state.items.push({ drugId, name, name_ar, img, price, quantity });
       }
+
+      localStorage.setItem("cart", JSON.stringify(state.items));
+    },
+    removeCartById: (state, action) => {
+      let val = state.items.filter((data) => data.drugId != action.payload);
+      state.items = val;
+      localStorage.setItem("cart", JSON.stringify(state.items));
+    },
+    updateCart: (state, action) => {
+      const { drugId, quantity } = action.payload;
+      let val = state.items.filter((data, i) => {
+        if (data.drugId == drugId) {
+          data.quantity = quantity;
+        }
+        return data;
+      });
+      //console.log(val);
+      state.items = val;
+      localStorage.setItem("cart", JSON.stringify(state.items));
     },
   },
 });
 // Action creators are generated for each case reducer function
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, removeCartById, updateCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

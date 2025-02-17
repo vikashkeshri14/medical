@@ -1,12 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import * as ApiService from "../../../config/config";
 import apiList from "../../../config/apiList.json";
 import config from "../../../config/config.json";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../../features/cart/cart";
 export default function DrugsById() {
   const slug = useParams();
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
+  const [relatedProduct, setRelatedProduct] = useState([]);
+  const [qty, setQty] = useState(1);
+
   useEffect(() => {
     const fetchDrug = async () => {
       const obj = {
@@ -16,6 +24,7 @@ export default function DrugsById() {
       let response = await ApiService.postData(params); //console.log(response);
       const data = await response.results;
       if (data.length) {
+        fetchDrugRand(data[0].category_slug);
         setItems(data);
       } else {
         return navigate("/");
@@ -23,6 +32,37 @@ export default function DrugsById() {
     };
     fetchDrug();
   }, [slug]);
+
+  const fetchDrugRand = async (args) => {
+    const obj = {
+      slug: args,
+    }; //console.log(obj);
+    let params = { url: apiList.getrandomDrugByCat, body: obj }; //console.log(params);
+    let response = await ApiService.postData(params); //console.log(response);
+    const data = await response.results;
+    if (data.length) {
+      setRelatedProduct(data);
+    }
+    //console.log(data);
+  };
+
+  //add to cart
+  const dispatch = useDispatch();
+  const handelCart = (items) => {
+    const { id, name, name_ar, image_url, price } = items;
+    dispatch(
+      addToCart({
+        drugId: id,
+        name: name,
+        name_ar: name_ar,
+        img: image_url,
+        price: price,
+        quantity: qty,
+      })
+    );
+    setQty((qty) => 1);
+    window.scrollTo(0, 0);
+  };
   return (
     <div class="ltn__shop-details-area mt-20 pb-85">
       <div class="container">
@@ -32,25 +72,20 @@ export default function DrugsById() {
               <div class="row">
                 <div class="col-md-6">
                   <div class="ltn__shop-details-img-gallery">
-                    <div class="ltn__shop-details-large-img">
-                      {items.length && (
-                        <div class="single-large-img">
-                          <a
-                            href={items[0].image_url}
-                            data-rel="lightcase:myCollection"
-                          >
-                            <img src={items[0].image_url} alt="Image" />
-                          </a>
-                        </div>
-                      )}
-                    </div>
-                    <div class="ltn__shop-details-small-img slick-arrow-2">
-                      {items.length && (
-                        <div class="single-small-img">
-                          <img src={items[0].image_url} alt="Image" />
-                        </div>
-                      )}
-                    </div>
+                    <Carousel
+                      showArrows={true}
+                      showThumbs={true}
+                      showStatus={true}
+                      showIndicators={false}
+                      autoPlay
+                    >
+                      <div>
+                        <img
+                          alt=""
+                          src={items.length && items[0].image_url}
+                        />
+                      </div>
+                    </Carousel>
                   </div>
                 </div>
                 <div class="col-md-6">
@@ -73,27 +108,44 @@ export default function DrugsById() {
                       <ul>
                         <li>
                           <div class="cart-plus-minus">
-                            <div class="dec qtybutton">-</div>
+                            <div
+                              onClick={() => {
+                                if (qty > 1) {
+                                  setQty((qty) => parseInt(qty) - 1);
+                                }
+                              }}
+                              class="dec qtybutton"
+                            >
+                              -
+                            </div>
                             <input
-                              type="text"
-                              value="02"
+                              type="number"
+                              onChange={(e) => {
+                                if (e.target.value > 0) {
+                                  setQty(e.target.value);
+                                }
+                              }}
+                              value={qty}
                               name="qtybutton"
                               class="cart-plus-minus-box"
                             />
-                            <div class="inc qtybutton">+</div>
+                            <div
+                              onClick={() => setQty((qty) => parseInt(qty) + 1)}
+                              class="inc qtybutton"
+                            >
+                              +
+                            </div>
                           </div>
                         </li>
                         <li>
-                          <a
-                            href="#"
+                          <Link
+                            onClick={() => handelCart(items[0])}
                             class="theme-btn-1 btn btn-primary btn-effect"
                             title="Add to Cart"
-                            data-bs-toggle="modal"
-                            data-bs-target="#add_to_cart_modal"
                           >
                             <i class="fas fa-shopping-cart"></i>
                             <span>ADD TO CART</span>
-                          </a>
+                          </Link>
                         </li>
                       </ul>
                     </div>
@@ -130,22 +182,34 @@ export default function DrugsById() {
                       <ul>
                         <li>Share:</li>
                         <li>
-                          <a href="#" title="Facebook">
+                          <a
+                            href="#"
+                            title="Facebook"
+                          >
                             <i class="fab fa-facebook-f"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="#" title="Twitter">
+                          <a
+                            href="#"
+                            title="Twitter"
+                          >
                             <i class="fab fa-twitter"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="#" title="Linkedin">
+                          <a
+                            href="#"
+                            title="Linkedin"
+                          >
                             <i class="fab fa-linkedin"></i>
                           </a>
                         </li>
                         <li>
-                          <a href="#" title="Instagram">
+                          <a
+                            href="#"
+                            title="Instagram"
+                          >
                             <i class="fab fa-instagram"></i>
                           </a>
                         </li>
@@ -154,332 +218,10 @@ export default function DrugsById() {
                     <hr />
                     <div class="ltn__safe-checkout">
                       <h5>Guaranteed Safe Checkout</h5>
-                      <img src="img/icons/payment-2.png" alt="Payment Image" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="ltn__shop-details-tab-inner ltn__shop-details-tab-inner-2">
-              <div class="ltn__shop-details-tab-menu">
-                <div class="nav">
-                  <a
-                    class="active show"
-                    data-bs-toggle="tab"
-                    href="#liton_tab_details_1_1"
-                  >
-                    Description
-                  </a>
-                  <a
-                    data-bs-toggle="tab"
-                    href="#liton_tab_details_1_2"
-                    class=""
-                  >
-                    Reviews
-                  </a>
-                </div>
-              </div>
-              <div class="tab-content">
-                <div
-                  class="tab-pane fade active show"
-                  id="liton_tab_details_1_1"
-                >
-                  <div class="ltn__shop-details-tab-content-inner">
-                    <h4 class="title-2">Lorem ipsum dolor sit amet elit.</h4>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                      sint occaecat cupidatat non proident.
-                    </p>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                      sint occaecat cupidatat non proident, sunt in culpa qui
-                      officia deserunt mollit anim id est laborum. Sed ut
-                      perspiciatis unde omnis iste natus error sit voluptatem,
-                      totam rem aperiam, eaque ipsa quae ab illo inventore
-                      veritatis et quasi architecto beatae vitae dicta sunt
-                      explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-                      aspernatur aut odit aut fugit, sed quia consequuntur magni
-                      dolores eos qui ratione voluptatem sequi nesciunt. Neque
-                      porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-                      consectetur, adipisci velit, sed quia non numquam eius
-                      modi tempora incidunt ut labore et dolore magnam aliquam
-                      quaerat voluptatem.
-                    </p>
-                  </div>
-                </div>
-                <div class="tab-pane fade" id="liton_tab_details_1_2">
-                  <div class="ltn__shop-details-tab-content-inner">
-                    <h4 class="title-2">Customer Reviews</h4>
-                    <div class="product-ratting">
-                      <ul>
-                        <li>
-                          <a href="#">
-                            <i class="fas fa-star"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i class="fas fa-star"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i class="fas fa-star"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i class="fas fa-star-half-alt"></i>
-                          </a>
-                        </li>
-                        <li>
-                          <a href="#">
-                            <i class="far fa-star"></i>
-                          </a>
-                        </li>
-                        <li class="review-total">
-                          {" "}
-                          <a href="#"> ( 95 Reviews )</a>
-                        </li>
-                      </ul>
-                    </div>
-                    <hr />
-
-                    <div class="ltn__comment-area mb-30">
-                      <div class="ltn__comment-inner">
-                        <ul>
-                          <li>
-                            <div class="ltn__comment-item clearfix">
-                              <div class="ltn__commenter-img">
-                                <img src="img/testimonial/1.jpg" alt="Image" />
-                              </div>
-                              <div class="ltn__commenter-comment">
-                                <h6>
-                                  <a href="#">Adam Smit</a>
-                                </h6>
-                                <div class="product-ratting">
-                                  <ul>
-                                    <li>
-                                      <a href="#">
-                                        <i class="fas fa-star"></i>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="#">
-                                        <i class="fas fa-star"></i>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="#">
-                                        <i class="fas fa-star"></i>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="#">
-                                        <i class="fas fa-star-half-alt"></i>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="#">
-                                        <i class="far fa-star"></i>
-                                      </a>
-                                    </li>
-                                  </ul>
-                                </div>
-                                <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipisicing elit. Doloribus, omnis fugit
-                                  corporis iste magnam ratione.
-                                </p>
-                                <span class="ltn__comment-reply-btn">
-                                  September 3, 2020
-                                </span>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="ltn__comment-item clearfix">
-                              <div class="ltn__commenter-img">
-                                <img src="img/testimonial/3.jpg" alt="Image" />
-                              </div>
-                              <div class="ltn__commenter-comment">
-                                <h6>
-                                  <a href="#">Adam Smit</a>
-                                </h6>
-                                <div class="product-ratting">
-                                  <ul>
-                                    <li>
-                                      <a href="#">
-                                        <i class="fas fa-star"></i>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="#">
-                                        <i class="fas fa-star"></i>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="#">
-                                        <i class="fas fa-star"></i>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="#">
-                                        <i class="fas fa-star-half-alt"></i>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="#">
-                                        <i class="far fa-star"></i>
-                                      </a>
-                                    </li>
-                                  </ul>
-                                </div>
-                                <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipisicing elit. Doloribus, omnis fugit
-                                  corporis iste magnam ratione.
-                                </p>
-                                <span class="ltn__comment-reply-btn">
-                                  September 2, 2020
-                                </span>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="ltn__comment-item clearfix">
-                              <div class="ltn__commenter-img">
-                                <img src="img/testimonial/2.jpg" alt="Image" />
-                              </div>
-                              <div class="ltn__commenter-comment">
-                                <h6>
-                                  <a href="#">Adam Smit</a>
-                                </h6>
-                                <div class="product-ratting">
-                                  <ul>
-                                    <li>
-                                      <a href="#">
-                                        <i class="fas fa-star"></i>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="#">
-                                        <i class="fas fa-star"></i>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="#">
-                                        <i class="fas fa-star"></i>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="#">
-                                        <i class="fas fa-star-half-alt"></i>
-                                      </a>
-                                    </li>
-                                    <li>
-                                      <a href="#">
-                                        <i class="far fa-star"></i>
-                                      </a>
-                                    </li>
-                                  </ul>
-                                </div>
-                                <p>
-                                  Lorem ipsum dolor sit amet, consectetur
-                                  adipisicing elit. Doloribus, omnis fugit
-                                  corporis iste magnam ratione.
-                                </p>
-                                <span class="ltn__comment-reply-btn">
-                                  September 2, 2020
-                                </span>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div class="ltn__comment-reply-area ltn__form-box mb-30">
-                      <form action="#">
-                        <h4 class="title-2">Add a Review</h4>
-                        <div class="mb-30">
-                          <div class="add-a-review">
-                            <h6>Your Ratings:</h6>
-                            <div class="product-ratting">
-                              <ul>
-                                <li>
-                                  <a href="#">
-                                    <i class="fas fa-star"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="#">
-                                    <i class="fas fa-star"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="#">
-                                    <i class="fas fa-star"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="#">
-                                    <i class="fas fa-star-half-alt"></i>
-                                  </a>
-                                </li>
-                                <li>
-                                  <a href="#">
-                                    <i class="far fa-star"></i>
-                                  </a>
-                                </li>
-                              </ul>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="input-item input-item-textarea ltn__custom-icon">
-                          <textarea placeholder="Type your comments...."></textarea>
-                        </div>
-                        <div class="input-item input-item-name ltn__custom-icon">
-                          <input type="text" placeholder="Type your name...." />
-                        </div>
-                        <div class="input-item input-item-email ltn__custom-icon">
-                          <input
-                            type="email"
-                            placeholder="Type your email...."
-                          />
-                        </div>
-                        <div class="input-item input-item-website ltn__custom-icon">
-                          <input
-                            type="text"
-                            name="website"
-                            placeholder="Type your website...."
-                          />
-                        </div>
-                        <label class="mb-0">
-                          <input type="checkbox" name="agree" /> Save my name,
-                          email, and website in this browser for the next time I
-                          comment.
-                        </label>
-                        <div class="btn-wrapper">
-                          <button
-                            class="btn theme-btn-1 btn-effect-1 text-uppercase"
-                            type="submit"
-                          >
-                            Submit
-                          </button>
-                        </div>
-                      </form>
+                      <img
+                        src="img/icons/payment-2.png"
+                        alt="Payment Image"
+                      />
                     </div>
                   </div>
                 </div>
@@ -493,157 +235,43 @@ export default function DrugsById() {
                   Top Rated Product
                 </h4>
                 <ul>
-                  <li>
-                    <div class="top-rated-product-item clearfix">
-                      <div class="top-rated-product-img">
-                        <a href="product-details.html">
-                          <img src="img/product/1.png" alt="Image" />
-                        </a>
-                      </div>
-                      <div class="top-rated-product-info">
-                        <div class="product-ratting">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <i class="fas fa-star"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i class="fas fa-star"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i class="fas fa-star"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i class="fas fa-star"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i class="fas fa-star"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                        <h6>
-                          <a href="product-details.html">
-                            Mixel Solid Seat Cover
-                          </a>
-                        </h6>
-                        <div class="product-price">
-                          <span>$49.00</span>
-                          <del>$65.00</del>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="top-rated-product-item clearfix">
-                      <div class="top-rated-product-img">
-                        <a href="product-details.html">
-                          <img src="img/product/2.png" alt="Image" />
-                        </a>
-                      </div>
-                      <div class="top-rated-product-info">
-                        <div class="product-ratting">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <i class="fas fa-star"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i class="fas fa-star"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i class="fas fa-star"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i class="fas fa-star"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i class="fas fa-star"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                        <h6>
-                          <a href="product-details.html">Thermometer Gun</a>
-                        </h6>
-                        <div class="product-price">
-                          <span>$49.00</span>
-                          <del>$65.00</del>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li>
-                    <div class="top-rated-product-item clearfix">
-                      <div class="top-rated-product-img">
-                        <a href="product-details.html">
-                          <img src="img/product/3.png" alt="Image" />
-                        </a>
-                      </div>
-                      <div class="top-rated-product-info">
-                        <div class="product-ratting">
-                          <ul>
-                            <li>
-                              <a href="#">
-                                <i class="fas fa-star"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i class="fas fa-star"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i class="fas fa-star"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i class="fas fa-star-half-alt"></i>
-                              </a>
-                            </li>
-                            <li>
-                              <a href="#">
-                                <i class="far fa-star"></i>
-                              </a>
-                            </li>
-                          </ul>
-                        </div>
-                        <h6>
-                          <a href="product-details.html">
-                            Coil Spring Conversion
-                          </a>
-                        </h6>
-                        <div class="product-price">
-                          <span>$49.00</span>
-                          <del>$65.00</del>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
+                  {relatedProduct.length &&
+                    relatedProduct.map((item, i) => {
+                      return (
+                        <li>
+                          <div class="top-rated-product-item clearfix">
+                            <div class="top-rated-product-img">
+                              <Link to={"/drug-detail/" + item.id}>
+                                <img
+                                  src={item.image_url}
+                                  alt={item.name}
+                                  style={{ width: "60px", height: "60px" }}
+                                />
+                              </Link>
+                            </div>
+                            <div class="top-rated-product-info">
+                              <h6>
+                                <Link to={"/drug-detail/" + item.id}>
+                                  {item.name}
+                                </Link>
+                              </h6>
+                              <div class="product-price">
+                                <span>SAR {item.price}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      );
+                    })}
                 </ul>
               </div>
 
               <div class="widget ltn__banner-widget">
                 <a href="shop.html">
-                  <img src="img/banner/2.jpg" alt="Image" />
+                  <img
+                    src="img/banner/2.jpg"
+                    alt="Image"
+                  />
                 </a>
               </div>
             </aside>
