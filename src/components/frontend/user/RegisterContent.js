@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import OtpInput from "react-otp-input";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import * as ApiService from "../../../config/config";
+import apiList from "../../../config/apiList.json";
 export default function RegisterContent() {
   const [name, setName] = useState("");
   const [owner, setOwner] = useState("");
@@ -10,59 +12,213 @@ export default function RegisterContent() {
   const [pharmacyType, setPharmacyType] = useState("");
   const [password, setPassword] = useState("");
   const [cpassword, setCpassword] = useState("");
-
   const [nameError, setNameError] = useState(false);
   const [ownerError, setOwnerError] = useState(false);
   const [wphoneError, setWphoneError] = useState(false);
   const [taxError, setTaxError] = useState(false);
+  const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [pharmacyTypeError, setPharmacyTypeError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [cpasswordError, setCpasswordError] = useState(false);
-
   const [next, setNext] = useState(false);
   const [otp, setOtp] = useState("");
+  const [msgemai, setEmailValidMessage] = useState("");
+  const [msgphone, setMsgphone] = useState("");
+  const [msgPassword, setMsgPassword] = useState("");
+  const [msgcPassword, setMsgcPassword] = useState("");
+  const [emailExist, setemailExist] = useState(false);
+  const [phoneExist, setphoneExist] = useState(false);
+  const [whatsappExist, setwhatsappExist] = useState(false);
+  const [msgwhatsapp, setmsgwhatsapp] = useState("");
+  const [nextTrue, setnextTrue] = useState(false);
+
+  const navigate = useNavigate();
+  const validateEmail = (email) => {
+    return email.match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+  };
+
+  const checkemail = async () => {
+    if (validateEmail(email)) {
+      const obj = {
+        email: email,
+      };
+      let params = { url: apiList.checkEmailUser, body: obj }; //console.log(params);
+      let response = await ApiService.postData(params);
+      if (response.status == true) {
+        setEmailValidMessage("Email already register");
+        setemailExist(true);
+      } else {
+        setEmailValidMessage("");
+        setemailExist(false);
+        return 0;
+      }
+    } else {
+      setemailExist(true);
+      setEmailValidMessage("enter valid email");
+      return 1;
+    }
+  };
+  const checkphone = async () => {
+    const obj = {
+      phone: phone,
+    };
+    let params = { url: apiList.checkPhoneUser, body: obj }; //console.log(params);
+    let response = await ApiService.postData(params); //console.log(response);
+    if (response.status == true) {
+      setMsgphone("Phone already exist");
+      setphoneExist(true);
+    } else {
+      setMsgphone("");
+      setphoneExist(false);
+    }
+  };
+  const checkWhatsapp = async () => {
+    const obj = {
+      whatsapp: wphone,
+    };
+    let params = { url: apiList.checkWhatsaapUser, body: obj }; //console.log(params);
+    let response = await ApiService.postData(params); //console.log(response);
+    if (response.status == true) {
+      setmsgwhatsapp("Phone already exist");
+      setwhatsappExist(true);
+    } else {
+      setmsgwhatsapp("");
+      setwhatsappExist(false);
+    }
+  };
+  const acceptOnlyNum = (phone, args) => {
+    const value = phone.replace(/\D/g, "");
+    if (args == "phone") {
+      setPhone(phone);
+    } else {
+      setWphone(value);
+    }
+  };
+
   const handleNext = () => {
-    setNext(true);
+    setnextTrue(true);
     if (!name) {
       setNameError(true);
+      setnextTrue(false);
       return;
     }
     setNameError(false);
     if (!owner) {
       setOwnerError(true);
+      setnextTrue(false);
       return;
     }
     setOwnerError(false);
     if (!wphone) {
       setWphoneError(true);
+      setnextTrue(false);
       return;
     }
     setWphoneError(false);
     if (!tax) {
       setTaxError(true);
+      setnextTrue(false);
       return;
     }
     setTaxError(false);
     if (!email) {
       setEmailError(true);
+      setnextTrue(false);
       return;
     }
     setEmailError(false);
     if (!pharmacyType) {
       setPharmacyTypeError(true);
+      setnextTrue(false);
       return;
     }
     setPharmacyTypeError(false);
-    if (!password) {
+    if (!password || password.length < 6) {
+      if (password.length < 6) {
+        setMsgPassword("Password should contain six character long ");
+      }
       setPasswordError(true);
+      setnextTrue(false);
       return;
     }
+    setMsgPassword("");
     setPasswordError(false);
+
+    if (!cpassword || cpassword.length < 6) {
+      if (cpassword.length < 6) {
+        setMsgcPassword("Password should contain six character long ");
+      }
+      setCpasswordError(true);
+      setnextTrue(false);
+      return;
+    }
+    setMsgcPassword("");
+    setCpasswordError(false);
+    if (cpassword != cpassword) {
+      setMsgcPassword("Password not match ");
+      setCpasswordError(true);
+      setnextTrue(false);
+      return;
+    }
+    setMsgcPassword("");
+    setCpasswordError(false);
+
+    if (whatsappExist) {
+      setWphoneError(true);
+      setnextTrue(false);
+      return;
+    }
+    setWphoneError(false);
+    if (emailExist) {
+      setEmailError(true);
+      setnextTrue(false);
+      return;
+    }
+    setEmailError(false);
+    setnextTrue(false);
+    setNext(true);
   };
   const handleChange = (otp) => setOtp(otp);
 
   const verify = () => {};
+
+  const AddUser = async () => {
+    setnextTrue(true);
+    if (!phone) {
+      setPhoneError(true);
+      setnextTrue(false);
+      return;
+    }
+    if (phoneExist) {
+      setPhoneError(true);
+      setnextTrue(false);
+      return;
+    }
+    setPhoneError(false);
+    setnextTrue(false);
+
+    const obj = {
+      pharmacy_name: name,
+      pharmacy_owner_name: owner,
+      whatsapp: wphone,
+      email: email,
+      phone: phone,
+      tax_no: tax,
+      pharmacy_type: pharmacyType,
+      password: password,
+    };
+    let params = { url: apiList.registration, body: obj }; //console.log(params);
+    let response = await ApiService.postData(params);
+    console.log(response);
+    if (response.status) {
+      localStorage.setItem("loginInfo", JSON.stringify(response.results));
+      return navigate("/account");
+    }
+  };
 
   return (
     <div className="ltn__login-area pt-50 pb-110">
@@ -106,13 +262,15 @@ export default function RegisterContent() {
                   <div class="mb-3">
                     <label class="form-label">WhatsApp Number</label>
                     <input
+                      onBlur={() => checkWhatsapp()}
                       value={wphone}
                       type="text"
-                      onChange={(e) => setWphone(e.target.value)}
+                      onChange={(e) => acceptOnlyNum(e.target.value, "whats")}
                       name="lastname"
                       placeholder="WhatsApp Number"
                       className={wphoneError ? "mb-1 border-danger" : "mb-1"}
                     />
+                    <p className="text-danger">{msgwhatsapp}</p>
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Tax number</label>
@@ -128,6 +286,7 @@ export default function RegisterContent() {
                   <div class="mb-3">
                     <label class="form-label">Email</label>
                     <input
+                      onBlur={() => checkemail()}
                       value={email}
                       type="text"
                       onChange={(e) => setEmail(e.target.value)}
@@ -135,6 +294,7 @@ export default function RegisterContent() {
                       placeholder="Email"
                       className={emailError ? "mb-1 border-danger" : "mb-1"}
                     />
+                    <p className="text-danger">{msgemai}</p>
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Pharmacy Type</label>
@@ -162,6 +322,7 @@ export default function RegisterContent() {
                       placeholder="Password"
                       className={passwordError ? "mb-1 border-danger" : "mb-1"}
                     />
+                    <p className="text-danger">{msgPassword}</p>
                   </div>
                   <div class="mb-3">
                     <label class="form-label">Confirm Password</label>
@@ -173,10 +334,12 @@ export default function RegisterContent() {
                       placeholder="Confirm Password"
                       className={cpasswordError ? "mb-1 border-danger" : "mb-1"}
                     />
+                    <p className="text-danger">{msgcPassword}</p>
                   </div>
 
                   <div className="btn-wrapper">
                     <button
+                      disabled={nextTrue}
                       onClick={() => handleNext()}
                       className="theme-btn-1 btn btn-primary reverse-color btn-block"
                       type="button"
@@ -196,8 +359,14 @@ export default function RegisterContent() {
                       Mobile Number
                     </label>
                     <input
+                      onChange={(e) => acceptOnlyNum(e.target.value, "phone")}
+                      value={phone}
                       type="text"
-                      class="form-control"
+                      class={
+                        phoneError
+                          ? "form-control border-danger"
+                          : "form-control"
+                      }
                       id="exampleFormControlInput1"
                       placeholder="Mobile number"
                     />
@@ -256,8 +425,10 @@ export default function RegisterContent() {
                     </button>
                     &nbsp;
                     <button
+                      disabled={nextTrue}
                       className="theme-btn-1 btn btn-primary reverse-color btn-block"
                       type="button"
+                      onClick={() => AddUser()}
                     >
                       Next
                     </button>

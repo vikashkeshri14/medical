@@ -7,7 +7,6 @@ import config from "../../../config/config.json";
 import { useDispatch, useSelector } from "react-redux";
 import { removeCart, removeCartById } from "../../../features/cart/cart";
 export default function Navbar() {
-  let publicUrl = process.env.PUBLIC_URL + "/";
   const { pathname } = useLocation();
   const [error, setError] = useState(false);
   const [keyVal, setkeyVal] = useState("");
@@ -60,7 +59,7 @@ export default function Navbar() {
                 <div className="ltn__top-bar-menu">
                   <Link to="/">
                     <img
-                      src={publicUrl + "assets/img/medmart.png"}
+                      src={config.domainUrl + "/assets/img/medmart.png"}
                       alt="Medmart"
                     />
                   </Link>
@@ -338,10 +337,7 @@ export default function Navbar() {
                         d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200"
                         id="top"
                       />
-                      <path
-                        d="M300,320 L540,320"
-                        id="middle"
-                      />
+                      <path d="M300,320 L540,320" id="middle" />
                       <path
                         d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190"
                         id="bottom"
@@ -364,7 +360,7 @@ export default function Navbar() {
             <div className="site-logo">
               <Link to="/">
                 <img
-                  src={publicUrl + "assets/img/medmart.png"}
+                  src={config.domainUrl + "/assets/img/medmart.png"}
                   alt="Medmart"
                 />
               </Link>
@@ -375,10 +371,7 @@ export default function Navbar() {
           <div className="ltn__utilize-menu">
             <ul>
               <li>
-                <Link
-                  className={pathname == "/" ? "active-nav" : ""}
-                  to="/"
-                >
+                <Link className={pathname == "/" ? "active-nav" : ""} to="/">
                   Home
                 </Link>
               </li>
@@ -421,34 +414,22 @@ export default function Navbar() {
           <div className="ltn__social-media-2">
             <ul>
               <li>
-                <a
-                  href="#"
-                  title="Facebook"
-                >
+                <a href="#" title="Facebook">
                   <i className="fab fa-facebook-f" />
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
-                  title="Twitter"
-                >
+                <a href="#" title="Twitter">
                   <i className="fab fa-twitter" />
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
-                  title="Linkedin"
-                >
+                <a href="#" title="Linkedin">
                   <i className="fab fa-linkedin" />
                 </a>
               </li>
               <li>
-                <a
-                  href="#"
-                  title="Instagram"
-                >
+                <a href="#" title="Instagram">
                   <i className="fab fa-instagram" />
                 </a>
               </li>
@@ -484,10 +465,7 @@ export default function Navbar() {
                   <div className="mini-cart-item clearfix">
                     <div className="mini-cart-img go-top">
                       <Link to="/product-details">
-                        <img
-                          src={item.img}
-                          alt="Image"
-                        />
+                        <img src={item.img} alt="Image" />
                       </Link>
                       <span
                         onClick={() => removeFromCart(item.drugId)}
@@ -515,16 +493,10 @@ export default function Navbar() {
                 </h5>
               </div>
               <div className="btn-wrapper go-top">
-                <Link
-                  to="/carts"
-                  className="theme-btn-1 btn-secondary btn "
-                >
+                <Link to="/carts" className="theme-btn-1 btn-secondary btn ">
                   View Cart
                 </Link>
-                <Link
-                  to="/carts"
-                  className="theme-btn-2 btn-primary btn "
-                >
+                <Link to="/carts" className="theme-btn-2 btn-primary btn ">
                   Checkout
                 </Link>
               </div>

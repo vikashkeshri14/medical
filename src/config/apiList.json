@@ -1,7 +1,15 @@
 {
   "login": "/admin/login",
   "getAdminListPagination": "/admin/getAdminListPagination",
+  "checkEmail": "/admin/checkEmail",
+  "checkPhone": "/admin/checkPhone",
+  "addAdmin": "/admin/addAdmin",
+  "updateAdmin": "/admin/updateAdmin",
+  "getAdminById": "/admin/getAdminById",
+  "deleteAdmin": "/admin/deleteAdmin",
+
   "addProject": "/project/addProject",
+
   "updateProject": "/project/updateProject",
   "getProjects": "/project/getProjects",
   "getBrandByPagination": "/brand/getBrandByPagination",
@@ -34,5 +42,10 @@
   "removeBestselling": "/drugs/removeBestselling",
   "getrandomDrugByCat": "/drugs/getrandomDrugByCat",
   "addcontact": "/user/addcontact",
-  "subscribe": "/user/subscribe"
+  "subscribe": "/user/subscribe",
+  "loginUser": "/user/login",
+  "registration": "/user/registration",
+  "checkPhoneUser": "/user/checkPhone",
+  "checkEmailUser": "/user/checkEmail",
+  "checkWhatsaapUser": "/user/checkWhatsaap"
 }

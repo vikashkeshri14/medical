@@ -29,6 +29,12 @@ import Checkout from "./pages/frontend/Checkout";
 import AdminList from "./pages/backend/admin/AdminList";
 import UpdateAdmin from "./pages/backend/admin/UpdateAdmin";
 import AddAdmin from "./pages/backend/admin/AddAdmin";
+import Accounts from "./pages/frontend/user/Accounts";
+import Orders from "./pages/frontend/user/Orders";
+import Profile from "./pages/frontend/user/Profile";
+import ChangePassword from "./pages/frontend/user/ChangePassword";
+import Address from "./pages/frontend/user/Address";
+import AccountDetails from "./pages/frontend/user/AccountDetails";
 function App() {
   return (
     <Router basename={"medmart"}>
@@ -41,6 +47,13 @@ function App() {
           <Route exact path="/contact-us" element={<Contact />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/login" element={<Signin />} />
+          <Route exact path="/account" element={<Accounts />} />
+          <Route exact path="/orders" element={<Orders />} />
+          <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/change-password" element={<ChangePassword />} />
+          <Route exact path="/address" element={<Address />} />
+          <Route exact path="/account-details" element={<AccountDetails />} />
+
           <Route exact path="/carts" element={<Carts />} />
           <Route exact path="/checkout" element={<Checkout />} />
           <Route exact path="/drug-detail/:id" element={<DrugDetails />} />
@@ -48,7 +61,11 @@ function App() {
           <Route exact path="/admin" element={<Index />} />
           <Route exact path="/admin/admin-list" element={<AdminList />} />
           <Route exact path="/admin/add-admin" element={<AddAdmin />} />
-          <Route exact path="/admin/update-admin" element={<UpdateAdmin />} />
+          <Route
+            exact
+            path="/admin/update-admin/:id"
+            element={<UpdateAdmin />}
+          />
           <Route exact path="/admin/brand" element={<Brand />} />
           <Route exact path="/admin/add-brand" element={<AddBrand />} />
           <Route

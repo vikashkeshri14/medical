@@ -19,15 +19,72 @@ export default function Add() {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [type, setType] = useState("");
+  const [password, setPassword] = useState("");
+  const [cpassword, setCpassword] = useState("");
   const [nameError, setnameError] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [phoneError, setPhoneError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [cpasswordError, setCpasswordError] = useState(false);
   const [typeError, setTypeError] = useState(false);
   const [alertSuccess, setAlertSuccess] = useState(false);
   const [alertError, setAlertError] = useState(false);
   const [submitTrue, setSubmitTrue] = useState(false);
+  const [msgemai, setEmailValidMessage] = useState("");
+  const [msgphone, setMsgphone] = useState("");
+  const [msgPassword, setMsgPassword] = useState("");
+  const [msgcPassword, setMsgcPassword] = useState("");
+  const [emailExist, setemailExist] = useState(false);
+  const [phoneExist, setphoneExist] = useState(false);
 
-  const insertProject = async () => {
+  const validateEmail = (email) => {
+    return email.match(
+      /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+  };
+
+  const checkemail = async () => {
+    if (validateEmail(email)) {
+      const obj = {
+        email: email,
+      };
+      let params = { url: apiList.checkEmail, body: obj }; //console.log(params);
+      let response = await ApiService.postData(params);
+      console.log(response);
+
+      if (response.status == true) {
+        setEmailValidMessage("Email already register");
+        setemailExist(true);
+      } else {
+        setEmailValidMessage("");
+        setemailExist(false);
+        return 0;
+      }
+    } else {
+      setemailExist(true);
+      setEmailValidMessage("enter valid email");
+      return 1;
+    }
+  };
+  const checkphone = async () => {
+    const obj = {
+      phone: phone,
+    };
+    let params = { url: apiList.checkPhone, body: obj }; //console.log(params);
+    let response = await ApiService.postData(params); //console.log(response);
+    if (response.status == true) {
+      setMsgphone("Phone already exist");
+      setphoneExist(true);
+    } else {
+      setMsgphone("");
+      setphoneExist(false);
+    }
+  };
+  const acceptOnlyNum = (phone) => {
+    const value = phone.replace(/\D/g, "");
+    setPhone(value);
+  };
+  const AddAdmin = async () => {
     setSubmitTrue(true);
 
     if (!name) {
@@ -41,6 +98,11 @@ export default function Add() {
       setSubmitTrue(false);
       return;
     }
+    if (!validateEmail(email)) {
+      setEmailError(true);
+      setSubmitTrue(false);
+      return;
+    }
     setEmailError(false);
     if (!phone) {
       setPhoneError(true);
@@ -48,15 +110,60 @@ export default function Add() {
       return;
     }
     setPhoneError(false);
+    if (!type) {
+      setTypeError(true);
+      setSubmitTrue(false);
+      return;
+    }
+    setTypeError(false);
+    if (!password || password.length < 6) {
+      if (password.length < 6) {
+        setMsgPassword("Password should contain six character long");
+      }
+      setPasswordError(true);
+      setSubmitTrue(false);
+      return;
+    }
+    setMsgPassword("");
+    setPasswordError(false);
+    if (!cpassword && cpassword.length < 6) {
+      setCpasswordError(true);
+      setSubmitTrue(false);
+      return;
+    }
+    setCpasswordError(false);
+
+    if (cpassword != password) {
+      setCpasswordError(true);
+      setMsgcPassword("Password not match");
+      setSubmitTrue(false);
+      return;
+    }
+    setMsgcPassword("");
+    setCpasswordError(false);
+
+    if (emailExist) {
+      setEmailError(true);
+      setSubmitTrue(false);
+      return;
+    }
+    setEmailError(false);
+    if (phoneExist) {
+      setPhoneError(true);
+      setSubmitTrue(false);
+      return;
+    }
+    setPhoneError(false);
+
     const obj = {
       name: name,
       email: email,
       phone: phone,
       type: type,
+      password: password,
     };
-    //console.log(obj);
-    //return;
-    let params = { url: apiList.addBrand, body: obj }; //console.log(params);
+
+    let params = { url: apiList.addAdmin, body: obj }; //console.log(params);
     let response = await ApiService.postData(params); //console.log(response);
     if (response.status) {
       setAlertSuccess((alertSuccess) => true);
@@ -65,6 +172,10 @@ export default function Add() {
       }, 3000); //document.getElementById("create-course-form").reset();
       setName("");
       setEmail("");
+      setPhone("");
+      setPassword("");
+      setCpassword("");
+      setType("");
       setSubmitTrue((submitTrue) => false);
     } else {
       setAlertError((alertError) => true);
@@ -92,7 +203,7 @@ export default function Add() {
               className="alert position-absolute w-100 alert-success"
               role="alert"
             >
-              Brand added successfully
+              Admin added successfully
             </div>
           )}
 
@@ -121,34 +232,85 @@ export default function Add() {
                       <CFormLabel htmlFor="email">Email</CFormLabel>
 
                       <CFormInput
+                        onBlur={() => checkemail()}
                         value={email}
                         type="text"
-                        className={email ? "border-danger" : ""}
+                        className={emailError ? "border-danger" : ""}
                         id="email"
                         placeholder="Email"
                         onChange={(e) => setEmail((email) => e.target.value)}
                       />
+                      <p className="text-danger">{msgemai}</p>
                     </div>
                     <div className="mb-3">
                       <CFormLabel htmlFor="phone">Phone</CFormLabel>
 
                       <CFormInput
+                        onBlur={() => checkphone()}
                         value={phone}
                         type="text"
-                        className={phone ? "border-danger" : ""}
+                        className={phoneError ? "border-danger" : ""}
                         id="phone"
                         placeholder="Phone"
-                        onChange={(e) => setPhone((phone) => e.target.value)}
+                        onChange={(e) => acceptOnlyNum(e.target.value)}
                       />
+                      <p className="text-danger">{msgphone}</p>
                     </div>
                     <div className="mb-3">
                       <CFormLabel htmlFor="type">Type</CFormLabel>
+                      <select
+                        value={type}
+                        onChange={(e) => setType((type) => e.target.value)}
+                        className={
+                          typeError
+                            ? "form-control border-danger bg-light text-dark"
+                            : "form-control bg-light text-dark"
+                        }
+                      >
+                        <option>Select</option>
+                        <option value="1">Super Admin</option>
+                        <option value="2">Warehouse</option>
+                      </select>
+                    </div>
+
+                    <div className="mb-3">
+                      <CFormLabel htmlFor="password">Password</CFormLabel>
+
+                      <CFormInput
+                        value={password}
+                        type="password"
+                        className={passwordError ? "border-danger" : ""}
+                        id="password"
+                        placeholder="Password"
+                        onChange={(e) =>
+                          setPassword((password) => e.target.value)
+                        }
+                      />
+                      <p className="text-danger">{msgPassword}</p>
+                    </div>
+
+                    <div className="mb-3">
+                      <CFormLabel htmlFor="cpassword">
+                        Confirm Password
+                      </CFormLabel>
+
+                      <CFormInput
+                        value={cpassword}
+                        type="password"
+                        className={cpasswordError ? "border-danger" : ""}
+                        id="cpassword"
+                        placeholder="Confirm Password"
+                        onChange={(e) =>
+                          setCpassword((cpassword) => e.target.value)
+                        }
+                      />
+                      <p className="text-danger">{msgcPassword}</p>
                     </div>
                   </CCol>
                 </CRow>
 
                 <CButton
-                  onClick={() => insertProject()}
+                  onClick={() => AddAdmin()}
                   color="primary"
                   disabled={submitTrue}
                 >

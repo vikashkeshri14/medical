@@ -25,7 +25,7 @@ export default function List() {
   const [pageCount, setPageCount] = useState(0); // Total number of pages
   const [currentPage, setCurrentPage] = useState(0); // Current page (0-indexed)
   const postsPerPage = 10; // Number of posts per page
-
+  const [deleteMessage, setdeleteMessage] = useState(false);
   useEffect(() => {
     fetchPosts();
   }, [currentPage]); // Re-fetch posts when the currentPage changes
@@ -55,15 +55,41 @@ export default function List() {
   const handlePageClick = (data) => {
     setCurrentPage(data.selected); // React-paginate passes selected page (0-indexed)
   };
+  const deleteAdmin = async (id) => {
+    const obj = {
+      id: id,
+    }; //console.log(obj);
+    let params = { url: apiList.deleteAdmin, body: obj }; //console.log(params);
+    let response = await ApiService.postData(params); //console.log(response);
+    if (response.status) {
+      setdeleteMessage(true);
+      setTimeout(() => {
+        setdeleteMessage(false);
+      }, 1000);
+      fetchPosts();
+    }
+  };
   return (
     <CRow>
       <CCol xs={12}>
         <CCard className="mb-4">
+          {deleteMessage && (
+            <span
+              className="alert alert-success"
+              role="alert"
+            >
+              Admin deleted successfully!
+            </span>
+          )}
+
           <CCardHeader>
-            <strong>Admin List</strong>
+            <strong>Admin List</strong>{" "}
           </CCardHeader>
           <CCardBody>
-            <CForm id="create-project-form" style={{ minHeight: "650px" }}>
+            <CForm
+              id="create-project-form"
+              style={{ minHeight: "650px" }}
+            >
               <CContainer>
                 <CRow className="align-items-start">
                   <div className="container">
@@ -90,7 +116,9 @@ export default function List() {
                                   <td>{item.email}</td>
                                   <td>{item.phone}</td>
                                   <td>
-                                    {item.type == "1" ? "Super Admin" : ""}
+                                    {item.role == "1"
+                                      ? "Super Admin"
+                                      : "Warehouse"}
                                   </td>
                                   <td>
                                     <Link
@@ -102,7 +130,7 @@ export default function List() {
                                     &nbsp;
                                     <Link
                                       className="text-danger"
-                                      to="/admin/delete-admin"
+                                      onClick={() => deleteAdmin(item.id)}
                                     >
                                       <i className="fa fa-trash"></i>
                                     </Link>
