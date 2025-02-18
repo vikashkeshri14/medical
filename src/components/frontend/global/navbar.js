@@ -1,6 +1,5 @@
 import React, { Component, useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Social from "../section/social";
 import * as ApiService from "../../../config/config";
 import apiList from "../../../config/apiList.json";
 import config from "../../../config/config.json";
@@ -15,6 +14,8 @@ export default function Navbar() {
   const [totalAmount, setTotalAmount] = useState(0);
   const [cartOpen, setcartOpen] = useState(false);
   const carts = useSelector((state) => state.cart.items);
+  const userInfo = useSelector((state) => state.user.items);
+  console.log(userInfo);
 
   useEffect(() => {
     let val = carts.reduce((acc, data) => {
@@ -70,23 +71,23 @@ export default function Navbar() {
                   <div className="ltn__top-bar-menu">
                     <div className="row">
                       <div className="col-md-3 d-none d-xl-block">
-                        <div class="header-contact-info text-end">
+                        <div className="header-contact-info text-end">
                           <ul>
                             <li>
-                              <div class=" mini-cart-icon-2">
-                                <a class="ltn__utilize-toggle">
-                                  <span class="mini-cart-icon font-24">
-                                    <i class="fa fa-volume-control-phone"></i>
+                              <div className=" mini-cart-icon-2">
+                                <Link className="ltn__utilize-toggle">
+                                  <span className="mini-cart-icon font-24">
+                                    <i className="fa fa-volume-control-phone"></i>
                                   </span>
                                   <h6 className="font-13 ">
                                     <span className="font-13 gray-light font-weight-400">
                                       Call us free:
                                     </span>
-                                    <span class="ltn__secondary-color">
+                                    <span className="ltn__secondary-color">
                                       920000958
                                     </span>
                                   </h6>
-                                </a>
+                                </Link>
                               </div>
                             </li>
                           </ul>
@@ -140,8 +141,8 @@ export default function Navbar() {
                                     className="list-type mt-0"
                                     onClick={() => searchData(items.name)}
                                   >
-                                    <div class="d-flex flex-row">
-                                      <div class="p-2">
+                                    <div className="d-flex flex-row">
+                                      <div className="p-2">
                                         <img
                                           src={items.image_url}
                                           style={{
@@ -150,7 +151,7 @@ export default function Navbar() {
                                           }}
                                         />
                                       </div>
-                                      <div class="p-2">
+                                      <div className="p-2">
                                         <div className="text-gray font-11">
                                           {items.category}
                                         </div>
@@ -169,35 +170,46 @@ export default function Navbar() {
                         </div>
                       </div>
                       <div className="col-md-3 d-none d-xl-block">
-                        <div class="ltn__header-options">
+                        <div className="ltn__header-options">
                           <ul>
                             <li>
-                              <div class="mini-cart-icon mini-cart-icon-2">
-                                <a
+                              <div className="mini-cart-icon mini-cart-icon-2">
+                                <Link
                                   onClick={() =>
                                     setcartOpen((cartOpen) => !cartOpen)
                                   }
-                                  class="ltn__utilize-toggle"
+                                  className="ltn__utilize-toggle"
                                 >
-                                  <span class="mini-cart-icon">
-                                    <i class="icon-shopping-cart"></i>
+                                  <span className="mini-cart-icon">
+                                    <i className="icon-shopping-cart"></i>
                                     <sup>{carts.length}</sup>
                                   </span>
-                                </a>
-                                <a>
-                                  <span class="mini-cart-icon font-24">
-                                    <i class="icon-user"></i>
-                                  </span>
-                                  <h6 className="font-13 text-left ">
+                                </Link>
+                                <div>
+                                  <span className="mini-cart-icon font-24">
+                                    <i className="icon-user"></i>
+                                  </span>{" "}
+                                  &nbsp;
+                                  <h6 className="font-13 text-left mb-0 ml-1 ">
                                     <span className="font-13 gray-light  font-weight-400">
-                                      My Account
+                                      {userInfo.hasOwnProperty("id") &&
+                                      userInfo.id ? (
+                                        <Link to="/account">My Account</Link>
+                                      ) : (
+                                        "My Account"
+                                      )}
                                     </span>
-                                    <span class=" text-black font-12 font-weight-300 ">
-                                      <Link to="/login">Login</Link> /
-                                      <Link to="/register">Register</Link>
-                                    </span>
+                                    <br />
+                                    {!userInfo.hasOwnProperty("id") &&
+                                      !userInfo.id && (
+                                        <span className=" text-black font-11 font-weight-300 ">
+                                          <Link to="/login">Login</Link> /
+                                          &nbsp;
+                                          <Link to="/register">Register</Link>
+                                        </span>
+                                      )}
                                   </h6>
-                                </a>
+                                </div>
                               </div>
                             </li>
                           </ul>
@@ -217,10 +229,10 @@ export default function Navbar() {
                 <div className="block width-95">
                   <div className="site-logo block go-top ">
                     <div className="ltn__search-widget mb-0  border-radius-30">
-                      <form class="d-flex category-bck p-1 border-radius-30">
-                        <div class="input-group">
-                          <span class="input-group-text-category border-radius-30-left  bg-white">
-                            <i class="fa fa-bars text-black top-0 font-14"></i>
+                      <form className="d-flex category-bck p-1 border-radius-30">
+                        <div className="input-group">
+                          <span className="input-group-text-category border-radius-30-left  bg-white">
+                            <i className="fa fa-bars text-black top-0 font-14"></i>
                           </span>
                           <input
                             className="form-control text-white category-bck"
@@ -230,8 +242,8 @@ export default function Navbar() {
                             disabled
                             aria-label="Search"
                           />
-                          <span class="input-group-text-category border-radius-30-right category-bck">
-                            <i class="fa fa-chevron-down text-black font-14"></i>
+                          <span className="input-group-text-category border-radius-30-right category-bck">
+                            <i className="fa fa-chevron-down text-black font-14"></i>
                           </span>
                         </div>
                       </form>
@@ -437,10 +449,7 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-
-      {/* Utilize Cart Menu Start */}
-
-      {carts.length && (
+      {carts.length > 0 && (
         <div
           id="ltn__utilize-cart-menu"
           className={
@@ -504,8 +513,6 @@ export default function Navbar() {
           </div>
         </div>
       )}
-
-      {/* Utilize Cart Menu End */}
     </div>
   );
 }

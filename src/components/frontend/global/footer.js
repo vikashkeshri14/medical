@@ -72,31 +72,31 @@ class Footer extends Component {
                       <br /> Riyadh 12474 Help@medmart.health <br />
                       Hours: 9:00 AM – 5:00PM Sat- Thu
                     </p>
-                    <div class="ltn__social-media footer-text mt-20">
+                    <div className="ltn__social-media footer-text mt-20">
                       <ul>
                         <li>
                           <a href="#" title="Twitter">
-                            <i class="fab fa-x"></i>
+                            <i className="fab fa-x"></i>
                           </a>
                         </li>
                         <li>
                           <a href="#" title="Facebook">
-                            <i class="fab fa-facebook-f"></i>
+                            <i className="fab fa-facebook-f"></i>
                           </a>
                         </li>
                         <li>
                           <a href="#" title="Youtube">
-                            <i class="fab fa-instagram"></i>
+                            <i className="fab fa-instagram"></i>
                           </a>
                         </li>
                         <li>
                           <a href="#" title="Linkedin">
-                            <i class="fab fa-snapchat"></i>
+                            <i className="fab fa-snapchat"></i>
                           </a>
                         </li>
                         <li>
                           <a href="#" title="Linkedin">
-                            <i class="fab fa-linkedin"></i>
+                            <i className="fab fa-linkedin"></i>
                           </a>
                         </li>
                       </ul>

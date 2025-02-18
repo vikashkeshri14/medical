@@ -1,10 +1,17 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import * as ApiService from "../../../config/config";
+import apiList from "../../../config/apiList.json";
+import config from "../../../config/config.json";
+import { useDispatch } from "react-redux";
+import { LoginInfo } from "../../../features/user/user";
 
 export default function LoginContent() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [msgError, setMsgError] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
@@ -18,7 +25,7 @@ export default function LoginContent() {
     }
     setForEmailError(false);
   };
-  const Login = () => {
+  const Login = async () => {
     if (!email) {
       setEmailError(true);
       return;
@@ -29,6 +36,19 @@ export default function LoginContent() {
       return;
     }
     setPasswordError(false);
+
+    const obj = {
+      email: email,
+      password: password,
+    };
+    let params = { url: apiList.loginUser, body: obj }; //console.log(params);
+    let response = await ApiService.postData(params);
+    if (response.status) {
+      dispatch(LoginInfo(response.results));
+      navigate("/account"); //console.log(response);
+    } else {
+      setMsgError("Email/password enter wrong");
+    }
   };
   return (
     <div>
@@ -45,13 +65,12 @@ export default function LoginContent() {
           <div className="row">
             <div className="col-lg-6">
               <div className="account-login-inner">
-                <form
-                  method="GET"
-                  className="ltn__form-box contact-form-box"
-                >
+                <form method="GET" className="ltn__form-box contact-form-box">
                   <div class="mb-3">
                     <label class="form-label">Email/Phone number</label>
                     <input
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
                       type="text"
                       name="email"
                       placeholder="Email/phone number"
@@ -62,11 +81,14 @@ export default function LoginContent() {
                   <div class="mb-3">
                     <label class="form-label">Password</label>
                     <input
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
                       type="password"
                       name="password"
                       placeholder="Password*"
                       className={passwordError ? "border-danger" : ""}
                     />
+                    <p className="text-danger">{msgError}</p>
                   </div>
 
                   <div className="btn-wrapper mt-0">
@@ -127,10 +149,7 @@ export default function LoginContent() {
           id="ltn_forget_password_modal"
           tabIndex={-1}
         >
-          <div
-            className="modal-dialog modal-md"
-            role="document"
-          >
+          <div className="modal-dialog modal-md" role="document">
             <div className="modal-content">
               <div className="modal-header">
                 <button
@@ -152,10 +171,7 @@ export default function LoginContent() {
                           <p className="added-cart text-start">
                             Enter you register email.
                           </p>
-                          <form
-                            action="#"
-                            className="ltn__form-box"
-                          >
+                          <form action="#" className="ltn__form-box">
                             <div class="mb-3">
                               <input
                                 type="text"
