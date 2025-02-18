@@ -64,14 +64,14 @@ export default function DrugsById() {
     window.scrollTo(0, 0);
   };
   return (
-    <div class="ltn__shop-details-area mt-20 pb-85">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 col-md-12">
-            <div class="ltn__shop-details-inner mb-60">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="ltn__shop-details-img-gallery">
+    <div className="ltn__shop-details-area mt-20 pb-85">
+      <div className="container">
+        <div className="row">
+          <div className="col-lg-8 col-md-12">
+            <div className="ltn__shop-details-inner mb-60">
+              <div className="row">
+                <div className="col-md-6">
+                  <div className="ltn__shop-details-img-gallery">
                     <Carousel
                       showArrows={true}
                       showThumbs={true}
@@ -80,21 +80,18 @@ export default function DrugsById() {
                       autoPlay
                     >
                       <div>
-                        <img
-                          alt=""
-                          src={items.length && items[0].image_url}
-                        />
+                        <img alt="" src={items.length && items[0].image_url} />
                       </div>
                     </Carousel>
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="modal-product-info shop-details-info pl-0">
+                <div className="col-md-6">
+                  <div className="modal-product-info shop-details-info pl-0">
                     <h3>{items.length && items[0].name}</h3>
-                    <div class="product-price">
+                    <div className="product-price">
                       <span>SAR {items.length && items[0].price}</span>
                     </div>
-                    <div class="modal-product-meta ltn__product-details-menu-1">
+                    <div className="modal-product-meta ltn__product-details-menu-1">
                       <ul>
                         <li>
                           <strong>Categories:</strong>
@@ -104,17 +101,17 @@ export default function DrugsById() {
                         </li>
                       </ul>
                     </div>
-                    <div class="ltn__product-details-menu-2">
+                    <div className="ltn__product-details-menu-2">
                       <ul>
                         <li>
-                          <div class="cart-plus-minus">
+                          <div className="cart-plus-minus">
                             <div
                               onClick={() => {
                                 if (qty > 1) {
                                   setQty((qty) => parseInt(qty) - 1);
                                 }
                               }}
-                              class="dec qtybutton"
+                              className="dec qtybutton"
                             >
                               -
                             </div>
@@ -127,11 +124,11 @@ export default function DrugsById() {
                               }}
                               value={qty}
                               name="qtybutton"
-                              class="cart-plus-minus-box"
+                              className="cart-plus-minus-box"
                             />
                             <div
                               onClick={() => setQty((qty) => parseInt(qty) + 1)}
-                              class="inc qtybutton"
+                              className="inc qtybutton"
                             >
                               +
                             </div>
@@ -140,98 +137,83 @@ export default function DrugsById() {
                         <li>
                           <Link
                             onClick={() => handelCart(items[0])}
-                            class="theme-btn-1 btn btn-primary btn-effect"
+                            className="theme-btn-1 btn btn-primary btn-effect"
                             title="Add to Cart"
                           >
-                            <i class="fas fa-shopping-cart"></i>
+                            <i className="fas fa-shopping-cart"></i>
                             <span>ADD TO CART</span>
                           </Link>
                         </li>
                       </ul>
                     </div>
-                    <div class="ltn__product-details-menu-3">
+                    <div className="ltn__product-details-menu-3">
                       <ul>
                         <li>
                           <a
                             href="#"
-                            class=""
+                            className=""
                             title="Wishlist"
                             data-bs-toggle="modal"
                             data-bs-target="#liton_wishlist_modal"
                           >
-                            <i class="far fa-heart"></i>
+                            <i className="far fa-heart"></i>
                             <span>Add to Wishlist</span>
                           </a>
                         </li>
                         <li>
                           <a
                             href="#"
-                            class=""
+                            className=""
                             title="Compare"
                             data-bs-toggle="modal"
                             data-bs-target="#quick_view_modal"
                           >
-                            <i class="fas fa-exchange-alt"></i>
+                            <i className="fas fa-exchange-alt"></i>
                             <span>Compare</span>
                           </a>
                         </li>
                       </ul>
                     </div>
                     <hr />
-                    <div class="ltn__social-media">
+                    <div className="ltn__social-media">
                       <ul>
                         <li>Share:</li>
                         <li>
-                          <a
-                            href="#"
-                            title="Facebook"
-                          >
-                            <i class="fab fa-facebook-f"></i>
+                          <a href="#" title="Facebook">
+                            <i className="fab fa-facebook-f"></i>
                           </a>
                         </li>
                         <li>
-                          <a
-                            href="#"
-                            title="Twitter"
-                          >
-                            <i class="fab fa-twitter"></i>
+                          <a href="#" title="Twitter">
+                            <i className="fab fa-twitter"></i>
                           </a>
                         </li>
                         <li>
-                          <a
-                            href="#"
-                            title="Linkedin"
-                          >
-                            <i class="fab fa-linkedin"></i>
+                          <a href="#" title="Linkedin">
+                            <i className="fab fa-linkedin"></i>
                           </a>
                         </li>
                         <li>
-                          <a
-                            href="#"
-                            title="Instagram"
-                          >
-                            <i class="fab fa-instagram"></i>
+                          <a href="#" title="Instagram">
+                            <i className="fab fa-instagram"></i>
                           </a>
                         </li>
                       </ul>
                     </div>
                     <hr />
-                    <div class="ltn__safe-checkout">
+                    <div className="ltn__safe-checkout">
                       <h5>Guaranteed Safe Checkout</h5>
-                      <img
-                        src="img/icons/payment-2.png"
-                        alt="Payment Image"
-                      />
+                      <img src="img/icons/payment-2.png" alt="Payment Image" />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
-            <aside class="sidebar ltn__shop-sidebar ltn__right-sidebar">
-              <div class="widget ltn__top-rated-product-widget">
-                <h4 class="ltn__widget-title ltn__widget-title-border">
+          <div className="col-lg-4">
+            <aside className="sidebar ltn__shop-sidebar ltn__right-sidebar">
+              <div className="widget ltn__top-rated-product-widget">
+                <h4 className="ltn__widget-title ltn__widget-title-border">
                   Top Rated Product
                 </h4>
                 <ul>
@@ -239,8 +221,8 @@ export default function DrugsById() {
                     relatedProduct.map((item, i) => {
                       return (
                         <li>
-                          <div class="top-rated-product-item clearfix">
-                            <div class="top-rated-product-img">
+                          <div className="top-rated-product-item clearfix">
+                            <div className="top-rated-product-img">
                               <Link to={"/drug-detail/" + item.id}>
                                 <img
                                   src={item.image_url}
@@ -249,13 +231,13 @@ export default function DrugsById() {
                                 />
                               </Link>
                             </div>
-                            <div class="top-rated-product-info">
+                            <div className="top-rated-product-info">
                               <h6>
                                 <Link to={"/drug-detail/" + item.id}>
                                   {item.name}
                                 </Link>
                               </h6>
-                              <div class="product-price">
+                              <div className="product-price">
                                 <span>SAR {item.price}</span>
                               </div>
                             </div>
@@ -266,12 +248,9 @@ export default function DrugsById() {
                 </ul>
               </div>
 
-              <div class="widget ltn__banner-widget">
+              <div className="widget ltn__banner-widget">
                 <a href="shop.html">
-                  <img
-                    src="img/banner/2.jpg"
-                    alt="Image"
-                  />
+                  <img src="img/banner/2.jpg" alt="Image" />
                 </a>
               </div>
             </aside>

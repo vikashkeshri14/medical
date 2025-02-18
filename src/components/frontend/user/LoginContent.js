@@ -66,8 +66,8 @@ export default function LoginContent() {
             <div className="col-lg-6">
               <div className="account-login-inner">
                 <form method="GET" className="ltn__form-box contact-form-box">
-                  <div class="mb-3">
-                    <label class="form-label">Email/Phone number</label>
+                  <div className="mb-3">
+                    <label className="form-label">Email/Phone number</label>
                     <input
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
@@ -78,8 +78,8 @@ export default function LoginContent() {
                     />
                   </div>
 
-                  <div class="mb-3">
-                    <label class="form-label">Password</label>
+                  <div className="mb-3">
+                    <label className="form-label">Password</label>
                     <input
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -172,7 +172,7 @@ export default function LoginContent() {
                             Enter you register email.
                           </p>
                           <form action="#" className="ltn__form-box">
-                            <div class="mb-3">
+                            <div className="mb-3">
                               <input
                                 type="text"
                                 name="email"
@@ -183,7 +183,7 @@ export default function LoginContent() {
                                     : "mb-20"
                                 }
                               />
-                              <div class="form-text">
+                              <div className="form-text">
                                 Password reset link send to your email
                               </div>
                             </div>

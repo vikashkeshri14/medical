@@ -140,10 +140,7 @@ export default function Drugs() {
     <section>
       <div className="row">
         <div className="col-md-12 text-right">
-          <div
-            style={{ float: "right" }}
-            className="col-lg-3  mb-2"
-          >
+          <div style={{ float: "right" }} className="col-lg-3  mb-2">
             <input
               value={keyVal}
               type="text"
@@ -176,7 +173,7 @@ export default function Drugs() {
                       className="list-type mt-0"
                       onClick={() => searchData(items.name)}
                     >
-                      <h6 class="dropdown-header broder-radius-0 mb-2">
+                      <h6 className="dropdown-header broder-radius-0 mb-2">
                         {items.name}
                       </h6>
                     </li>
@@ -188,10 +185,7 @@ export default function Drugs() {
         {drugs.length &&
           drugs.map((items, i) => {
             return (
-              <div
-                key={i}
-                className="col-md-12 col-lg-3 mb-10 "
-              >
+              <div key={i} className="col-md-12 col-lg-3 mb-10 ">
                 <div className="card">
                   <div className="d-flex justify-content-between p-3">
                     <div
@@ -219,14 +213,14 @@ export default function Drugs() {
                           placement="bottom-end"
                         >
                           <li>
-                            <Link class="dropdown-item text-warning">
+                            <Link className="dropdown-item text-warning">
                               <i className="fa fa-pen"></i> Edit
                             </Link>
                           </li>
                           {items.bestdeal ? (
                             <li>
                               <Link
-                                class="dropdown-item text-success"
+                                className="dropdown-item text-success"
                                 onClick={() => {
                                   removeBestSelling(items.id);
                                 }}
@@ -238,7 +232,7 @@ export default function Drugs() {
                           ) : (
                             <li>
                               <Link
-                                class="dropdown-item text-success"
+                                className="dropdown-item text-success"
                                 onClick={() => {
                                   markBestSelling(items.id);
                                 }}
@@ -251,7 +245,7 @@ export default function Drugs() {
                           {items.hotdeal ? (
                             <li>
                               <Link
-                                class="dropdown-item text-danger"
+                                className="dropdown-item text-danger"
                                 onClick={() => {
                                   RemovehotDeal(items.id);
                                 }}
@@ -263,7 +257,7 @@ export default function Drugs() {
                           ) : (
                             <li>
                               <Link
-                                class="dropdown-item text-danger"
+                                className="dropdown-item text-danger"
                                 onClick={() => {
                                   hotDeal(items.id);
                                 }}

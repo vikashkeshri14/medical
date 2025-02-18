@@ -234,13 +234,10 @@ export default function RegisterContent() {
         <div className="row">
           <div className="col-lg-6 offset-lg-3">
             <div className="account-login-inner">
-              <form
-                action="#"
-                className="ltn__form-box contact-form-box"
-              >
+              <form action="#" className="ltn__form-box contact-form-box">
                 <div className={next ? "d-none" : ""}>
-                  <div class="mb-3">
-                    <label class="form-label">Pharmacy Name</label>
+                  <div className="mb-3">
+                    <label className="form-label">Pharmacy Name</label>
                     <input
                       value={name}
                       onChange={(e) => setName(e.target.value)}
@@ -249,8 +246,8 @@ export default function RegisterContent() {
                       className={nameError ? "mb-1 border-danger" : "mb-1"}
                     />
                   </div>
-                  <div class="mb-3">
-                    <label class="form-label">Pharmacy Owner Name</label>
+                  <div className="mb-3">
+                    <label className="form-label">Pharmacy Owner Name</label>
                     <input
                       value={owner}
                       type="text"
@@ -259,8 +256,8 @@ export default function RegisterContent() {
                       className={ownerError ? "mb-1 border-danger" : "mb-1"}
                     />
                   </div>
-                  <div class="mb-3">
-                    <label class="form-label">WhatsApp Number</label>
+                  <div className="mb-3">
+                    <label className="form-label">WhatsApp Number</label>
                     <input
                       onBlur={() => checkWhatsapp()}
                       value={wphone}
@@ -272,8 +269,8 @@ export default function RegisterContent() {
                     />
                     <p className="text-danger">{msgwhatsapp}</p>
                   </div>
-                  <div class="mb-3">
-                    <label class="form-label">Tax number</label>
+                  <div className="mb-3">
+                    <label className="form-label">Tax number</label>
                     <input
                       value={tax}
                       type="text"
@@ -283,8 +280,8 @@ export default function RegisterContent() {
                       className={taxError ? "mb-1 border-danger" : "mb-1"}
                     />
                   </div>
-                  <div class="mb-3">
-                    <label class="form-label">Email</label>
+                  <div className="mb-3">
+                    <label className="form-label">Email</label>
                     <input
                       onBlur={() => checkemail()}
                       value={email}
@@ -296,8 +293,8 @@ export default function RegisterContent() {
                     />
                     <p className="text-danger">{msgemai}</p>
                   </div>
-                  <div class="mb-3">
-                    <label class="form-label">Pharmacy Type</label>
+                  <div className="mb-3">
+                    <label className="form-label">Pharmacy Type</label>
                     <select
                       value={pharmacyType}
                       onChange={(e) => setPharmacyType(e.target.value)}
@@ -312,8 +309,8 @@ export default function RegisterContent() {
                       <option value="chain">Chain</option>
                     </select>
                   </div>
-                  <div class="mb-3">
-                    <label class="form-label">Password</label>
+                  <div className="mb-3">
+                    <label className="form-label">Password</label>
                     <input
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -324,8 +321,8 @@ export default function RegisterContent() {
                     />
                     <p className="text-danger">{msgPassword}</p>
                   </div>
-                  <div class="mb-3">
-                    <label class="form-label">Confirm Password</label>
+                  <div className="mb-3">
+                    <label className="form-label">Confirm Password</label>
                     <input
                       value={cpassword}
                       onChange={(e) => setCpassword(e.target.value)}
@@ -351,10 +348,10 @@ export default function RegisterContent() {
                 <div className={!next ? "d-none" : ""}>
                   <p>Phone Number Verification</p>
 
-                  <div class="mb-3">
+                  <div className="mb-3">
                     <label
                       for="exampleFormControlInput1"
-                      class="form-label"
+                      className="form-label"
                     >
                       Mobile Number
                     </label>
@@ -370,7 +367,7 @@ export default function RegisterContent() {
                       id="exampleFormControlInput1"
                       placeholder="Mobile number"
                     />
-                    <div class="form-text">
+                    <div className="form-text">
                       This number will be used to sign in on website and mobile
                       application
                     </div>
@@ -383,10 +380,10 @@ export default function RegisterContent() {
                     </button>
                   </div>
 
-                  <div class="mb-3">
+                  <div className="mb-3">
                     <label
                       for="exampleFormControlInput1"
-                      class="form-label"
+                      className="form-label"
                     >
                       Otp Code
                     </label>
@@ -413,7 +410,9 @@ export default function RegisterContent() {
                       }}
                       renderInput={(props) => <input {...props} />}
                     />
-                    <div class="form-text">Didn’t receive the code?RESEND</div>
+                    <div className="form-text">
+                      Didn’t receive the code?RESEND
+                    </div>
                   </div>
                   <div className="btn-wrapper">
                     <button
