@@ -34,7 +34,8 @@ import Orders from "./pages/frontend/user/Orders";
 import Profile from "./pages/frontend/user/Profile";
 import ChangePassword from "./pages/frontend/user/ChangePassword";
 import Address from "./pages/frontend/user/Address";
-import AccountDetails from "./pages/frontend/user/AccountDetails";
+import TrackOrder from "./pages/frontend/user/TrackOrder";
+import TermsAndConditions from "./pages/frontend/TermsAndConditions";
 function App() {
   return (
     <Router basename={"medmart"}>
@@ -50,9 +51,14 @@ function App() {
           <Route exact path="/account" element={<Accounts />} />
           <Route exact path="/orders" element={<Orders />} />
           <Route exact path="/profile" element={<Profile />} />
+          <Route
+            exact
+            path="/terms-and-conditions"
+            element={<TermsAndConditions />}
+          />
           <Route exact path="/change-password" element={<ChangePassword />} />
           <Route exact path="/address" element={<Address />} />
-          <Route exact path="/account-details" element={<AccountDetails />} />
+          <Route exact path="/track-orders" element={<TrackOrder />} />
 
           <Route exact path="/carts" element={<Carts />} />
           <Route exact path="/checkout" element={<Checkout />} />

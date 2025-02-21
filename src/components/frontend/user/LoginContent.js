@@ -43,6 +43,7 @@ export default function LoginContent() {
     };
     let params = { url: apiList.loginUser, body: obj }; //console.log(params);
     let response = await ApiService.postData(params);
+    //console.log(response);
     if (response.status) {
       dispatch(LoginInfo(response.results));
       navigate("/account"); //console.log(response);
@@ -65,7 +66,10 @@ export default function LoginContent() {
           <div className="row">
             <div className="col-lg-6">
               <div className="account-login-inner">
-                <form method="GET" className="ltn__form-box contact-form-box">
+                <form
+                  method="GET"
+                  className="ltn__form-box contact-form-box"
+                >
                   <div className="mb-3">
                     <label className="form-label">Email/Phone number</label>
                     <input
@@ -149,7 +153,10 @@ export default function LoginContent() {
           id="ltn_forget_password_modal"
           tabIndex={-1}
         >
-          <div className="modal-dialog modal-md" role="document">
+          <div
+            className="modal-dialog modal-md"
+            role="document"
+          >
             <div className="modal-content">
               <div className="modal-header">
                 <button
@@ -171,7 +178,10 @@ export default function LoginContent() {
                           <p className="added-cart text-start">
                             Enter you register email.
                           </p>
-                          <form action="#" className="ltn__form-box">
+                          <form
+                            action="#"
+                            className="ltn__form-box"
+                          >
                             <div className="mb-3">
                               <input
                                 type="text"

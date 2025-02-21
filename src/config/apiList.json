@@ -47,5 +47,6 @@
   "registration": "/user/registration",
   "checkPhoneUser": "/user/checkPhone",
   "checkEmailUser": "/user/checkEmail",
-  "checkWhatsaapUser": "/user/checkWhatsaap"
+  "checkWhatsaapUser": "/user/checkWhatsaap",
+  "changePassword": "/user/changePassword"
 }

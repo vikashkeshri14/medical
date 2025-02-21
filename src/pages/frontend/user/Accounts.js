@@ -3,7 +3,7 @@ import Footer from "../../../components/frontend/global/footer";
 import Navbar from "../../../components/frontend/global/navbar";
 import HomeMarquee from "../../../components/frontend/section/homeMarquee";
 import NewsLetter from "../../../components/frontend/section/newsLetter";
-import MyAccount from "../../../components/frontend/user/MyAccount";
+import Details from "../../../components/frontend/user/Details";
 
 export default function Accounts() {
   return (
@@ -11,7 +11,7 @@ export default function Accounts() {
       <Navbar />
       <HomeMarquee />
       <div className="mt-30">
-        <MyAccount />
+        <Details />
       </div>
       <NewsLetter />
       <Footer />

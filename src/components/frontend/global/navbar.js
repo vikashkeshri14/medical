@@ -1,21 +1,21 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import * as ApiService from "../../../config/config";
 import apiList from "../../../config/apiList.json";
 import config from "../../../config/config.json";
 import { useDispatch, useSelector } from "react-redux";
-import { removeCart, removeCartById } from "../../../features/cart/cart";
+import { removeCartById } from "../../../features/cart/cart";
+import Categories from "./Categories";
 export default function Navbar() {
   const { pathname } = useLocation();
   const [error, setError] = useState(false);
   const [keyVal, setkeyVal] = useState("");
   const [suggesation, setSuggesation] = useState([]);
-  //const [successAdded, setSuccessAdded] = useState(true);
+
   const [totalAmount, setTotalAmount] = useState(0);
   const [cartOpen, setcartOpen] = useState(false);
   const carts = useSelector((state) => state.cart.items);
   const userInfo = useSelector((state) => state.user.items);
-  console.log(userInfo);
 
   useEffect(() => {
     let val = carts.reduce((acc, data) => {
@@ -37,19 +37,15 @@ export default function Navbar() {
         setSuggesation(response.results);
       }
     }
-    //setkeyVal((keyVal) => val);
   };
   const searchData = async (args) => {
     setkeyVal(args);
     setSuggesation((suggesation) => []);
   };
-
   const dispatch = useDispatch();
-
   const removeFromCart = (id) => {
     dispatch(removeCartById(id));
   };
-  //console.log(cart);
   return (
     <div>
       <header className="ltn__header-area ltn__header-5 ltn__header-transparent--- gradient-color-4---">
@@ -126,7 +122,7 @@ export default function Navbar() {
                             </button>
                           </form>
                           <ul
-                            class={
+                            className={
                               suggesation.length
                                 ? "dropdown-menu block broder-radius-0 w-94 pt-0"
                                 : "dropdown-menu broder-radius-0  w-94 pt-0"
@@ -225,32 +221,7 @@ export default function Navbar() {
         <div className="ltn__header-middle-area  ltn__sticky-bg-white">
           <div className="container">
             <div className="row">
-              <div className="col d-none d-xl-block">
-                <div className="block width-95">
-                  <div className="site-logo block go-top ">
-                    <div className="ltn__search-widget mb-0  border-radius-30">
-                      <form className="d-flex category-bck p-1 border-radius-30">
-                        <div className="input-group">
-                          <span className="input-group-text-category border-radius-30-left  bg-white">
-                            <i className="fa fa-bars text-black top-0 font-14"></i>
-                          </span>
-                          <input
-                            className="form-control text-white category-bck"
-                            type="search"
-                            value="All Categories"
-                            readOnly
-                            disabled
-                            aria-label="Search"
-                          />
-                          <span className="input-group-text-category border-radius-30-right category-bck">
-                            <i className="fa fa-chevron-down text-black font-14"></i>
-                          </span>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Categories />
               <div className="col header-menu-column">
                 <div className="header-menu d-none d-xl-block">
                   <nav>
@@ -284,10 +255,14 @@ export default function Navbar() {
                         </li>
                         <li>
                           <Link
-                            className={pathname == "/blog" ? "active-nav" : ""}
-                            to="/blog"
+                            className={
+                              pathname == "/terms-and-conditions"
+                                ? "active-nav"
+                                : ""
+                            }
+                            to="/terms-and-conditions"
                           >
-                            Blog
+                            Terms and Conditions
                           </Link>
                         </li>
 
@@ -406,9 +381,9 @@ export default function Navbar() {
               <li>
                 <Link
                   className={pathname == "/" ? "active-nav" : ""}
-                  to="/blog"
+                  to="/terms-and-conditions"
                 >
-                  Blog
+                  Terms and Conditions
                 </Link>
               </li>
 
@@ -471,9 +446,9 @@ export default function Navbar() {
             <div className="mini-cart-product-area ltn__scrollbar">
               {carts.map((item, i) => {
                 return (
-                  <div className="mini-cart-item clearfix">
+                  <div key={i} className="mini-cart-item clearfix">
                     <div className="mini-cart-img go-top">
-                      <Link to="/product-details">
+                      <Link to={"/drug-detail/" + item.drugId}>
                         <img src={item.img} alt="Image" />
                       </Link>
                       <span

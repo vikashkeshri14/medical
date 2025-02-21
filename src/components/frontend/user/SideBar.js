@@ -39,18 +39,19 @@ export default function SideBar() {
         >
           Address <i className="fas fa-map-marker-alt" />
         </Link>
-        <Link
-          to="/account-details"
-          className={pathname == "/account-details" ? "active show" : ""}
-        >
-          Account Details <i className="fas fa-user" />
-        </Link>
 
         <Link
           to="/orders"
           className={pathname == "/orders" ? "active show" : ""}
         >
           Orders <i className="fa-solid fa-cart-plus" />
+        </Link>
+
+        <Link
+          to="/track-orders"
+          className={pathname == "/track-orders" ? "active show" : ""}
+        >
+          Track Order <i className="fa-solid fa-truck-fast" />
         </Link>
 
         <Link

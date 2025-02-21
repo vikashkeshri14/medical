@@ -110,23 +110,31 @@ class Footer extends Component {
                   <div className="footer-menu go-top">
                     <ul>
                       <li>
+                        <Link className="footer-text" to="/">
+                          Home
+                        </Link>
+                      </li>
+                      <li>
                         <Link className="footer-text" to="/about-us">
                           About Us
                         </Link>
                       </li>
                       <li>
-                        <Link className="footer-text" to="/contact-us">
-                          Contact Us
-                        </Link>
-                      </li>
-                      <li>
-                        <Link className="footer-text" to="/blog">
-                          Blog
-                        </Link>
-                      </li>
-                      <li>
                         <Link className="footer-text" to="/drugs">
                           Drugs
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          className="footer-text"
+                          to="/terms-and-conditions"
+                        >
+                          Terms And Conditions
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="footer-text" to="/contact-us">
+                          Contact Us
                         </Link>
                       </li>
                     </ul>

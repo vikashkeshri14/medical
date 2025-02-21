@@ -66,13 +66,15 @@ export default function ShopByBrand() {
             {datas.length &&
               datas.map((items, i) => {
                 return (
-                  <div className="col-12">
+                  <div key={i} className="col-12">
                     <div className="ltn__category-item  border-0 border-radius-10 ltn__category-item-6 text-center">
                       <div className="ltn__category-item-img text-center">
-                        <img
-                          style={{ height: "170px", margin: auto }}
-                          src={config.imgUri + "/" + items.images}
-                        />
+                        <Link to={"/drugs?cat=" + items.slug}>
+                          <img
+                            style={{ height: "170px", margin: auto }}
+                            src={config.imgUri + "/" + items.images}
+                          />
+                        </Link>
                       </div>
                     </div>
                   </div>

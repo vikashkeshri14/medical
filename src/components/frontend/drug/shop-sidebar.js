@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import apiList from "../../../config/apiList.json";
 import config from "../../../config/config.json";
 import * as ApiService from "../../../config/config";
@@ -17,6 +17,7 @@ export default function Sidebar() {
     setFilterCategories,
   } = useContext(FilterContext);
 
+  // const { search } = useLocation();
   useEffect(() => {
     const categoryFetch = async () => {
       let paramsCity = { url: apiList.getCategoryWithDrugCount };

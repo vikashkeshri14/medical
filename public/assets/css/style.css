@@ -288,7 +288,7 @@ font-family: 'Poppins', sans-serif;
   /* Background Colors ( 1, 2, 3, 4, 5 )  */
   --section-bg-1: #ffffff;
   /* White */
-  --section-bg-2: #171b2a;
+  --section-bg-2: #111f59;
   /* Black */
   --section-bg-5: #fff2f0;
   /* White */
@@ -5378,11 +5378,17 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   position: absolute;
   margin: 0;
   top: 130%;
-  -webkit-transition: opacity 0.2s ease 0.1s, visibility 0.2s ease 0.1s,
+  -webkit-transition:
+    opacity 0.2s ease 0.1s,
+    visibility 0.2s ease 0.1s,
     top 0.2s ease 0.1s;
-  -o-transition: opacity 0.2s ease 0.1s, visibility 0.2s ease 0.1s,
+  -o-transition:
+    opacity 0.2s ease 0.1s,
+    visibility 0.2s ease 0.1s,
     top 0.2s ease 0.1s;
-  transition: opacity 0.2s ease 0.1s, visibility 0.2s ease 0.1s,
+  transition:
+    opacity 0.2s ease 0.1s,
+    visibility 0.2s ease 0.1s,
     top 0.2s ease 0.1s;
   min-width: 230px;
   padding: 15px 0;
@@ -5927,11 +5933,17 @@ ul.wp-block-latest-posts.is-grid.alignwide {
   top: 130%;
   padding: 10px 0;
   margin: 0;
-  -webkit-transition: opacity 0.2s ease 0.1s, visibility 0.2s ease 0.1s,
+  -webkit-transition:
+    opacity 0.2s ease 0.1s,
+    visibility 0.2s ease 0.1s,
     top 0.2s ease 0.1s;
-  -o-transition: opacity 0.2s ease 0.1s, visibility 0.2s ease 0.1s,
+  -o-transition:
+    opacity 0.2s ease 0.1s,
+    visibility 0.2s ease 0.1s,
     top 0.2s ease 0.1s;
-  transition: opacity 0.2s ease 0.1s, visibility 0.2s ease 0.1s,
+  transition:
+    opacity 0.2s ease 0.1s,
+    visibility 0.2s ease 0.1s,
     top 0.2s ease 0.1s;
   opacity: 0;
   visibility: hidden;
@@ -6858,12 +6870,14 @@ ul.wp-block-latest-posts.is-grid.alignwide {
 }
 
 .mobile-menu-toggle svg path {
-  -webkit-transition: stroke-dashoffset 0.5s
-      cubic-bezier(0.25, -0.25, 0.75, 1.25),
+  -webkit-transition:
+    stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25),
     stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
-  -o-transition: stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25),
+  -o-transition:
+    stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25),
     stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
-  transition: stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25),
+  transition:
+    stroke-dashoffset 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25),
     stroke-dasharray 0.5s cubic-bezier(0.25, -0.25, 0.75, 1.25);
   fill: none;
   stroke: #333;
@@ -14617,8 +14631,12 @@ input.cart-plus-minus-box {
   transition: -webkit-transform 0.3s ease 1s;
   -o-transition: transform 0.3s ease 1s;
   transition: transform 0.3s ease 1s;
-  transition: transform 0.3s ease 1s, -webkit-transform 0.3s ease 1s;
-  transition: transform 0.3s ease 1s, -webkit-transform 0.3s ease 1s;
+  transition:
+    transform 0.3s ease 1s,
+    -webkit-transform 0.3s ease 1s;
+  transition:
+    transform 0.3s ease 1s,
+    -webkit-transform 0.3s ease 1s;
   right: 0;
   -webkit-transform: translate3d(100%, -50%, 0);
   transform: translate3d(100%, -50%, 0);
@@ -14663,11 +14681,14 @@ input.cart-plus-minus-box {
   overflow: hidden;
   font-size: 14px;
   font-weight: 600;
-  -webkit-transition: padding 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15),
+  -webkit-transition:
+    padding 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15),
     max-width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
-  -o-transition: padding 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15),
+  -o-transition:
+    padding 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15),
     max-width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
-  transition: padding 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15),
+  transition:
+    padding 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15),
     max-width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
 }
 .body-sidebar-icons a.facebook-icon {

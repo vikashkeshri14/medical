@@ -509,3 +509,9 @@ input.cart-plus-minus-box {
   align-items: center;
   min-width: 125px;
 }
+.ltn__tab-menu-list .nav a {
+  color: var(--section-bg-2);
+}
+.mt-4-5 {
+  margin-top: 43px;
+}

@@ -7,7 +7,7 @@ export const getData = async (params) => {
   let apiUrl = params.url;
   try {
     const response = await axios.get(config.apiRoot + apiUrl);
-    console.log(response);
+    //console.log(response);
     if (response["status"] == 200) {
       return response["data"];
     } else {
@@ -22,7 +22,7 @@ export const getData = async (params) => {
 export const postData = async (params) => {
   let apiUrl = params.url;
   let body = params.body;
-  console.log(config.apiRoot + apiUrl);
+  //console.log(config.apiRoot + apiUrl);
   try {
     const result = await axios.post(config.apiRoot + apiUrl, body);
     //console.log(result["status"]);
@@ -30,7 +30,7 @@ export const postData = async (params) => {
     if (result["status"] == 200) {
       return result["data"];
     } else {
-      console.log(error);
+      //console.log(error);
       return error;
     }
   } catch (error) {

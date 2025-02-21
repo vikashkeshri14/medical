@@ -64,18 +64,27 @@ function CategoriesSlider() {
           <Slider {...settings}>
             {datas.length &&
               datas.map((items, i) => {
+                //console.log(items);
                 return (
-                  <div key={i} className="col-12  slider-hover">
+                  <div
+                    key={i}
+                    className="col-12  slider-hover"
+                  >
                     <div className="ltn__category-item border-0 border-radius-10 ltn__category-item-6 text-center">
                       <div className="ltn__category-item-img p-2">
-                        <img
-                          style={{ margin: "auto", height: "130px" }}
-                          src={config.imgUri + "/" + items.images}
-                        />
+                        <Link to={"/drugs?cat=" + items.slug}>
+                          <img
+                            style={{ margin: "auto", height: "130px" }}
+                            src={config.imgUri + "/" + items.images}
+                          />
+                        </Link>
                       </div>
                       <div className="ltn__category-item-name ">
                         <h6>
-                          <Link to="" className="font-11 font-weight-600">
+                          <Link
+                            to={"/drugs?cat=" + items.slug}
+                            className="font-11 font-weight-600"
+                          >
                             {items.name}
                           </Link>
                         </h6>
