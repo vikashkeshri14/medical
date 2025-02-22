@@ -4,15 +4,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeCart, updateCart } from "../../../features/cart/cart";
 export default function CartDetails() {
   const [totalAmount, setTotalAmount] = useState(0);
-  //const [qty,setQty]=useState()
+  const [subtotal, setSubtotal] = useState(0);
+  const [vat, setVat] = useState(0);
+  const [shipping, setShipping] = useState(0);
   const carts = useSelector((state) => state.cart.items);
   useEffect(() => {
     let val = carts.reduce((acc, data) => {
       acc += data.price * data.quantity;
       return acc;
     }, 0);
-    // console.log(val);
-    setTotalAmount(val.toFixed(2));
+    const vatValue = (val * 0.15).toFixed(2);
+    setVat(vatValue);
+    setSubtotal(val.toFixed(2));
+    const ordertotal =
+      parseFloat(vatValue) + parseFloat(val) + parseFloat(shipping);
+    setTotalAmount(ordertotal.toFixed(2));
   }, [carts]);
 
   //add to cart
@@ -26,9 +32,6 @@ export default function CartDetails() {
         quantity: quantity,
       })
     );
-
-    //setQty((qty) => 1);
-    // window.scrollTo(0, 0);
   };
   return (
     <div className="liton__shoping-cart-area mt-40 mb-120">
@@ -44,37 +47,22 @@ export default function CartDetails() {
                         let total = data.quantity * data.price;
                         return (
                           <tr key={i}>
-                            <td
-                              width="20%"
-                              className="cart-product-image"
-                            >
+                            <td width="20%" className="cart-product-image">
                               <Link to="#">
-                                <img
-                                  src={data.img}
-                                  alt="#"
-                                />
+                                <img src={data.img} alt="#" />
                               </Link>
                             </td>
-                            <td
-                              width="30%"
-                              className="cart-product-info"
-                            >
+                            <td width="30%" className="cart-product-info">
                               <h4 className="font-14 font-weight-600">
                                 <Link to={"/drug-detail/" + data.drugId}>
                                   {data.name}
                                 </Link>
                               </h4>
                             </td>
-                            <td
-                              width="15%"
-                              className="cart-product-price"
-                            >
+                            <td width="15%" className="cart-product-price">
                               SAR {data.price}
                             </td>
-                            <td
-                              width="10%"
-                              className="cart-product-quantity"
-                            >
+                            <td width="10%" className="cart-product-quantity">
                               <input
                                 onChange={(e) =>
                                   handelCart(data, e.target.value)
@@ -87,10 +75,7 @@ export default function CartDetails() {
                                 className="form-control"
                               />
                             </td>
-                            <td
-                              width="20%"
-                              className="cart-product-subtotal"
-                            >
+                            <td width="20%" className="cart-product-subtotal">
                               SAR {total.toFixed(2)}
                             </td>
                           </tr>
@@ -124,15 +109,15 @@ export default function CartDetails() {
                   <tbody>
                     <tr>
                       <td>Cart Subtotal</td>
-                      <td>{totalAmount}</td>
+                      <td>{subtotal}</td>
                     </tr>
                     <tr>
                       <td>Shipping and Handing</td>
-                      <td>00.00</td>
+                      <td>{shipping}</td>
                     </tr>
                     <tr>
                       <td>Vat</td>
-                      <td>00.00</td>
+                      <td>{vat}</td>
                     </tr>
                     <tr>
                       <td>

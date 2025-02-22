@@ -5,6 +5,9 @@ import { LogoutInfo } from "../../../features/user/user";
 
 export default function SideBar() {
   const { pathname } = useLocation();
+
+  const path = pathname.split("/");
+  //console.log(path);
   const navigate = useNavigate();
   useEffect(() => {
     let loginInfo = localStorage.getItem("loginInfo");
@@ -42,7 +45,11 @@ export default function SideBar() {
 
         <Link
           to="/orders"
-          className={pathname == "/orders" ? "active show" : ""}
+          className={
+            pathname == "/orders" || path[1] == "order-detail"
+              ? "active show"
+              : ""
+          }
         >
           Orders <i className="fa-solid fa-cart-plus" />
         </Link>

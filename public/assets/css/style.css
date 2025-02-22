@@ -1140,6 +1140,9 @@ button:focus {
 .input-item-email.ltn__custom-icon::before {
   content: "\f0e0";
 }
+.input-item-password.ltn__custom-icon::before {
+  content: "\f023";
+}
 
 .input-item-phone.ltn__custom-icon::before {
   content: "\f095";

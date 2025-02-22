@@ -69,7 +69,7 @@ export default function ShopByBrand() {
                   <div key={i} className="col-12">
                     <div className="ltn__category-item  border-0 border-radius-10 ltn__category-item-6 text-center">
                       <div className="ltn__category-item-img text-center">
-                        <Link to={"/drugs?cat=" + items.slug}>
+                        <Link to={"/drugs?key=" + items.name}>
                           <img
                             style={{ height: "170px", margin: auto }}
                             src={config.imgUri + "/" + items.images}

@@ -48,5 +48,10 @@
   "checkPhoneUser": "/user/checkPhone",
   "checkEmailUser": "/user/checkEmail",
   "checkWhatsaapUser": "/user/checkWhatsaap",
-  "changePassword": "/user/changePassword"
+  "changePassword": "/user/changePassword",
+  "addOrder": "/order/addOrder",
+  "getOrderById": "/order/getOrderById",
+  "getOrderByUserId": "/order/getOrderByUserId",
+  "getAllOrder": "/order/getAllOrder",
+  "getOrderByToken": "/order/getOrderByToken"
 }

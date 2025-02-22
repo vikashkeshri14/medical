@@ -31,6 +31,11 @@ const cartSlice = createSlice({
       state.items = val;
       localStorage.setItem("cart", JSON.stringify(state.items));
     },
+    clearCarts: (state, action) => {
+      let val = [];
+      state.items = val;
+      localStorage.setItem("cart", JSON.stringify(state.items));
+    },
     updateCart: (state, action) => {
       const { drugId, quantity } = action.payload;
       let val = state.items.filter((data, i) => {
@@ -46,6 +51,7 @@ const cartSlice = createSlice({
   },
 });
 // Action creators are generated for each case reducer function
-export const { addToCart, removeCartById, updateCart } = cartSlice.actions;
+export const { addToCart, removeCartById, updateCart, clearCarts } =
+  cartSlice.actions;
 
 export default cartSlice.reducer;

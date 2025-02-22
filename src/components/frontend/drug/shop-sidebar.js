@@ -17,18 +17,37 @@ export default function Sidebar() {
     setFilterCategories,
   } = useContext(FilterContext);
 
-  // const { search } = useLocation();
+  const { search } = useLocation();
+
   useEffect(() => {
-    const categoryFetch = async () => {
+    const categoryFetch = async (catslug = "") => {
+      if (search) {
+        let keysearch = search.split("=");
+        // console.log(keysearch);
+        if (keysearch[0] != "?key")
+          catslug = decodeURIComponent(
+            (keysearch[1] + "").replace(/\+/g, "%20")
+          );
+        //console.log(catslug);
+      }
       let paramsCity = { url: apiList.getCategoryWithDrugCount };
       let response = await ApiService.getData(paramsCity);
       if (response.results.length > 0) {
         let catarr = response.results;
         let filtercat = [];
-
         for (let i = 0; i < catarr.length; i++) {
-          catarr[i].isChecked = true;
-          filtercat.push(catarr[i].category_slug);
+          if (catslug == "") {
+            catarr[i].isChecked = true;
+            filtercat.push(catarr[i].category_slug);
+          } else {
+            if (catslug == catarr[i].category_slug) {
+              catarr[i].isChecked = true;
+            } else {
+              catarr[i].isChecked = false;
+            }
+
+            filtercat.push(catarr[i].category_slug);
+          }
         }
         setCategories(catarr);
         setFilterCategories(filtercat);
@@ -48,11 +67,8 @@ export default function Sidebar() {
       }
       return acc;
     }, []);
-
     setFilterCategories(filtercat);
-
     setCategories((categories) => updatedCheckboxes);
-    //console.log(updatedCheckboxes);
   };
   return (
     <div className="col-lg-3  mb-100">

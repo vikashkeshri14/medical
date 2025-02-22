@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import * as ApiService from "../../../config/config";
 import apiList from "../../../config/apiList.json";
 import config from "../../../config/config.json";
@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeCartById } from "../../../features/cart/cart";
 import Categories from "./Categories";
 export default function Navbar() {
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   const [error, setError] = useState(false);
   const [keyVal, setkeyVal] = useState("");
@@ -45,6 +46,15 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const removeFromCart = (id) => {
     dispatch(removeCartById(id));
+  };
+
+  const searchDrugs = async () => {
+    if (!keyVal) {
+      setError(true);
+      return;
+    }
+    setError(false);
+    navigate("/drugs?key=" + keyVal);
   };
   return (
     <div>
@@ -91,15 +101,7 @@ export default function Navbar() {
                       </div>
                       <div className="col-md-6">
                         <div className="ltn__search-widget mb-0 border-radius-30">
-                          <form
-                            onSubmit={() => {
-                              if (!keyVal) {
-                                setError(true);
-                                return;
-                              }
-                            }}
-                            action={"drugs"}
-                          >
+                          <form>
                             <input
                               value={keyVal}
                               type="text"
@@ -117,7 +119,7 @@ export default function Navbar() {
                                 setkeyVal(e.target.value);
                               }}
                             />
-                            <button type="submit">
+                            <button type="button" onClick={() => searchDrugs()}>
                               <i className="fas fa-search" />
                             </button>
                           </form>
@@ -134,6 +136,7 @@ export default function Navbar() {
                               suggesation.map((items, i) => {
                                 return (
                                   <li
+                                    key={i}
                                     className="list-type mt-0"
                                     onClick={() => searchData(items.name)}
                                   >
@@ -170,7 +173,7 @@ export default function Navbar() {
                           <ul>
                             <li>
                               <div className="mini-cart-icon mini-cart-icon-2">
-                                <Link
+                                <a
                                   onClick={() =>
                                     setcartOpen((cartOpen) => !cartOpen)
                                   }
@@ -180,7 +183,7 @@ export default function Navbar() {
                                     <i className="icon-shopping-cart"></i>
                                     <sup>{carts.length}</sup>
                                   </span>
-                                </Link>
+                                </a>
                                 <div>
                                   <span className="mini-cart-icon font-24">
                                     <i className="icon-user"></i>
@@ -480,7 +483,7 @@ export default function Navbar() {
                 <Link to="/carts" className="theme-btn-1 btn-secondary btn ">
                   View Cart
                 </Link>
-                <Link to="/carts" className="theme-btn-2 btn-primary btn ">
+                <Link to="/checkout" className="theme-btn-2 btn-primary btn ">
                   Checkout
                 </Link>
               </div>
