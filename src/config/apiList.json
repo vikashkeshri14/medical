@@ -49,6 +49,7 @@
   "checkEmailUser": "/user/checkEmail",
   "checkWhatsaapUser": "/user/checkWhatsaap",
   "changePassword": "/user/changePassword",
+  "getUserById": "/user/getUserById",
   "addOrder": "/order/addOrder",
   "getOrderById": "/order/getOrderById",
   "getOrderByUserId": "/order/getOrderByUserId",
