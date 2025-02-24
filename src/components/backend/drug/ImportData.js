@@ -15,7 +15,9 @@ import {
 import * as XLSX from "xlsx";
 import * as ApiService from "../../../config/config";
 import apiList from "../../../config/apiList.json";
-import { useNavigate } from "react-router-dom";
+import config from "../../../config/config.json";
+
+import { Link, useNavigate } from "react-router-dom";
 
 export default function ImportData() {
   let navigate = useNavigate();
@@ -114,14 +116,21 @@ export default function ImportData() {
                     </div>
                   </CCol>
                 </CRow>
-
                 <CButton
                   onClick={() => UploadList()}
                   color="primary"
                   disabled={disableButton}
                 >
                   Import
-                </CButton>
+                </CButton>{" "}
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <Link
+                  className="text-primary"
+                  to={config.domainUrl + "/assets/import/template.xlsx"}
+                  target="_blank"
+                >
+                  Download template
+                </Link>
               </CContainer>
             </CForm>
           </CCardBody>

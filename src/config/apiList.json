@@ -50,6 +50,7 @@
   "checkWhatsaapUser": "/user/checkWhatsaap",
   "changePassword": "/user/changePassword",
   "getUserById": "/user/getUserById",
+  "updateUser": "/user/updateUser",
   "addOrder": "/order/addOrder",
   "getOrderById": "/order/getOrderById",
   "getOrderByUserId": "/order/getOrderByUserId",

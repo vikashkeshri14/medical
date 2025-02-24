@@ -21,7 +21,8 @@ export default function MyAccount() {
   const [whatsappnoError, setWhatsappnoError] = useState("");
   const [phoneNoError, setPhoneNoError] = useState("");
   const [pharmacyTypeError, setPharmacyTypeError] = useState("");
-
+  const [msgError, setMsgError] = useState("");
+  const [msgSuccess, setMsgSuccess] = useState("");
   useEffect(() => {
     const fetchItemById = async () => {
       const obj = {
@@ -85,15 +86,34 @@ export default function MyAccount() {
     }
     setPharmacyTypeError(false);
 
+    const obj = {
+      pharmacy_name: pharmacyName,
+      pharmacy_owner_name: pharmacyOwner,
+      whatsapp: whatsappno,
+      tax_no: tax,
+      email: email,
+      pharmacy_type: pharmacyType,
+      id: userinfo.id,
+    };
+    console.log(obj);
 
-    const obj={
-      pharmacy_name:,
-      pharmacy_owner_name:,
-      whatsapp:,
-      tax_no:,
-      pharmacy_type:
-      id:userinfo.id
+    let params = { url: apiList.updateUser, body: obj };
+    let response = await ApiService.postData(params);
+    const data = await response.results;
+    if (response.status) {
+      setMsgSuccess("Updated Successfully");
+      setTimeout(() => {
+        setMsgSuccess("");
+        setEmailError("");
+      }, 2000);
+    } else {
+      setMsgError("Whatsapp number already exists");
+      setTimeout(() => {
+        setMsgSuccess("");
+        setEmailError("");
+      }, 2000);
     }
+    //console.log(response);
   };
 
   return (
@@ -116,7 +136,10 @@ export default function MyAccount() {
                       >
                         <div className="ltn__myaccount-tab-content-inner">
                           <h3>Personal Information</h3>
-
+                          <p className="p-0">
+                            <span className="text-success">{msgSuccess}</span>
+                            <span className="text-danger">{msgError}</span>
+                          </p>
                           <div className="ltn__form-box">
                             <form action="#">
                               <div className="row mb-50">
