@@ -56,11 +56,14 @@ export default function OrderDetails() {
                   </div>
                   <div className="col-lg-8">
                     <div className="tab-content">
-                      <div class="tab-pane active show fade" id="liton_tab_1_2">
+                      <div
+                        className="tab-pane active show fade"
+                        id="liton_tab_1_2"
+                      >
                         <div className="">
-                          <div class="ltn__myaccount-tab-content-inner">
-                            <div class="table-responsive">
-                              <table class="table">
+                          <div className="ltn__myaccount-tab-content-inner">
+                            <div className="table-responsive">
+                              <table className="table">
                                 <thead>
                                   <tr>
                                     <th>Order</th>

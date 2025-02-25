@@ -38,7 +38,6 @@ export default function OrderDetailById() {
       <div className="container">
         <div className="row">
           <div className="col-lg-12">
-            {/* PRODUCT TAB AREA START */}
             <div className="ltn__product-tab-area">
               <div className="container">
                 <div className="row">
@@ -156,7 +155,6 @@ export default function OrderDetailById() {
                 </div>
               </div>
             </div>
-            {/* PRODUCT TAB AREA END */}
           </div>
         </div>
       </div>

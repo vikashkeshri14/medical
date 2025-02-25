@@ -9,9 +9,9 @@ export default function OrderDetails() {
     <div>
       <Navbar />
       <HomeMarquee />
-      <div className="mt-30">
-        <OrderDetailById />
-      </div>
+
+      <OrderDetailById />
+
       <NewsLetter />
       <Footer />
     </div>

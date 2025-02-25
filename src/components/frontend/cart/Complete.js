@@ -7,7 +7,7 @@ export default function Complete() {
     <div className="ltn__checkout-area mt-50 mb-105">
       <div className="container">
         <div className="row">
-          <div class="d-flex align-items-center justify-content-center">
+          <div className="d-flex align-items-center justify-content-center">
             <div className="text-center">
               <img
                 style={{ width: "100px" }}

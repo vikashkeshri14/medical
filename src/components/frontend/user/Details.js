@@ -32,6 +32,7 @@ export default function Details() {
                         id="ltn_tab_1_1"
                       >
                         <div className="ltn__myaccount-tab-content-inner">
+                          <h3>Dashboard</h3>
                           <p>
                             Hello <strong>{userinfo.pharmacy_name}</strong> (not{" "}
                             <strong>{userinfo.pharmacy_name}</strong>?{" "}

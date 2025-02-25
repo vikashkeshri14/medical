@@ -51,6 +51,8 @@
   "changePassword": "/user/changePassword",
   "getUserById": "/user/getUserById",
   "updateUser": "/user/updateUser",
+  "updateAddress": "/user/updateAddress",
+  "getAddress": "/user/getAddress",
   "addOrder": "/order/addOrder",
   "getOrderById": "/order/getOrderById",
   "getOrderByUserId": "/order/getOrderByUserId",
