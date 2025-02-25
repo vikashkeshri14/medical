@@ -38,6 +38,11 @@ import TrackOrder from "./pages/frontend/user/TrackOrder";
 import TermsAndConditions from "./pages/frontend/TermsAndConditions";
 import Thankyou from "./pages/frontend/user/Thankyou";
 import OrderDetails from "./pages/frontend/user/OrderDetails";
+import City from "./pages/backend/city/City";
+import Tier from "./pages/backend/tier/Tier";
+import AddTier from "./pages/backend/tier/AddTier";
+import AddCity from "./pages/backend/city/AddCity";
+import UpdateCity from "./pages/backend/city/UpdateCity";
 function App() {
   return (
     <Router basename={"medmart"}>
@@ -87,6 +92,7 @@ function App() {
           />
           <Route exact path="/admin/categories" element={<Category />} />
           <Route exact path="/admin/add-category" element={<AddCategory />} />
+
           <Route
             exact
             path="/admin/update-category/:id"
@@ -96,6 +102,12 @@ function App() {
           <Route exact path="/admin/add-drug" element={<AddDrug />} />
           <Route exact path="/admin/update-drug/:id" element={<UpdateDrug />} />
           <Route exact path="/admin/import-drugs" element={<ImportDrug />} />
+          <Route exact path="/admin/cities" element={<City />} />
+          <Route exact path="/admin/add-city" element={<AddCity />} />
+          <Route exact path="/admin/update-city" element={<UpdateCity />} />
+          <Route exact path="/admin/tiers" element={<Tier />} />
+          <Route exact path="/admin/add-tier" element={<AddTier />} />
+
           <Route exact path="/admin/logout" element={<Logout />} />
         </Routes>
       </div>

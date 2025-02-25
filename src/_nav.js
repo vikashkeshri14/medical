@@ -109,26 +109,40 @@ const _nav = [
       },
     ],
   },
+  ,
   {
     component: CNavGroup,
-    name: "Blog",
+    name: "Tiers",
     to: "/admin",
     icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
-        name: "Blog List",
-        to: "/blog",
+        name: "Tier List",
+        to: "/admin/tiers",
       },
       {
         component: CNavItem,
-        name: "Add Blog",
-        to: "/blog/add-blog",
+        name: "Add Tiers",
+        to: "/admin/add-tier",
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: "Cities",
+    to: "/admin",
+    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: "City List",
+        to: "/admin/cities",
       },
       {
         component: CNavItem,
-        name: "Manage Categories",
-        to: "/blog/categories",
+        name: "Add City",
+        to: "/admin/add-city",
       },
     ],
   },
