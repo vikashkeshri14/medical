@@ -57,5 +57,15 @@
   "getOrderById": "/order/getOrderById",
   "getOrderByUserId": "/order/getOrderByUserId",
   "getAllOrder": "/order/getAllOrder",
-  "getOrderByToken": "/order/getOrderByToken"
+  "getOrderByToken": "/order/getOrderByToken",
+
+  "addCity": "/city/addCity",
+  "getCityById": "/city/getCityById",
+  "getCityByPagination": "/city/getCityByPagination",
+  "updateCity": "/city/updateCity",
+
+  "addTier": "/tier/addTier",
+  "getTierById": "/tier/getTierById",
+  "getTierByPagination": "/tier/getTierByPagination",
+  "updateTier": "/tier/updateTier"
 }

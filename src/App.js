@@ -43,6 +43,7 @@ import Tier from "./pages/backend/tier/Tier";
 import AddTier from "./pages/backend/tier/AddTier";
 import AddCity from "./pages/backend/city/AddCity";
 import UpdateCity from "./pages/backend/city/UpdateCity";
+import UpdateTier from "./pages/backend/tier/UpdateTier";
 function App() {
   return (
     <Router basename={"medmart"}>
@@ -104,9 +105,10 @@ function App() {
           <Route exact path="/admin/import-drugs" element={<ImportDrug />} />
           <Route exact path="/admin/cities" element={<City />} />
           <Route exact path="/admin/add-city" element={<AddCity />} />
-          <Route exact path="/admin/update-city" element={<UpdateCity />} />
+          <Route exact path="/admin/update-city/:id" element={<UpdateCity />} />
           <Route exact path="/admin/tiers" element={<Tier />} />
           <Route exact path="/admin/add-tier" element={<AddTier />} />
+          <Route exact path="/admin/update-tier/:id" element={<UpdateTier />} />
 
           <Route exact path="/admin/logout" element={<Logout />} />
         </Routes>
