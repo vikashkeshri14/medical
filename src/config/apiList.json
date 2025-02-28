@@ -67,5 +67,6 @@
   "addTier": "/tier/addTier",
   "getTierById": "/tier/getTierById",
   "getTierByPagination": "/tier/getTierByPagination",
-  "updateTier": "/tier/updateTier"
+  "updateTier": "/tier/updateTier",
+  "getSupplierByPagination": "/supplier/getSupplierByPagination"
 }

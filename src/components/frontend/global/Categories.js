@@ -42,7 +42,7 @@ export default function Categories() {
                   aria-label="Search"
                 />
                 <span className="input-group-text-category border-radius-30-right category-bck">
-                  <i className="fa fa-chevron-down text-black font-14"></i>
+                  <i className="fa fa-chevron-down text-white font-14"></i>
                 </span>
               </div>
               {displayCategory && (

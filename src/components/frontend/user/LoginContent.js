@@ -18,12 +18,17 @@ export default function LoginContent() {
   const [foremail, setForEmail] = useState("");
 
   const [foremailError, setForEmailError] = useState(false);
-  const ForgetPass = () => {
+  const ForgetPass = async () => {
     if (!foremail) {
       setForEmailError(true);
       return;
     }
     setForEmailError(false);
+    const obj = {
+      email: foremail,
+    };
+    let params = { url: apiList.loginUser, body: obj }; //console.log(params);
+    let response = await ApiService.postData(params);
   };
   const Login = async () => {
     if (!email) {
@@ -66,10 +71,7 @@ export default function LoginContent() {
           <div className="row">
             <div className="col-lg-6">
               <div className="account-login-inner">
-                <form
-                  method="GET"
-                  className="ltn__form-box contact-form-box"
-                >
+                <form method="GET" className="ltn__form-box contact-form-box">
                   <div className="mb-3">
                     <label className="form-label">Email/Phone number</label>
                     <input
@@ -153,10 +155,7 @@ export default function LoginContent() {
           id="ltn_forget_password_modal"
           tabIndex={-1}
         >
-          <div
-            className="modal-dialog modal-md"
-            role="document"
-          >
+          <div className="modal-dialog modal-md" role="document">
             <div className="modal-content">
               <div className="modal-header">
                 <button
@@ -178,13 +177,12 @@ export default function LoginContent() {
                           <p className="added-cart text-start">
                             Enter you register email.
                           </p>
-                          <form
-                            action="#"
-                            className="ltn__form-box"
-                          >
+                          <form action="#" className="ltn__form-box">
                             <div className="mb-3">
                               <input
+                                value={foremail}
                                 type="text"
+                                onChange={(e) => setForEmail(e.target.value)}
                                 name="email"
                                 placeholder="Type your register email"
                                 className={

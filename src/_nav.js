@@ -21,7 +21,12 @@ const _nav = [
     component: CNavItem,
     name: "Dashboard",
     to: "/admin",
-    icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+    icon: (
+      <CIcon
+        icon={cilSpeedometer}
+        customClassName="nav-icon"
+      />
+    ),
     badge: {
       color: "info",
       text: "NEW",
@@ -36,7 +41,12 @@ const _nav = [
     component: CNavGroup,
     name: "Drugs",
     to: "/admin/drugs",
-    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    icon: (
+      <CIcon
+        icon={cilPuzzle}
+        customClassName="nav-icon"
+      />
+    ),
     items: [
       {
         component: CNavItem,
@@ -57,9 +67,37 @@ const _nav = [
   },
   {
     component: CNavGroup,
+    name: "Suppliers",
+    to: "/admin/supplier",
+    icon: (
+      <CIcon
+        icon={cilPuzzle}
+        customClassName="nav-icon"
+      />
+    ),
+    items: [
+      {
+        component: CNavItem,
+        name: "Supplier List",
+        to: "/admin/supplier",
+      },
+      {
+        component: CNavItem,
+        name: "Add Supplier",
+        to: "/admin/add-supplier",
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
     name: "Brands",
     to: "/admin/brand",
-    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    icon: (
+      <CIcon
+        icon={cilPuzzle}
+        customClassName="nav-icon"
+      />
+    ),
     items: [
       {
         component: CNavItem,
@@ -77,7 +115,12 @@ const _nav = [
     component: CNavGroup,
     name: "Categories",
     to: "/admin/categories",
-    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    icon: (
+      <CIcon
+        icon={cilPuzzle}
+        customClassName="nav-icon"
+      />
+    ),
     items: [
       {
         component: CNavItem,
@@ -95,7 +138,12 @@ const _nav = [
     component: CNavGroup,
     name: "Admin",
     to: "/admin",
-    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    icon: (
+      <CIcon
+        icon={cilPuzzle}
+        customClassName="nav-icon"
+      />
+    ),
     items: [
       {
         component: CNavItem,
@@ -114,7 +162,12 @@ const _nav = [
     component: CNavGroup,
     name: "Tiers",
     to: "/admin",
-    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    icon: (
+      <CIcon
+        icon={cilPuzzle}
+        customClassName="nav-icon"
+      />
+    ),
     items: [
       {
         component: CNavItem,
@@ -132,7 +185,12 @@ const _nav = [
     component: CNavGroup,
     name: "Cities",
     to: "/admin",
-    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    icon: (
+      <CIcon
+        icon={cilPuzzle}
+        customClassName="nav-icon"
+      />
+    ),
     items: [
       {
         component: CNavItem,
@@ -150,7 +208,12 @@ const _nav = [
     component: CNavGroup,
     name: "Manage User",
     to: "/user",
-    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    icon: (
+      <CIcon
+        icon={cilPuzzle}
+        customClassName="nav-icon"
+      />
+    ),
     items: [
       {
         component: CNavItem,
@@ -163,7 +226,12 @@ const _nav = [
     component: CNavItem,
     name: "Logout",
     to: "/admin/logout",
-    icon: <CIcon icon={cilPuzzle} customClassName="nav-icon" />,
+    icon: (
+      <CIcon
+        icon={cilPuzzle}
+        customClassName="nav-icon"
+      />
+    ),
   },
 ];
 

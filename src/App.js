@@ -44,73 +44,239 @@ import AddTier from "./pages/backend/tier/AddTier";
 import AddCity from "./pages/backend/city/AddCity";
 import UpdateCity from "./pages/backend/city/UpdateCity";
 import UpdateTier from "./pages/backend/tier/UpdateTier";
+import Supplier from "./pages/backend/supplier/Supplier";
+import AddSupplier from "./pages/backend/supplier/AddSupplier";
+import UpdateSupplier from "./pages/backend/supplier/UpdateSupplier";
 function App() {
   return (
     <Router basename={"medmart"}>
       <div>
         <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route exact path="/about-us" element={<About />} />
-          <Route exact path="/drugs" element={<Drugs />} />
-          <Route exact path="/blog" element={<Blog />} />
-          <Route exact path="/contact-us" element={<Contact />} />
-          <Route exact path="/register" element={<Register />} />
-          <Route exact path="/login" element={<Signin />} />
-          <Route exact path="/account" element={<Accounts />} />
-          <Route exact path="/orders" element={<Orders />} />
-          <Route exact path="/order-detail/:id" element={<OrderDetails />} />
+          <Route
+            exact
+            path="/"
+            element={<Home />}
+          />
+          <Route
+            exact
+            path="/about-us"
+            element={<About />}
+          />
+          <Route
+            exact
+            path="/drugs"
+            element={<Drugs />}
+          />
+          <Route
+            exact
+            path="/blog"
+            element={<Blog />}
+          />
+          <Route
+            exact
+            path="/contact-us"
+            element={<Contact />}
+          />
+          <Route
+            exact
+            path="/register"
+            element={<Register />}
+          />
+          <Route
+            exact
+            path="/login"
+            element={<Signin />}
+          />
+          <Route
+            exact
+            path="/account"
+            element={<Accounts />}
+          />
+          <Route
+            exact
+            path="/orders"
+            element={<Orders />}
+          />
+          <Route
+            exact
+            path="/order-detail/:id"
+            element={<OrderDetails />}
+          />
 
-          <Route exact path="/profile" element={<Profile />} />
-          <Route exact path="/thankyou" element={<Thankyou />} />
+          <Route
+            exact
+            path="/profile"
+            element={<Profile />}
+          />
+          <Route
+            exact
+            path="/thankyou"
+            element={<Thankyou />}
+          />
 
           <Route
             exact
             path="/terms-and-conditions"
             element={<TermsAndConditions />}
           />
-          <Route exact path="/change-password" element={<ChangePassword />} />
-          <Route exact path="/address" element={<Address />} />
-          <Route exact path="/track-orders" element={<TrackOrder />} />
+          <Route
+            exact
+            path="/change-password"
+            element={<ChangePassword />}
+          />
+          <Route
+            exact
+            path="/address"
+            element={<Address />}
+          />
+          <Route
+            exact
+            path="/track-orders"
+            element={<TrackOrder />}
+          />
 
-          <Route exact path="/carts" element={<Carts />} />
-          <Route exact path="/checkout" element={<Checkout />} />
-          <Route exact path="/drug-detail/:id" element={<DrugDetails />} />
-          <Route exact path="/admin/login" element={<Login />} />
-          <Route exact path="/admin" element={<Index />} />
-          <Route exact path="/admin/admin-list" element={<AdminList />} />
-          <Route exact path="/admin/add-admin" element={<AddAdmin />} />
+          <Route
+            exact
+            path="/carts"
+            element={<Carts />}
+          />
+          <Route
+            exact
+            path="/checkout"
+            element={<Checkout />}
+          />
+          <Route
+            exact
+            path="/drug-detail/:id"
+            element={<DrugDetails />}
+          />
+          <Route
+            exact
+            path="/admin/login"
+            element={<Login />}
+          />
+          <Route
+            exact
+            path="/admin"
+            element={<Index />}
+          />
+          <Route
+            exact
+            path="/admin/admin-list"
+            element={<AdminList />}
+          />
+          <Route
+            exact
+            path="/admin/add-admin"
+            element={<AddAdmin />}
+          />
           <Route
             exact
             path="/admin/update-admin/:id"
             element={<UpdateAdmin />}
           />
-          <Route exact path="/admin/brand" element={<Brand />} />
-          <Route exact path="/admin/add-brand" element={<AddBrand />} />
+          <Route
+            exact
+            path="/admin/brand"
+            element={<Brand />}
+          />
+          <Route
+            exact
+            path="/admin/add-brand"
+            element={<AddBrand />}
+          />
           <Route
             exact
             path="/admin/update-brand/:id"
             element={<UpdateBrand />}
           />
-          <Route exact path="/admin/categories" element={<Category />} />
-          <Route exact path="/admin/add-category" element={<AddCategory />} />
+          <Route
+            exact
+            path="/admin/categories"
+            element={<Category />}
+          />
+          <Route
+            exact
+            path="/admin/add-category"
+            element={<AddCategory />}
+          />
 
           <Route
             exact
             path="/admin/update-category/:id"
             element={<UpdateCategory />}
           />
-          <Route exact path="/admin/drugs" element={<DrugList />} />
-          <Route exact path="/admin/add-drug" element={<AddDrug />} />
-          <Route exact path="/admin/update-drug/:id" element={<UpdateDrug />} />
-          <Route exact path="/admin/import-drugs" element={<ImportDrug />} />
-          <Route exact path="/admin/cities" element={<City />} />
-          <Route exact path="/admin/add-city" element={<AddCity />} />
-          <Route exact path="/admin/update-city/:id" element={<UpdateCity />} />
-          <Route exact path="/admin/tiers" element={<Tier />} />
-          <Route exact path="/admin/add-tier" element={<AddTier />} />
-          <Route exact path="/admin/update-tier/:id" element={<UpdateTier />} />
+          <Route
+            exact
+            path="/admin/drugs"
+            element={<DrugList />}
+          />
+          <Route
+            exact
+            path="/admin/add-drug"
+            element={<AddDrug />}
+          />
+          <Route
+            exact
+            path="/admin/update-drug/:id"
+            element={<UpdateDrug />}
+          />
+          <Route
+            exact
+            path="/admin/import-drugs"
+            element={<ImportDrug />}
+          />
+          <Route
+            exact
+            path="/admin/cities"
+            element={<City />}
+          />
+          <Route
+            exact
+            path="/admin/add-city"
+            element={<AddCity />}
+          />
+          <Route
+            exact
+            path="/admin/update-city/:id"
+            element={<UpdateCity />}
+          />
+          <Route
+            exact
+            path="/admin/tiers"
+            element={<Tier />}
+          />
+          <Route
+            exact
+            path="/admin/add-tier"
+            element={<AddTier />}
+          />
+          <Route
+            exact
+            path="/admin/update-tier/:id"
+            element={<UpdateTier />}
+          />
+          <Route
+            exact
+            path="/admin/supplier"
+            element={<Supplier />}
+          />
+          <Route
+            exact
+            path="/admin/add-supplier"
+            element={<AddSupplier />}
+          />
+          <Route
+            exact
+            path="/admin/update-supplier/:id"
+            element={<UpdateSupplier />}
+          />
 
-          <Route exact path="/admin/logout" element={<Logout />} />
+          <Route
+            exact
+            path="/admin/logout"
+            element={<Logout />}
+          />
         </Routes>
       </div>
     </Router>
